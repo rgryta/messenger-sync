@@ -202,3 +202,66 @@ async fn an_edit_keeps_the_old_text_and_an_unsend_marks_the_message() {
     assert_eq!(row.get::<String, _>("two"), "oops");
     assert!(row.get::<bool, _>("gone"));
 }
+
+#[tokio::test]
+async fn a_message_edited_or_unsent_between_passes_is_caught_on_the_next() {
+    let Some((pool, _, _turn)) = support::database("client_collect").await else {
+        return;
+    };
+    messenger_core::db::ensure_schema(&pool).await.unwrap();
+    let mut conn = pool.acquire().await.unwrap();
+    writes::upsert_account(
+        &mut conn,
+        &Account {
+            id: "me".into(),
+            fb_user_id: "100".into(),
+            username: None,
+            enabled: true,
+        },
+    )
+    .await
+    .unwrap();
+    let mut batch = Collector::new("me");
+    batch.feed(
+        Some(1),
+        &json!([
+            thread(GROUP, Some("a group"), T0),
+            message(GROUP, "mid.$one", T0, "200", "helo"),
+            message(GROUP, "mid.$two", T0 + MINUTE, "200", "same"),
+        ]),
+    );
+    persist(&mut conn, &batch).await.unwrap();
+
+    // The next pass's snapshot: no editMessage, just the message with its current words;
+    // the other one unchanged.
+    batch.begin_page();
+    batch.feed(
+        Some(1),
+        &json!([
+            message(GROUP, "mid.$one", T0, "200", "hello"),
+            message(GROUP, "mid.$two", T0 + MINUTE, "200", "same"),
+        ]),
+    );
+    persist(&mut conn, &batch).await.unwrap();
+    let revisions: Vec<(String, i32)> =
+        sqlx::query_as("SELECT message_id, seq FROM message_revision ORDER BY message_id, seq")
+            .fetch_all(&mut *conn)
+            .await
+            .unwrap();
+    assert_eq!(revisions, [("mid.$one".into(), 1), ("mid.$one".into(), 2)]);
+
+    // An unsend seen only in a later snapshot: an upsertMessage carrying IsUnsent.
+    let mut flagged = message(GROUP, "mid.$two", T0 + MINUTE, "200", "");
+    flagged[19] = json!(true);
+    batch.begin_page();
+    batch.feed(Some(1), &json!([flagged]));
+    assert_eq!(batch.unsends.len(), 1);
+    persist(&mut conn, &batch).await.unwrap();
+    let gone: bool = sqlx::query_scalar(
+        "SELECT deleted_at IS NOT NULL FROM message WHERE message_id = 'mid.$two'",
+    )
+    .fetch_one(&mut *conn)
+    .await
+    .unwrap();
+    assert!(gone);
+}

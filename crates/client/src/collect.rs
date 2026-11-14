@@ -232,6 +232,22 @@ pub async fn persist(conn: &mut PgConnection, batch: &Collector) -> sqlx::Result
     writes::insert_reactions(&mut tx, &reactions).await?;
     let attachments: Vec<Attachment> = batch.attachments.values().cloned().collect();
     writes::insert_attachments(&mut tx, &attachments).await?;
+    // A message already held, delivered again with other words: edited while no stream was
+    // open, which is most of the time between passes. The live `editMessage` is only seen
+    // during a pass; this is what the retired Python's re-read caught. Identical text, and
+    // NULL against '', change nothing.
+    for m in &messages {
+        if let Some(text) = m.text.as_deref() {
+            writes::record_revision(
+                &mut tx,
+                &m.account_id,
+                &m.thread_key,
+                &m.message_id,
+                Some(text),
+            )
+            .await?;
+        }
+    }
     // After the messages, so an edit or unsend of a message in this same page finds it.
     for (message_id, text) in &batch.edits {
         writes::apply_edit(&mut tx, &batch.account_id, message_id, text).await?;
