@@ -1,0 +1,21 @@
+-- When capture last opened a conversation, whatever came of it.
+--
+-- The queue used to be ordered by the newest capture a thread had stored, which is
+-- only a record of the passes that LEARNED something. A pass that re-renders a
+-- conversation and finds the same lines stores nothing - `store_dom_capture` hashes
+-- the rows and the insert conflicts - so the thread's place in the queue never moved
+-- and it was picked again twenty minutes later. Three threads did exactly that from
+-- 05:36 until 11:13 on 2026-11-04, taking all three slots of every pass, while the
+-- other ten unfinished conversations waited their turn behind them for ever.
+--
+-- So the order now runs on the attempt rather than on its outcome: every conversation
+-- capture opens is stamped here before anything can go wrong with it, and the queue
+-- takes the longest-unvisited first. That is a round robin, which makes starvation
+-- impossible rather than unlikely - no outcome, however stuck, can hold a slot twice
+-- while something else is waiting.
+--
+-- NULL means never attempted, which sorts first: the same first-visit preference the
+-- old ordering had, and it keeps the existing rows ordered by activity on the first
+-- pass after this lands.
+
+ALTER TABLE thread ADD COLUMN IF NOT EXISTS dom_attempted_at timestamptz;

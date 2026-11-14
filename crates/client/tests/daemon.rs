@@ -1,0 +1,310 @@
+//! The walks against a fake gateway and a throwaway Postgres: the retired Python harvester's crawl
+//! rules, checked on what they write and how many tasks they spend.
+
+mod support;
+
+use chrono::{DateTime, Utc};
+use messenger_client::collect::Collector;
+use messenger_client::daemon::{DailyBudget, PassError, Settings, Tally, walk};
+use messenger_client::ls::SyncCursor;
+use messenger_core::models::{Account, Thread};
+use messenger_core::store::writes;
+use serde_json::json;
+use sqlx::postgres::PgPool;
+use support::{Fake, MINUTE, T0, history, message, thread};
+
+const ONE: &str = "1000000000000001";
+const TWO: &str = "1000000000000002";
+
+fn at(ms: i64) -> DateTime<Utc> {
+    DateTime::from_timestamp_millis(ms).unwrap()
+}
+
+fn minutes(range: std::ops::Range<i64>) -> Vec<i64> {
+    range.map(|i| T0 + i * MINUTE).collect()
+}
+
+async fn database() -> Option<(PgPool, impl Drop)> {
+    let (pool, _, turn) = support::database("client_daemon").await?;
+    messenger_core::db::ensure_schema(&pool).await.unwrap();
+    let mut conn = pool.acquire().await.unwrap();
+    writes::upsert_account(
+        &mut conn,
+        &Account {
+            id: "me".into(),
+            fb_user_id: "100".into(),
+            username: None,
+            enabled: true,
+        },
+    )
+    .await
+    .unwrap();
+    Some((pool, turn))
+}
+
+/// A thread with its crawl state set as a past pass would have left it.
+async fn seed(
+    pool: &PgPool,
+    key: &str,
+    last_activity: Option<i64>,
+    oldest_seen: Option<i64>,
+    newest_seen: Option<i64>,
+    history_done: bool,
+) {
+    let mut conn = pool.acquire().await.unwrap();
+    writes::upsert_thread(
+        &mut conn,
+        &Thread {
+            account_id: "me".into(),
+            thread_key: key.into(),
+            sync_group: 1,
+            title: None,
+            is_group: false,
+            last_activity_at: last_activity.map(at),
+            raw: json!({}),
+        },
+    )
+    .await
+    .unwrap();
+    sqlx::query(
+        "UPDATE thread SET oldest_seen_at = $2, newest_seen_at = $3, history_done = $4 \
+         WHERE thread_key = $1",
+    )
+    .bind(key)
+    .bind(oldest_seen.map(at))
+    .bind(newest_seen.map(at))
+    .bind(history_done)
+    .execute(&mut *conn)
+    .await
+    .unwrap();
+}
+
+type State = (
+    Option<DateTime<Utc>>,
+    Option<DateTime<Utc>>,
+    bool,
+    Option<DateTime<Utc>>,
+);
+
+/// (oldest_seen_at, newest_seen_at, history_done, forward_attempted_activity_at)
+async fn state(pool: &PgPool, key: &str) -> State {
+    sqlx::query_as(
+        "SELECT oldest_seen_at, newest_seen_at, history_done, forward_attempted_activity_at \
+         FROM thread WHERE thread_key = $1",
+    )
+    .bind(key)
+    .fetch_one(pool)
+    .await
+    .unwrap()
+}
+
+async fn messages(pool: &PgPool, key: &str) -> i64 {
+    sqlx::query_scalar("SELECT count(*) FROM message WHERE thread_key = $1")
+        .bind(key)
+        .fetch_one(pool)
+        .await
+        .unwrap()
+}
+
+async fn run(pool: &PgPool, fake: &mut Fake, budget: &mut DailyBudget) -> Result<Tally, PassError> {
+    let mut tally = Tally::default();
+    let cursors = [SyncCursor {
+        database: 1,
+        current: None,
+        next: "cursor".into(),
+    }];
+    walk(
+        pool,
+        fake,
+        &Settings::new("me"),
+        budget,
+        &mut Collector::new("me"),
+        &cursors,
+        &mut tally,
+    )
+    .await
+    .map(|()| tally)
+}
+
+#[tokio::test]
+async fn history_finishes_only_after_two_empty_pages() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    seed(&pool, ONE, None, None, None, false).await;
+    let mut fake = Fake::new(history(ONE, minutes(0..30)));
+    let tally = run(&pool, &mut fake, &mut DailyBudget::new(400, 120))
+        .await
+        .unwrap();
+
+    // 20, 10, then the same window asked twice and answered empty twice.
+    assert_eq!(tally.history_tasks, 4);
+    assert_eq!((tally.finished, tally.stalled), (1, 0));
+    let references: Vec<i64> = fake.tasks.iter().map(|t| t.reference_ms).collect();
+    assert_eq!(references[2], T0 - 1);
+    assert_eq!(references[3], T0 - 1);
+    assert_eq!(fake.tasks[0].queue, format!("mrq.{ONE}"));
+    let (oldest, _, done, _) = state(&pool, ONE).await;
+    assert!(done);
+    assert_eq!(oldest, Some(at(T0)));
+    assert_eq!(messages(&pool, ONE).await, 30);
+}
+
+#[tokio::test]
+async fn a_page_with_nothing_older_stalls_without_finishing() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    seed(&pool, ONE, None, Some(T0), None, false).await;
+    // The server ignores the reference and answers with what the archive already has.
+    let mut fake = Fake::new(|task: &support::Task| {
+        minutes(0..5)
+            .into_iter()
+            .map(|ts| message(&task.thread, &format!("mid.$same{ts}"), ts, "200", "word"))
+            .collect()
+    });
+    let tally = run(&pool, &mut fake, &mut DailyBudget::new(400, 120))
+        .await
+        .unwrap();
+
+    assert_eq!(tally.history_tasks, 1);
+    assert_eq!((tally.finished, tally.stalled), (0, 1));
+    let (oldest, _, done, _) = state(&pool, ONE).await;
+    assert!(!done);
+    assert_eq!(oldest, Some(at(T0)));
+}
+
+#[tokio::test]
+async fn the_forward_walk_stops_at_the_watermark() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    // Held through minute 0, which the second page reaches exactly; the listing says minute 40.
+    let watermark = T0;
+    let activity = T0 + 40 * MINUTE;
+    seed(&pool, ONE, Some(activity), None, Some(watermark), true).await;
+    let mut fake = Fake::new(history(ONE, minutes(0..40)));
+    let tally = run(&pool, &mut fake, &mut DailyBudget::new(400, 120))
+        .await
+        .unwrap();
+
+    // Minutes 39..20, then 19..0, whose oldest is the watermark itself.
+    assert_eq!(tally.forward_tasks, 2);
+    assert_eq!(tally.history_tasks, 0);
+    assert!(
+        fake.tasks[0].reference_ms > activity,
+        "the first page is from now"
+    );
+    assert_eq!(fake.tasks[1].reference_ms, T0 + 20 * MINUTE);
+    let (_, newest, _, answered) = state(&pool, ONE).await;
+    assert_eq!(newest, Some(at(T0 + 39 * MINUTE)));
+    assert_eq!(answered, Some(at(activity)));
+    assert_eq!(tally.new_messages, 40);
+}
+
+#[tokio::test]
+async fn history_never_spends_the_forward_reserve() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    seed(&pool, ONE, None, None, None, false).await;
+    let mut fake = Fake::new(history(ONE, minutes(0..200)));
+    let mut budget = DailyBudget::new(5, 3);
+    let tally = run(&pool, &mut fake, &mut budget).await.unwrap();
+
+    assert_eq!(tally.history_tasks, 2);
+    assert_eq!(budget.remaining(), 3);
+    let (_, _, done, _) = state(&pool, ONE).await;
+    assert!(!done);
+}
+
+#[tokio::test]
+async fn a_forward_walk_cut_short_by_the_budget_answers_nothing() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    seed(&pool, ONE, Some(T0 + 300 * MINUTE), None, None, true).await;
+    seed(&pool, TWO, None, None, None, false).await;
+    let mut fake = Fake::new(history(ONE, minutes(0..200)));
+    let mut budget = DailyBudget::new(3, 3);
+    let tally = run(&pool, &mut fake, &mut budget).await.unwrap();
+
+    // Forward draws on the whole budget, history on nothing past the reserve.
+    assert_eq!((tally.forward_tasks, tally.history_tasks), (3, 0));
+    assert!(fake.tasks.iter().all(|t| t.thread == ONE));
+    let (_, newest, _, answered) = state(&pool, ONE).await;
+    assert_eq!(newest, Some(at(T0 + 199 * MINUTE)));
+    assert_eq!(
+        answered, None,
+        "a walk the budget cut short answered nothing"
+    );
+    assert_eq!(budget.remaining(), 0);
+}
+
+#[tokio::test]
+async fn what_the_sync_stream_pushes_is_stored() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    let mut fake = Fake::new(|_: &support::Task| Vec::new());
+    fake.on_open.insert(
+        1,
+        json!([
+            thread(TWO, None, T0 + MINUTE),
+            message(TWO, "mid.$live", T0 + MINUTE, "200", "live"),
+            // A thread nothing listed: its row comes from the message.
+            message(ONE, "mid.$unlisted", T0, "200", "live")
+        ]),
+    );
+    let tally = run(&pool, &mut fake, &mut DailyBudget::new(400, 120))
+        .await
+        .unwrap();
+
+    assert_eq!(fake.opened, [(1, "cursor".to_owned())]);
+    assert_eq!(tally.new_messages, 2);
+    assert_eq!(messages(&pool, ONE).await, 1);
+    assert_eq!(messages(&pool, TWO).await, 1);
+}
+
+#[tokio::test]
+async fn a_sync_stream_that_never_answers_spends_no_task() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    seed(&pool, ONE, None, None, None, false).await;
+    let mut fake = Fake::new(history(ONE, minutes(0..30)));
+    fake.silent = true;
+    assert!(
+        run(&pool, &mut fake, &mut DailyBudget::new(400, 120))
+            .await
+            .is_err()
+    );
+    assert!(fake.tasks.is_empty());
+}
+
+#[tokio::test]
+async fn only_consecutive_empty_pages_finish_a_thread() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    seed(&pool, ONE, None, None, None, false).await;
+    // A reply lost once, then a real page, then the true end.
+    let mut page = 0;
+    let mut fake = Fake::new(move |task: &support::Task| {
+        page += 1;
+        if page != 2 {
+            return Vec::new();
+        }
+        minutes(0..10)
+            .into_iter()
+            .map(|ts| message(&task.thread, &format!("mid.$m{ts}"), ts, "200", "word"))
+            .collect()
+    });
+    let tally = run(&pool, &mut fake, &mut DailyBudget::new(400, 120))
+        .await
+        .unwrap();
+
+    assert_eq!(tally.history_tasks, 4);
+    assert_eq!(tally.finished, 1);
+    assert_eq!(state(&pool, ONE).await.0, Some(at(T0)));
+}

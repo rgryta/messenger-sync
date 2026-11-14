@@ -1,0 +1,25 @@
+-- Stop the forward walk from re-asking a question it already got an answer to.
+--
+-- A thread is selected for the forward walk when the thread listing's
+-- `last_activity_at` runs ahead of the newest message stored for it. That reads as
+-- "somebody has said something we do not have", and for the inbox store it is. For
+-- the encrypted store it is not: measured against the live account, sixteen threads
+-- sat permanently ahead by 0.26s, 7s, 50s, two minutes -- and every one of them
+-- already held every message the walk had ever been given. The listing's activity
+-- clock is simply not the newest message's timestamp, so the condition could never
+-- be satisfied and those threads requalified on every pass, forever.
+--
+-- They filled `forward_thread_budget` (20) exactly, every pass, which is how this was
+-- found: the walk spent its entire allowance re-reading threads that were already
+-- complete, while seven threads it had never read once -- including two ordinary
+-- inbox DMs -- sat below the cut and were never reached.
+--
+-- Recording which activity report a walk answered turns the test into "has the
+-- listing moved since we last looked", which is the question that was meant all
+-- along. A thread the walk finds nothing for costs one task once, not one per pass;
+-- real activity always bumps `last_activity_at` and requalifies it immediately.
+--
+-- No backfill: NULL means never walked, which qualifies, so the first pass after this
+-- behaves exactly as before and settles from there.
+
+ALTER TABLE thread ADD COLUMN IF NOT EXISTS forward_attempted_activity_at timestamptz;
