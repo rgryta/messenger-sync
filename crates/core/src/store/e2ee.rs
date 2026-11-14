@@ -89,6 +89,7 @@ pub async fn store(
             text,
             reply_to,
             media,
+            media_ref,
         } => {
             let reply_to = match reply_to {
                 Some(otid) => Some(
@@ -111,8 +112,8 @@ pub async fn store(
                 let message_id = resolve(&mut tx, account_id, thread_key, &event.otid)
                     .await?
                     .unwrap_or_else(|| event.otid.clone());
-                // The media itself needs the encrypted download, not ported yet: the kind
-                // is kept so the archive says an attachment was there.
+                // No file is stored: the reference is, so the file can be fetched and
+                // opened later, as whatsapp-sync keeps its media.
                 insert_attachments(
                     &mut tx,
                     &[Attachment {
@@ -121,10 +122,14 @@ pub async fn store(
                         message_id,
                         attachment_id: Some(event.otid.clone()),
                         kind: "e2ee".into(),
-                        mime_type: None,
+                        mime_type: media_ref
+                            .as_ref()
+                            .and_then(|r| r.get("mimetype"))
+                            .and_then(|m| m.as_str())
+                            .map(str::to_owned),
                         url: None,
                         preview_url: None,
-                        raw: json!({ "media": kind }),
+                        raw: json!({ "kind": kind, "media": media_ref }),
                     }],
                 )
                 .await?;

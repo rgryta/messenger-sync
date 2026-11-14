@@ -11,7 +11,7 @@ resolver = "3"
 
 [workspace.package]
 # What the MCP server reports to a client.
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 # The toolchain the image builds with, which is always the latest stable. Cargo resolves
 # dependencies to what this claims, so an older number holds back releases (at 1.85 it held

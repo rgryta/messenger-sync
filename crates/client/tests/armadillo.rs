@@ -1,7 +1,7 @@
 //! The armadillo decoder against payloads built field by field from whatsmeow's protobufs,
 //! with an encoder written here rather than the decoder's own structs.
 
-use messenger_client::armadillo::{ArmadilloError, Content, decode};
+use messenger_client::armadillo::{ArmadilloError, Content, MediaRef, decode};
 
 fn varint(mut v: u64, out: &mut Vec<u8>) {
     while v >= 0x80 {
@@ -120,6 +120,7 @@ fn attachments_are_named_with_their_caption() {
             kind: "image",
             caption: Some("sunset".into()),
             reply_to: None,
+            media: None,
         })
     );
     // An audio message whose body is only its media reference.
@@ -132,6 +133,7 @@ fn attachments_are_named_with_their_caption() {
             kind: "audio",
             caption: None,
             reply_to: None,
+            media: None,
         })
     );
 }
@@ -151,4 +153,66 @@ fn transport_only_and_unknown_versions_are_told_apart() {
         decode(&[0xFF, 0xFF]),
         Err(ArmadilloError::Decode("MessageTransport"))
     );
+}
+
+/// `WAMediaTransport` as the CDN reference, wrapped as each kind's transport wraps it.
+fn transport(seconds: Option<u64>) -> Vec<u8> {
+    let integral = [
+        field(1, &[0x11; 32]),
+        field(2, &[0x22; 32]),
+        field(3, &[0x33; 32]),
+        field(4, b"/v/t62.7117-24/fake-path"),
+        int_field(5, 1_763_100_000),
+    ]
+    .concat();
+    let ancillary = [int_field(1, 12_345), field(2, b"audio/ogg; codecs=opus")].concat();
+    let wa_media = [field(1, &integral), field(2, &ancillary)].concat();
+    let mut kind = field(1, &field(1, &wa_media));
+    if let Some(s) = seconds {
+        kind.extend(field(2, &int_field(1, s)));
+    }
+    kind
+}
+
+#[test]
+fn a_voice_note_carries_its_file_reference_and_length() {
+    let audio = [
+        field(1, &sub_protocol(&transport(Some(7)), 1)),
+        int_field(2, 1),
+    ]
+    .concat();
+    assert_eq!(
+        decode(&wrap(&content(8, &audio), None)),
+        Ok(Content::Media {
+            kind: "audio",
+            caption: None,
+            reply_to: None,
+            media: Some(MediaRef {
+                direct_path: Some("/v/t62.7117-24/fake-path".into()),
+                media_key: vec![0x22; 32],
+                file_sha256: Some(vec![0x11; 32]),
+                file_enc_sha256: Some(vec![0x33; 32]),
+                mime_type: Some("audio/ogg; codecs=opus".into()),
+                file_length: Some(12_345),
+                seconds: Some(7),
+                voice_note: true,
+            }),
+        })
+    );
+    // An image's ancillary field 1 is its height, not a duration.
+    let image = [
+        field(1, &sub_protocol(&transport(Some(1080)), 1)),
+        field(2, &message_text("sunset")),
+    ]
+    .concat();
+    let Ok(Content::Media {
+        media: Some(m),
+        caption,
+        ..
+    }) = decode(&wrap(&content(2, &image), None))
+    else {
+        panic!("an image with its reference");
+    };
+    assert_eq!((m.seconds, m.voice_note), (None, false));
+    assert_eq!(caption.as_deref(), Some("sunset"));
 }

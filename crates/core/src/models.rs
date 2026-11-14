@@ -116,6 +116,9 @@ pub enum E2eeWhat {
         text: Option<String>,
         reply_to: Option<String>,
         media: Option<String>,
+        /// The encrypted file's reference, in the shape whatsapp-client's `MediaRef` reads.
+        #[serde(default)]
+        media_ref: Option<serde_json::Value>,
     },
     Edit {
         target: String,

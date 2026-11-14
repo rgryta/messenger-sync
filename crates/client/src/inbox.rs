@@ -11,7 +11,7 @@ use messenger_core::models::{E2eeEvent, E2eeWhat};
 use whatsapp_client::binary::{Content as NodeContent, Node, Value};
 use whatsapp_client::signal::{Address, SignalError, Store};
 
-use crate::armadillo::{self, ArmadilloError, Content};
+use crate::armadillo::{self, ArmadilloError, Content, MediaRef};
 
 pub const MESSENGER_SERVER: &str = "msgr";
 
@@ -130,15 +130,18 @@ pub fn event(received: &Received, now: DateTime<Utc>) -> Option<E2eeEvent> {
             text: Some(text.clone()),
             reply_to: reply_to.clone(),
             media: None,
+            media_ref: None,
         }),
         Part::Content(Content::Media {
             kind,
             caption,
             reply_to,
+            media,
         }) => Some(E2eeWhat::Message {
             text: caption.clone(),
             reply_to: reply_to.clone(),
             media: Some((*kind).into()),
+            media_ref: media.as_ref().map(media_json),
         }),
         Part::Content(Content::Edit { target, text }) => Some(E2eeWhat::Edit {
             target: target.clone(),
@@ -161,5 +164,22 @@ pub fn event(received: &Received, now: DateTime<Utc>) -> Option<E2eeEvent> {
             .unwrap_or(now),
         sender_id: received.sender.name.clone(),
         what,
+    })
+}
+
+/// A media reference as whatsapp-client's `MediaRef::from_raw` reads it, plus what Messenger
+/// says about the file.
+fn media_json(media: &MediaRef) -> serde_json::Value {
+    use base64::Engine;
+    use base64::engine::general_purpose::STANDARD as B64;
+    serde_json::json!({
+        "directPath": media.direct_path,
+        "mediaKey": B64.encode(&media.media_key),
+        "fileSha256": media.file_sha256.as_ref().map(|b| B64.encode(b)),
+        "fileEncSha256": media.file_enc_sha256.as_ref().map(|b| B64.encode(b)),
+        "mimetype": media.mime_type,
+        "fileLength": media.file_length,
+        "seconds": media.seconds,
+        "ptt": media.voice_note,
     })
 }

@@ -133,6 +133,7 @@ fn the_archive_takes_the_first_part_that_opened() {
                 kind: "image",
                 caption: Some("sunset".into()),
                 reply_to: Some("7240000000000000000".into()),
+                media: None,
             }),
         ],
     };
@@ -147,6 +148,7 @@ fn the_archive_takes_the_first_part_that_opened() {
             text: Some("sunset".into()),
             reply_to: Some("7240000000000000000".into()),
             media: Some("image".into()),
+            media_ref: None,
         }
     );
     // Nothing that opened, nothing to keep.
