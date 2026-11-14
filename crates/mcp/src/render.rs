@@ -210,6 +210,7 @@ fn body(
     edited: bool,
     item_type: &str,
     attachments: Option<&str>,
+    transcript: Option<&str>,
 ) -> String {
     if let Some(at) = deleted_at {
         // Ahead of every other branch. The text is still in the archive and still in the
@@ -224,6 +225,13 @@ fn body(
         } else {
             clipped
         };
+    }
+    if let Some(words) = transcript.filter(|words| !words.is_empty()) {
+        // Quoted so a transcript is never mistaken for something typed, as whatsapp-sync.
+        let kind = attachments
+            .filter(|kind| !kind.is_empty())
+            .unwrap_or("audio");
+        return format!("[{kind}] \u{201c}{}\u{201d}", clip(words));
     }
     if !item_type.is_empty() && item_type != "text" && item_type != "rendered" {
         return format!("[{item_type}]");
@@ -297,6 +305,7 @@ pub fn render_history(
             row.edited,
             &row.item_type,
             row.attachments.as_deref(),
+            row.transcript.as_deref(),
         );
         let speaker = speaker(
             row.sender_name.as_deref(),
@@ -357,7 +366,14 @@ pub fn render_search(rows: &[SearchHit], query: &str) -> String {
                 row.sender_username.as_deref(),
                 row.sender_id.as_deref(),
             ),
-            body(None, row.text.as_deref(), false, &row.item_type, None),
+            body(
+                None,
+                row.text.as_deref(),
+                false,
+                &row.item_type,
+                None,
+                row.transcript.as_deref(),
+            ),
             row.thread_key,
             option_str(row.message_id.as_deref()),
         ));
@@ -618,14 +634,17 @@ mod tests {
 
     #[test]
     fn a_message_with_no_text_never_claims_it_was_sent_empty() {
-        assert_eq!(body(None, None, false, "text", None), "[text not captured]");
+        assert_eq!(
+            body(None, None, false, "text", None, None),
+            "[text not captured]"
+        );
     }
 
     #[test]
     fn an_item_type_and_an_attachment_both_beat_the_empty_line() {
-        assert_eq!(body(None, None, false, "sticker", None), "[sticker]");
+        assert_eq!(body(None, None, false, "sticker", None, None), "[sticker]");
         assert_eq!(
-            body(None, None, false, "text", Some("image/jpeg")),
+            body(None, None, false, "text", Some("image/jpeg"), None),
             "[image/jpeg]"
         );
     }
@@ -633,14 +652,17 @@ mod tests {
     #[test]
     fn a_deleted_message_withholds_its_text_in_favour_of_the_marker() {
         assert_eq!(
-            body(Some(moment()), Some("secret"), false, "text", None),
+            body(Some(moment()), Some("secret"), false, "text", None, None),
             "[deleted 2026-08-01T12:00+0000]"
         );
     }
 
     #[test]
     fn an_edit_is_marked_after_the_text() {
-        assert_eq!(body(None, Some("hi"), true, "text", None), "hi (edited)");
+        assert_eq!(
+            body(None, Some("hi"), true, "text", None, None),
+            "hi (edited)"
+        );
     }
 
     #[test]
@@ -665,6 +687,25 @@ mod tests {
         assert!(
             backward.contains("before=2026-08-01T12:00:01Z"),
             "{backward}"
+        );
+    }
+
+    #[test]
+    fn a_transcript_is_quoted_after_its_kind() {
+        assert_eq!(
+            body(
+                None,
+                None,
+                false,
+                "text",
+                Some("audio/opus"),
+                Some("see you at five")
+            ),
+            "[audio/opus] \u{201c}see you at five\u{201d}"
+        );
+        assert_eq!(
+            body(None, None, false, "text", None, Some("hi")),
+            "[audio] \u{201c}hi\u{201d}"
         );
     }
 

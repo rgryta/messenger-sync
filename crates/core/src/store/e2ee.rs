@@ -108,6 +108,21 @@ pub async fn store(
                 reply_to.as_deref(),
             )
             .await?;
+            if media.as_deref() == Some("audio") && media_ref.is_some() {
+                // A voice message waits for the transcription worker.
+                sqlx::query(
+                    "
+                    UPDATE message SET transcript_status = 'pending'
+                     WHERE account_id = $1 AND thread_key = $2 AND otid = $3
+                       AND transcript_status IS NULL
+                    ",
+                )
+                .bind(account_id)
+                .bind(thread_key)
+                .bind(&event.otid)
+                .execute(&mut *tx)
+                .await?;
+            }
             if let Some(kind) = media {
                 let message_id = resolve(&mut tx, account_id, thread_key, &event.otid)
                     .await?
@@ -334,4 +349,57 @@ pub async fn place_held(conn: &mut PgConnection, account_id: &str) -> sqlx::Resu
         placed += 1;
     }
     Ok(placed)
+}
+
+/// A voice message the transcription worker has not tried yet.
+#[derive(Debug, Clone, sqlx::FromRow)]
+pub struct PendingAudio {
+    pub account_id: String,
+    pub thread_key: String,
+    pub message_id: String,
+    /// The attachment's `raw`: `media` holds the file reference.
+    pub raw: serde_json::Value,
+}
+
+/// Up to `limit` pending voice messages, newest first.
+pub async fn pending_transcripts(
+    conn: &mut PgConnection,
+    limit: i64,
+) -> sqlx::Result<Vec<PendingAudio>> {
+    sqlx::query_as(
+        "
+        SELECT m.account_id, m.thread_key, m.message_id, a.raw
+          FROM message m
+          JOIN message_attachment a USING (account_id, thread_key, message_id)
+         WHERE m.transcript_status = 'pending' AND a.kind = 'e2ee' AND a.raw ? 'media'
+         ORDER BY m.ts DESC
+         LIMIT $1
+        ",
+    )
+    .bind(limit)
+    .fetch_all(conn)
+    .await
+}
+
+/// Records what became of a voice message: its words, or that it failed.
+pub async fn set_transcript(
+    conn: &mut PgConnection,
+    audio: &PendingAudio,
+    transcript: Option<&str>,
+    status: &str,
+) -> sqlx::Result<()> {
+    sqlx::query(
+        "
+        UPDATE message SET transcript = $4, transcript_status = $5
+         WHERE account_id = $1 AND thread_key = $2 AND message_id = $3
+        ",
+    )
+    .bind(&audio.account_id)
+    .bind(&audio.thread_key)
+    .bind(&audio.message_id)
+    .bind(transcript)
+    .bind(status)
+    .execute(conn)
+    .await?;
+    Ok(())
 }

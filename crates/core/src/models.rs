@@ -262,6 +262,8 @@ pub struct HistoryRow {
     /// What is attached, by mime type. The URLs are Meta CDN links that expire, so the
     /// useful thing to show is that media exists and what it is.
     pub attachments: Option<String>,
+    /// A voice message's words, transcribed rather than typed.
+    pub transcript: Option<String>,
 }
 
 /// One search hit. Rendered lines are searched alongside the envelopes, so this too
@@ -279,6 +281,7 @@ pub struct SearchHit {
     pub sender_name: Option<String>,
     pub sender_username: Option<String>,
     pub headline: Option<String>,
+    pub transcript: Option<String>,
     pub total_matches: i64,
 }
 

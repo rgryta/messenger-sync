@@ -16,3 +16,4 @@ pub mod ls;
 pub mod ops;
 pub mod page;
 pub mod session;
+pub mod transcribe;

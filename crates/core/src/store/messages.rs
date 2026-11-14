@@ -45,6 +45,7 @@ macro_rules! history_window {
                   FROM message_attachment a
                  WHERE a.account_id = m.account_id AND a.thread_key = m.thread_key
                    AND a.message_id = m.message_id) AS attachments,
+               m.transcript,
                ",
             total_matches!(),
             "
@@ -66,7 +67,7 @@ macro_rules! history_window {
                'rendered'::text, NULL::integer, NULL::text, NULL::timestamptz,
                false,
                d.sender_label, NULL::text,
-               NULL::text, NULL::text,
+               NULL::text, NULL::text, NULL::text,
                ",
             total_matches!(),
             "
@@ -189,8 +190,9 @@ pub async fn search_messages(
         SELECT m.account_id, m.thread_key, m.message_id, m.ts, m.sender_id, m.text,
                m.item_type, t.title AS thread_title,
                p.name AS sender_name, p.username AS sender_username,
-               ts_headline('simple', coalesce(m.text, ''),
+               ts_headline('simple', coalesce(m.text, m.transcript, ''),
                            websearch_to_tsquery('simple', $1)) AS headline,
+               m.transcript,
                ts_rank(m.search, websearch_to_tsquery('simple', $1)) AS rank,
                ",
         total_matches!(),
@@ -217,6 +219,7 @@ pub async fn search_messages(
                d.sender_label, NULL::text,
                ts_headline('simple', coalesce(d.text, ''),
                            websearch_to_tsquery('simple', $1)),
+               NULL::text,
                ts_rank(d.search, websearch_to_tsquery('simple', $1)),
                ",
         total_matches!(),
