@@ -11,6 +11,8 @@
 //! - `MESSENGER_DEVICE_FROM` (cutover only): the browser's encrypted device, as the retired
 //!   `scripts/export-device.py` (in git history) exported it, to adopt when the database
 //!   holds none. Ignored once one is stored; delete the file once this logs the import.
+//! - `MESSENGER_WHISPER_URL`: the whisper.cpp server encrypted voice messages are sent to,
+//!   `http://whisper-cpp:8080` by default (the one whatsapp-sync uses).
 //! - `RUST_LOG`: log filter, `info` by default.
 //!
 //! It logs counts only, never a message, a name or an id.
@@ -20,7 +22,7 @@ use std::process::ExitCode;
 use messenger_client::chat::Chat;
 use messenger_client::cookies::Jar;
 use messenger_client::daemon::{Client, Settings};
-use messenger_client::{device, session};
+use messenger_client::{device, session, transcribe};
 use messenger_core::db::{create_pool, ensure_schema};
 
 #[tokio::main]
@@ -110,6 +112,9 @@ async fn main() -> ExitCode {
         }
     };
     drop(conn);
+    let whisper =
+        std::env::var("MESSENGER_WHISPER_URL").unwrap_or_else(|_| "http://whisper-cpp:8080".into());
+    tokio::spawn(transcribe::Worker::new(pool.clone(), &whisper).run(transcribe::INTERVAL));
     let client = match Client::new(pool.clone(), Settings::new(&account), jar) {
         Ok(client) => client,
         Err(e) => {

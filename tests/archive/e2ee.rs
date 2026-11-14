@@ -299,3 +299,56 @@ db_test!(
         );
     }
 );
+
+db_test!(
+    a_voice_message_waits_for_its_transcript_then_shows_it,
+    |fx| {
+        setup(&fx.pool).await;
+        let mut conn = fx.pool.acquire().await.unwrap();
+        let voice = E2eeWhat::Message {
+            text: None,
+            reply_to: None,
+            media: Some("audio".into()),
+            media_ref: Some(
+                json!({"directPath": "/v/x.enc", "mediaKey": "AAAA", "mimetype": "audio/opus"}),
+            ),
+        };
+        e2ee::store(&mut conn, ACCOUNT, THREAD, &event("111", 10, PEER, voice))
+            .await
+            .unwrap();
+        // A photo is not transcribed.
+        let photo = E2eeWhat::Message {
+            text: None,
+            reply_to: None,
+            media: Some("image".into()),
+            media_ref: Some(json!({"directPath": "/v/y.enc", "mediaKey": "AAAA"})),
+        };
+        e2ee::store(&mut conn, ACCOUNT, THREAD, &event("222", 20, PEER, photo))
+            .await
+            .unwrap();
+
+        let pending = e2ee::pending_transcripts(&mut conn, 20).await.unwrap();
+        assert_eq!(pending.len(), 1);
+        assert_eq!(pending[0].message_id, "111");
+        assert_eq!(pending[0].raw["media"]["directPath"], "/v/x.enc");
+
+        e2ee::set_transcript(&mut conn, &pending[0], Some("see you at five"), "done")
+            .await
+            .unwrap();
+        assert!(
+            e2ee::pending_transcripts(&mut conn, 20)
+                .await
+                .unwrap()
+                .is_empty()
+        );
+        let history = messenger_core::store::get_history(&fx.pool, THREAD, None, None, None, 10)
+            .await
+            .unwrap();
+        let row = history
+            .iter()
+            .find(|r| r.message_id.as_deref() == Some("111"))
+            .unwrap();
+        assert_eq!(row.transcript.as_deref(), Some("see you at five"));
+        assert_eq!(row.attachments.as_deref(), Some("audio/opus"));
+    }
+);

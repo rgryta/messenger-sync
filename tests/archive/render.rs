@@ -42,6 +42,7 @@ fn envelope() -> HistoryRow {
         sender_username: None,
         reactions: None,
         attachments: None,
+        transcript: None,
     }
 }
 

@@ -193,7 +193,11 @@ db_test!(the_writers_leave_the_archive_as_the_python_does, |f| {
     // `message.otid` (migration 0014) postdates the recorded fixture. It is generated from
     // `raw`, which is compared, so dropping it hides nothing the writers did.
     for row in tables["message"].as_array_mut().into_iter().flatten() {
-        row.as_object_mut().map(|r| r.remove("otid"));
+        if let Some(row) = row.as_object_mut() {
+            for column in ["otid", "transcript", "transcript_status"] {
+                row.remove(column);
+            }
+        }
     }
     let expected = fixture["tables"].as_object().expect("tables");
     assert_eq!(
