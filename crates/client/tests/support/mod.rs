@@ -109,6 +109,27 @@ pub fn message(thread: &str, mid: &str, ts_ms: i64, sender: &str, text: &str) ->
     )
 }
 
+/// `editMessage`: the message id and its new text.
+pub fn edit(mid: &str, text: &str) -> Value {
+    op("editMessage", 6, vec![(2, json!(mid)), (4, json!(text))])
+}
+
+/// `deleteThenInsertMessage` with `IsUnsent`: the placeholder LightSpeed puts where an
+/// unsent message was.
+pub fn unsent(thread: &str, mid: &str, ts_ms: i64, unsent_ms: i64) -> Value {
+    op(
+        "deleteThenInsertMessage",
+        84,
+        vec![
+            (5, boxed(thread)),
+            (7, boxed(&ts_ms.to_string())),
+            (10, json!(mid)),
+            (19, json!(true)),
+            (20, boxed(&unsent_ms.to_string())),
+        ],
+    )
+}
+
 pub fn thread(key: &str, title: Option<&str>, activity_ms: i64) -> Value {
     op(
         "deleteThenInsertThread",

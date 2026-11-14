@@ -490,6 +490,54 @@ pub async fn record_revision(
     Ok(true)
 }
 
+/// A message's new text from LightSpeed's `editMessage`, which names no thread: the
+/// message is found by id, and the old text kept as a revision. Returns whether anything
+/// changed; an edit of a message the archive does not hold is dropped.
+pub async fn apply_edit(
+    conn: &mut PgConnection,
+    account_id: &str,
+    message_id: &str,
+    text: &str,
+) -> sqlx::Result<bool> {
+    let thread: Option<String> = sqlx::query_scalar(
+        "SELECT thread_key FROM message WHERE account_id = $1 AND message_id = $2 LIMIT 1",
+    )
+    .bind(account_id)
+    .bind(message_id)
+    .fetch_optional(&mut *conn)
+    .await?;
+    match thread {
+        Some(thread) => record_revision(conn, account_id, &thread, message_id, Some(text)).await,
+        None => Ok(false),
+    }
+}
+
+/// An unsend from LightSpeed: the message is marked deleted, its text kept. `at` is when,
+/// if LightSpeed said; else now.
+pub async fn mark_unsent(
+    conn: &mut PgConnection,
+    account_id: &str,
+    thread_key: &str,
+    message_id: &str,
+    at: Option<DateTime<Utc>>,
+) -> sqlx::Result<bool> {
+    let marked = sqlx::query(
+        "
+        UPDATE message SET deleted_at = COALESCE($4, now())
+         WHERE account_id = $1 AND thread_key = $2 AND message_id = $3
+           AND deleted_at IS NULL
+        ",
+    )
+    .bind(account_id)
+    .bind(thread_key)
+    .bind(message_id)
+    .bind(at)
+    .execute(&mut *conn)
+    .await?
+    .rows_affected();
+    Ok(marked > 0)
+}
+
 /// Advance (never rewind) how far back a thread has been paged.
 pub async fn set_history_progress(
     conn: &mut PgConnection,
