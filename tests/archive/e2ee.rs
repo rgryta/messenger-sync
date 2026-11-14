@@ -27,6 +27,7 @@ fn text(t: &str) -> E2eeWhat {
         text: Some(t.into()),
         reply_to: None,
         media: None,
+        media_ref: None,
     }
 }
 
@@ -105,6 +106,7 @@ db_test!(an_envelope_stored_first_takes_the_text, |fx| {
         text: Some("yes".into()),
         reply_to: Some("111".into()),
         media: None,
+        media_ref: None,
     };
     e2ee::store(
         &mut conn,

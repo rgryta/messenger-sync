@@ -23,6 +23,8 @@ pub enum Content {
         kind: &'static str,
         caption: Option<String>,
         reply_to: Option<String>,
+        /// Where the encrypted file is and how to open it, when the kind carries a file.
+        media: Option<MediaRef>,
     },
     Edit {
         target: String,
@@ -155,12 +157,6 @@ struct Captioned1 {
 }
 
 #[derive(Clone, PartialEq, Message)]
-struct Captioned2 {
-    #[prost(message, optional, tag = "2")]
-    caption: Option<MessageText>,
-}
-
-#[derive(Clone, PartialEq, Message)]
 struct Captioned5 {
     #[prost(message, optional, tag = "5")]
     caption: Option<MessageText>,
@@ -182,6 +178,123 @@ struct Edit {
     message: Option<MessageText>,
 }
 
+/// An encrypted file on Meta's CDN: what `waMediaTransport.WAMediaTransport` carries. The
+/// file is fetched and opened the way WhatsApp's media are (whatsapp-client's `media`).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct MediaRef {
+    pub direct_path: Option<String>,
+    pub media_key: Vec<u8>,
+    pub file_sha256: Option<Vec<u8>>,
+    pub file_enc_sha256: Option<Vec<u8>>,
+    pub mime_type: Option<String>,
+    pub file_length: Option<u64>,
+    /// An audio or video file's length.
+    pub seconds: Option<u32>,
+    /// A recorded voice note rather than an audio file.
+    pub voice_note: bool,
+}
+
+/// `ImageMessage` and `VideoMessage`: the transport, then a caption.
+#[derive(Clone, PartialEq, Message)]
+struct CaptionedMedia {
+    #[prost(message, optional, tag = "1")]
+    media: Option<SubProtocol>,
+    #[prost(message, optional, tag = "2")]
+    caption: Option<MessageText>,
+}
+
+#[derive(Clone, PartialEq, Message)]
+struct AudioMessage {
+    #[prost(message, optional, tag = "1")]
+    media: Option<SubProtocol>,
+    #[prost(bool, optional, tag = "2")]
+    ptt: Option<bool>,
+}
+
+/// `DocumentMessage` and `StickerMessage`: the transport first.
+#[derive(Clone, PartialEq, Message)]
+struct FileMedia {
+    #[prost(message, optional, tag = "1")]
+    media: Option<SubProtocol>,
+}
+
+/// Every `waMediaTransport.*Transport`: `integral.transport`, and an ancillary part whose
+/// field 1 is the duration for audio and video.
+#[derive(Clone, PartialEq, Message)]
+struct KindTransport {
+    #[prost(message, optional, tag = "1")]
+    integral: Option<KindIntegral>,
+    #[prost(message, optional, tag = "2")]
+    ancillary: Option<KindAncillary>,
+}
+
+#[derive(Clone, PartialEq, Message)]
+struct KindIntegral {
+    #[prost(message, optional, tag = "1")]
+    transport: Option<WaMediaTransport>,
+}
+
+#[derive(Clone, PartialEq, Message)]
+struct KindAncillary {
+    #[prost(uint32, optional, tag = "1")]
+    seconds: Option<u32>,
+}
+
+#[derive(Clone, PartialEq, Message)]
+struct WaMediaTransport {
+    #[prost(message, optional, tag = "1")]
+    integral: Option<WaIntegral>,
+    #[prost(message, optional, tag = "2")]
+    ancillary: Option<WaAncillary>,
+}
+
+#[derive(Clone, PartialEq, Message)]
+struct WaIntegral {
+    #[prost(bytes = "vec", optional, tag = "1")]
+    file_sha256: Option<Vec<u8>>,
+    #[prost(bytes = "vec", optional, tag = "2")]
+    media_key: Option<Vec<u8>>,
+    #[prost(bytes = "vec", optional, tag = "3")]
+    file_enc_sha256: Option<Vec<u8>>,
+    #[prost(string, optional, tag = "4")]
+    direct_path: Option<String>,
+}
+
+#[derive(Clone, PartialEq, Message)]
+struct WaAncillary {
+    #[prost(uint64, optional, tag = "1")]
+    file_length: Option<u64>,
+    #[prost(string, optional, tag = "2")]
+    mimetype: Option<String>,
+}
+
+/// Every media transport is at version 1 (`waConsumerApplication`'s `*TransportVersion`).
+const MEDIA_TRANSPORT: i32 = 1;
+
+/// The file reference inside an attachment, or `None` when it is absent or does not read:
+/// the message itself is still worth keeping without it.
+fn media_ref(sub: Option<&SubProtocol>, timed: bool, voice_note: bool) -> Option<MediaRef> {
+    let bytes = sub_protocol(sub?, "media transport", MEDIA_TRANSPORT).ok()?;
+    let kind = KindTransport::decode(bytes).ok()?;
+    let transport = kind.integral?.transport?;
+    let integral = transport.integral?;
+    let ancillary = transport.ancillary.unwrap_or_default();
+    Some(MediaRef {
+        direct_path: integral.direct_path,
+        media_key: integral.media_key.filter(|k| !k.is_empty())?,
+        file_sha256: integral.file_sha256,
+        file_enc_sha256: integral.file_enc_sha256,
+        mime_type: ancillary.mimetype,
+        file_length: ancillary.file_length,
+        seconds: if timed {
+            kind.ancillary.and_then(|a| a.seconds)
+        } else {
+            None
+        },
+        voice_note,
+    })
+}
+
 /// An empty message: only whether the field was there matters.
 #[derive(Clone, PartialEq, Message)]
 struct Present {}
@@ -191,7 +304,7 @@ struct ConsumerContent {
     #[prost(message, optional, tag = "1")]
     message_text: Option<MessageText>,
     #[prost(message, optional, tag = "2")]
-    image: Option<Captioned2>,
+    image: Option<CaptionedMedia>,
     #[prost(message, optional, tag = "3")]
     contact: Option<Present>,
     #[prost(message, optional, tag = "4")]
@@ -199,17 +312,17 @@ struct ConsumerContent {
     #[prost(message, optional, tag = "5")]
     extended_text: Option<Captioned1>,
     #[prost(message, optional, tag = "7")]
-    document: Option<Present>,
+    document: Option<FileMedia>,
     #[prost(message, optional, tag = "8")]
-    audio: Option<Present>,
+    audio: Option<AudioMessage>,
     #[prost(message, optional, tag = "9")]
-    video: Option<Captioned2>,
+    video: Option<CaptionedMedia>,
     #[prost(message, optional, tag = "10")]
     contacts: Option<Present>,
     #[prost(message, optional, tag = "11")]
     live_location: Option<Captioned5>,
     #[prost(message, optional, tag = "12")]
-    sticker: Option<Present>,
+    sticker: Option<FileMedia>,
     #[prost(message, optional, tag = "14")]
     view_once: Option<Present>,
     #[prost(message, optional, tag = "16")]
@@ -284,10 +397,11 @@ pub fn decode(plaintext: &[u8]) -> Result<Content, ArmadilloError> {
     let Some(c) = payload.content else {
         return Ok(Content::Other("consumer payload without content".into()));
     };
-    let media = |kind, caption| Content::Media {
+    let media = |kind, caption, media| Content::Media {
         kind,
         caption,
         reply_to: reply_to.clone(),
+        media,
     };
     Ok(if let Some(t) = text(c.message_text) {
         Content::Text { text: t, reply_to }
@@ -304,25 +418,28 @@ pub fn decode(plaintext: &[u8]) -> Result<Content, ArmadilloError> {
             text: text(e.message).unwrap_or_default(),
         }
     } else if let Some(i) = c.image {
-        media("image", text(i.caption))
+        let file = media_ref(i.media.as_ref(), false, false);
+        media("image", text(i.caption), file)
     } else if let Some(v) = c.video {
-        media("video", text(v.caption))
-    } else if c.audio.is_some() {
-        media("audio", None)
-    } else if c.document.is_some() {
-        media("document", None)
-    } else if c.sticker.is_some() {
-        media("sticker", None)
+        let file = media_ref(v.media.as_ref(), true, false);
+        media("video", text(v.caption), file)
+    } else if let Some(a) = c.audio {
+        let file = media_ref(a.media.as_ref(), true, a.ptt.unwrap_or(false));
+        media("audio", None, file)
+    } else if let Some(d) = c.document {
+        media("document", None, media_ref(d.media.as_ref(), false, false))
+    } else if let Some(s) = c.sticker {
+        media("sticker", None, media_ref(s.media.as_ref(), false, false))
     } else if c.contact.is_some() || c.contacts.is_some() {
-        media("contact", None)
+        media("contact", None, None)
     } else if c.location.is_some() {
-        media("location", None)
+        media("location", None, None)
     } else if let Some(l) = c.live_location {
-        media("live location", text(l.caption))
+        media("live location", text(l.caption), None)
     } else if c.view_once.is_some() {
-        media("view once", None)
+        media("view once", None, None)
     } else if c.poll.is_some() {
-        media("poll", None)
+        media("poll", None, None)
     } else {
         Content::Other("consumer content not ported".into())
     })
