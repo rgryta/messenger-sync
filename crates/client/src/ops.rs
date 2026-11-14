@@ -43,6 +43,23 @@ pub struct Participant {
     pub profile_pic_url: Option<String>,
 }
 
+/// `editMessage`: a message's new text. It names no thread (mautrix-meta's
+/// `LSEditMessage`), so the message is found by id.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Edit {
+    pub message_id: String,
+    pub text: String,
+}
+
+/// `deleteThenInsertMessage` with `IsUnsent`: the sender unsent it for everyone, and
+/// LightSpeed swapped it for a placeholder.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Unsend {
+    pub thread_key: String,
+    pub message_id: String,
+    pub unsent_ms: Option<i64>,
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Reaction {
     pub thread_key: String,
@@ -123,6 +140,31 @@ pub fn message(op: &[Value], thread_key: Option<&str>, sync_group: u8) -> Option
         text: text.map(str::to_owned),
         reply_to_id: mid(op, 25).map(str::to_owned),
         sync_group,
+    })
+}
+
+/// `editMessage`: argument 0 the message id, 2 the new text (`LSEditMessage`).
+pub fn edit(op: &[Value]) -> Option<Edit> {
+    if name(op)? != "editMessage" {
+        return None;
+    }
+    Some(Edit {
+        message_id: mid(op, 2)?.to_owned(),
+        text: string(op, 4)?.to_owned(),
+    })
+}
+
+/// `deleteThenInsertMessage` whose argument 17, `IsUnsent`, is true; argument 18 is when
+/// (`LSDeleteThenInsertMessage`). Any other `deleteThenInsertMessage` is a plain message.
+pub fn unsend(op: &[Value], thread_key: Option<&str>) -> Option<Unsend> {
+    if name(op)? != "deleteThenInsertMessage" || op.get(19)?.as_bool() != Some(true) {
+        return None;
+    }
+    let thread = boxed(op, 5).filter(|t| *t != "0").or(thread_key)?;
+    Some(Unsend {
+        thread_key: thread.to_owned(),
+        message_id: mid(op, 10)?.to_owned(),
+        unsent_ms: stamp(op, 20),
     })
 }
 

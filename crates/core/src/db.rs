@@ -91,6 +91,10 @@ pub const MIGRATIONS: &[(&str, &str)] = &[
         "0016_transcripts.sql",
         include_str!("../../../db-migrations/pg/0016_transcripts.sql"),
     ),
+    (
+        "0017_past_unsends.sql",
+        include_str!("../../../db-migrations/pg/0017_past_unsends.sql"),
+    ),
 ];
 
 const SCHEMA_MIGRATION_DDL: &str = "

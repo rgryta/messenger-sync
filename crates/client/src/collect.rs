@@ -37,6 +37,10 @@ pub struct Collector {
     pub members: BTreeMap<(String, String), Member>,
     /// By (message id, attachment id or url or "").
     pub attachments: BTreeMap<(String, String), Attachment>,
+    /// New texts, by message id: an edit names no thread.
+    pub edits: BTreeMap<String, String>,
+    /// By (thread, message id): when it was unsent, if LightSpeed said.
+    pub unsends: BTreeMap<(String, String), Option<DateTime<Utc>>>,
     pub per_thread_oldest: HashMap<String, DateTime<Utc>>,
     pub per_thread_newest: HashMap<String, DateTime<Utc>>,
     /// Messages decoded during the current page: what the walks key off, because rows
@@ -58,6 +62,8 @@ impl Collector {
         self.reactions.clear();
         self.attachments.clear();
         self.members.clear();
+        self.edits.clear();
+        self.unsends.clear();
         self.decoded_messages = 0;
     }
 
@@ -126,6 +132,8 @@ impl Collector {
                         reacted_at,
                     },
                 );
+            } else if let Some(e) = ops::edit(op) {
+                self.edits.insert(e.message_id, e.text);
             } else if let Some(a) = ops::attachment(op) {
                 let key = a
                     .attachment_id
@@ -153,6 +161,10 @@ impl Collector {
                     Some((thread, group)) => (Some(thread.as_str()), *group),
                     None => (None, event_group.unwrap_or(SYNC_GROUP_INBOX)),
                 };
+                if let Some(u) = ops::unsend(op, fallback) {
+                    self.unsends
+                        .insert((u.thread_key, u.message_id), u.unsent_ms.and_then(at));
+                }
                 let Some(m) = ops::message(op, fallback, group) else {
                     continue;
                 };
@@ -220,6 +232,13 @@ pub async fn persist(conn: &mut PgConnection, batch: &Collector) -> sqlx::Result
     writes::insert_reactions(&mut tx, &reactions).await?;
     let attachments: Vec<Attachment> = batch.attachments.values().cloned().collect();
     writes::insert_attachments(&mut tx, &attachments).await?;
+    // After the messages, so an edit or unsend of a message in this same page finds it.
+    for (message_id, text) in &batch.edits {
+        writes::apply_edit(&mut tx, &batch.account_id, message_id, text).await?;
+    }
+    for ((thread_key, message_id), at) in &batch.unsends {
+        writes::mark_unsent(&mut tx, &batch.account_id, thread_key, message_id, *at).await?;
+    }
     tx.commit().await?;
     Ok(written)
 }

@@ -7,7 +7,7 @@ use messenger_core::models::Account;
 use messenger_core::store::writes;
 use serde_json::json;
 use sqlx::Row;
-use support::{MINUTE, T0, blob, contact, e2ee, member, message, reaction, thread};
+use support::{MINUTE, T0, blob, contact, e2ee, edit, member, message, reaction, thread, unsent};
 
 const GROUP: &str = "1000000000000001";
 const SECRET: &str = "7000000000000000009";
@@ -138,4 +138,67 @@ async fn a_batch_is_keyed_like_the_python_and_written_parents_first() {
     assert_eq!(row.get::<String, _>("name"), "Someone");
     assert!(row.get::<bool, _>("roster"));
     assert_eq!(row.get::<String, _>("raw"), "upsertMessage");
+}
+
+#[tokio::test]
+async fn an_edit_keeps_the_old_text_and_an_unsend_marks_the_message() {
+    let Some((pool, _, _turn)) = support::database("client_collect").await else {
+        return;
+    };
+    messenger_core::db::ensure_schema(&pool).await.unwrap();
+    let mut conn = pool.acquire().await.unwrap();
+    writes::upsert_account(
+        &mut conn,
+        &Account {
+            id: "me".into(),
+            fb_user_id: "100".into(),
+            username: None,
+            enabled: true,
+        },
+    )
+    .await
+    .unwrap();
+    let mut batch = Collector::new("me");
+    batch.feed(
+        Some(1),
+        &json!([
+            thread(GROUP, Some("a group"), T0),
+            message(GROUP, "mid.$one", T0, "200", "helo"),
+            message(GROUP, "mid.$two", T0 + MINUTE, "200", "oops"),
+        ]),
+    );
+    persist(&mut conn, &batch).await.unwrap();
+
+    // Later, on the sync stream: one message edited, the other unsent.
+    batch.begin_page();
+    batch.feed(
+        Some(1),
+        &json!([
+            edit("mid.$one", "hello"),
+            unsent(GROUP, "mid.$two", T0 + MINUTE, T0 + 2 * MINUTE),
+        ]),
+    );
+    assert_eq!(batch.edits.len(), 1);
+    assert_eq!(batch.unsends.len(), 1);
+    persist(&mut conn, &batch).await.unwrap();
+
+    let texts: Vec<(i32, Option<String>)> = sqlx::query_as(
+        "SELECT seq, text FROM message_revision WHERE message_id = 'mid.$one' ORDER BY seq",
+    )
+    .fetch_all(&mut *conn)
+    .await
+    .unwrap();
+    assert_eq!(texts, [(1, Some("helo".into())), (2, Some("hello".into()))]);
+    let row = sqlx::query(
+        "SELECT (SELECT text FROM message WHERE message_id = 'mid.$one') AS one, \
+                (SELECT text FROM message WHERE message_id = 'mid.$two') AS two, \
+                (SELECT deleted_at IS NOT NULL FROM message WHERE message_id = 'mid.$two') AS gone",
+    )
+    .fetch_one(&mut *conn)
+    .await
+    .unwrap();
+    assert_eq!(row.get::<String, _>("one"), "hello");
+    // The text is kept; the unsend only marks it.
+    assert_eq!(row.get::<String, _>("two"), "oops");
+    assert!(row.get::<bool, _>("gone"));
 }
