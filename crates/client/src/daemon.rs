@@ -628,7 +628,8 @@ impl Web {
         let body = self
             .post_graphql(config, doc.name, &graphql::doc_form(config, doc, variables))
             .await?;
-        graphql::data_field(&body, field).map_err(|e| PassError::Other(format!("{}: {e}", doc.name)))
+        graphql::data_field(&body, field)
+            .map_err(|e| PassError::Other(format!("{}: {e}", doc.name)))
     }
 }
 

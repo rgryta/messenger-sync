@@ -20,6 +20,7 @@ pub mod enrollment;
 pub mod epochs;
 pub mod minos;
 pub mod opaque;
+pub mod proto;
 pub mod vesta;
 
 use std::collections::BTreeMap;
@@ -80,7 +81,11 @@ pub struct Backup {
     pub id: String,
     #[serde(default, rename = "encryption_management_delegator_id")]
     pub delegator_id: String,
-    #[serde(default, rename = "virtual_devices", deserialize_with = "nullable::deserialize")]
+    #[serde(
+        default,
+        rename = "virtual_devices",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub devices: Vec<BackupDevice>,
 }
 
@@ -113,7 +118,11 @@ pub struct EncryptedSecrets {
     pub epoch_storage_private_key: Vec<u8>,
     #[serde(default, with = "b64", rename = "encrypted_mailbox_root_key_blob")]
     pub mailbox_root_key: Vec<u8>,
-    #[serde(default, with = "b64", rename = "encrypted_oblivious_validation_token_blob")]
+    #[serde(
+        default,
+        with = "b64",
+        rename = "encrypted_oblivious_validation_token_blob"
+    )]
     pub oblivious_validation_token: Vec<u8>,
     #[serde(default, with = "b64", rename = "encrypted_ocmf_client_state")]
     pub ocmf_client_state: Vec<u8>,
@@ -185,11 +194,19 @@ pub struct VirtualDeviceInfo {
     pub epoch_storage_public_key: Vec<u8>,
     #[serde(default)]
     pub last_epoch_id: String,
-    #[serde(default, rename = "sync_epochs", deserialize_with = "nullable::deserialize")]
+    #[serde(
+        default,
+        rename = "sync_epochs",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub epochs: Vec<SyncEpoch>,
     #[serde(default, rename = "minos_epoch")]
     pub minos: Option<MinosEpoch>,
-    #[serde(default, rename = "epoch_edges", deserialize_with = "nullable::deserialize")]
+    #[serde(
+        default,
+        rename = "epoch_edges",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub edges: Vec<BackwardEdge>,
 }
 
@@ -269,7 +286,11 @@ pub struct EpochEdge {
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct EpochDerivationSet {
-    #[serde(default, rename = "epoch_edges", deserialize_with = "nullable::deserialize")]
+    #[serde(
+        default,
+        rename = "epoch_edges",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub edges: Vec<EpochEdge>,
 }
 
@@ -279,9 +300,17 @@ pub struct MessageRangeInfo {
     pub has_more_before: Option<bool>,
     #[serde(default)]
     pub has_more_after: Option<bool>,
-    #[serde(default, with = "int_string", rename = "next_message_timestamp_ms_before")]
+    #[serde(
+        default,
+        with = "int_string",
+        rename = "next_message_timestamp_ms_before"
+    )]
     pub before: i64,
-    #[serde(default, with = "int_string", rename = "next_message_timestamp_ms_after")]
+    #[serde(
+        default,
+        with = "int_string",
+        rename = "next_message_timestamp_ms_after"
+    )]
     pub after: i64,
 }
 
@@ -290,13 +319,21 @@ pub struct MessageRangeInfo {
 pub struct MessageRange {
     #[serde(default)]
     pub backup_id: String,
-    #[serde(default, rename = "encrypted_messages", deserialize_with = "nullable::deserialize")]
+    #[serde(
+        default,
+        rename = "encrypted_messages",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub messages: Vec<ArchiveMessage>,
     #[serde(default, rename = "message_range_info")]
     pub range: Option<MessageRangeInfo>,
     #[serde(default, rename = "epoch_derivation_set")]
     pub epochs: Option<EpochDerivationSet>,
-    #[serde(default, rename = "minos_decryption_keys", deserialize_with = "nullable::deserialize")]
+    #[serde(
+        default,
+        rename = "minos_decryption_keys",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub minos_keys: Vec<MinosKeyEntry>,
     #[serde(default, rename = "exception_string")]
     pub exception: Option<String>,
@@ -458,15 +495,27 @@ pub struct UnencryptedProtobuf {
 pub struct ArchiveProtobufs {
     #[serde(default, rename = "top_level_protobuf")]
     pub message: Option<ArchiveProtobuf>,
-    #[serde(default, rename = "supplemental_protobufs", deserialize_with = "nullable::deserialize")]
+    #[serde(
+        default,
+        rename = "supplemental_protobufs",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub supplementals: Vec<ArchiveProtobuf>,
     #[serde(default, rename = "top_level_protobuf_unencrypted")]
     pub unencrypted: Option<UnencryptedProtobuf>,
     #[serde(default, rename = "top_level_protobuf_v2")]
     pub minos_message: Option<MinosProtobuf>,
-    #[serde(default, rename = "supplemental_protobufs_v2", deserialize_with = "nullable::deserialize")]
+    #[serde(
+        default,
+        rename = "supplemental_protobufs_v2",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub minos_supplementals: Vec<MinosProtobuf>,
-    #[serde(default, rename = "message_tags", deserialize_with = "nullable::deserialize")]
+    #[serde(
+        default,
+        rename = "message_tags",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub tags: Vec<String>,
 }
 
@@ -475,7 +524,11 @@ pub struct ArchiveProtobufs {
 pub struct ArchiveMessage {
     #[serde(default, rename = "otid")]
     pub id: String,
-    #[serde(default, rename = "attachment_data", deserialize_with = "nullable::deserialize")]
+    #[serde(
+        default,
+        rename = "attachment_data",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub attachments: Vec<ArchiveAttachment>,
     #[serde(default, rename = "echo_document")]
     pub echo: Option<EchoDocument>,

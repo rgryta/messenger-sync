@@ -57,7 +57,11 @@ pub async fn stored_device(pool: &PgPool, account: &str) -> Result<Option<Device
 }
 
 /// Keeps the history device, replacing the one stored.
-pub async fn store_device(pool: &PgPool, account: &str, device: &Device) -> Result<(), RestoreError> {
+pub async fn store_device(
+    pool: &PgPool,
+    account: &str,
+    device: &Device,
+) -> Result<(), RestoreError> {
     let json = serde_json::to_value(device).map_err(|e| step("device")(&e))?;
     sqlx::query(
         "INSERT INTO client.history_device (account_id, device) VALUES ($1, $2)
@@ -112,13 +116,17 @@ pub async fn enroll(
         .session_id
         .clone()
         .ok_or_else(|| RestoreError::Step("the page carries no web session id".into()))?;
-    let user_id: i64 = config
-        .user_id
-        .parse()
-        .map_err(|e| step("user id")(&e))?;
+    let user_id: i64 = config.user_id.parse().map_err(|e| step("user id")(&e))?;
 
     let backup: Backup = serde_json::from_value(
-        call(client, &config, &graphql::BACKUP_IDS, "xfb_backup", &json!({})).await?,
+        call(
+            client,
+            &config,
+            &graphql::BACKUP_IDS,
+            "xfb_backup",
+            &json!({}),
+        )
+        .await?,
     )
     .unwrap_or_default();
     let Some(vesta_id) = backup.vesta_id().filter(|_| !backup.id.is_empty()) else {
@@ -209,7 +217,8 @@ pub async fn enroll(
             .map_err(|e| step("recovery payload")(&e))?,
     );
 
-    let fetch = device::fetch_request(&backup, user_id, &code).map_err(|e| step("virtual device")(&e))?;
+    let fetch =
+        device::fetch_request(&backup, user_id, &code).map_err(|e| step("virtual device")(&e))?;
     let answer = call(
         client,
         &config,
@@ -218,7 +227,9 @@ pub async fn enroll(
         &fetch.variables,
     )
     .await?;
-    let virtual_device = fetch.finish(&answer).map_err(|e| step("virtual device")(&e))?;
+    let virtual_device = fetch
+        .finish(&answer)
+        .map_err(|e| step("virtual device")(&e))?;
     let epochs = virtual_device
         .derive_epochs()
         .map_err(|e| step("epochs")(&e))?;

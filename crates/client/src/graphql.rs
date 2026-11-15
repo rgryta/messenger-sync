@@ -130,7 +130,11 @@ pub fn data_field(body: &str, field: &str) -> Result<Option<Value>, GraphqlError
     let failed = answer
         .get("errors")
         .filter(|e| !e.is_null() && e.as_array().is_none_or(|a| !a.is_empty()))
-        .or_else(|| answer.get("error").filter(|e| !e.is_null() && **e != json!(0)));
+        .or_else(|| {
+            answer
+                .get("error")
+                .filter(|e| !e.is_null() && **e != json!(0))
+        });
     if let Some(errors) = failed {
         return Err(GraphqlError::Errors(
             errors.to_string().chars().take(300).collect(),
