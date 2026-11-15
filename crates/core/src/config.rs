@@ -1,6 +1,6 @@
 //! Typed configuration for the read-only process.
 //!
-//! `McpSettings` is the whole of it. `messenger-client` reads its own variables in its
+//! `McpSettings` is the whole of it. `messenger-ingest` reads its own variables in its
 //! binary, so nothing of the client's is in the crate the MCP binary links.
 //!
 //! The variable names are the ones `deploy/compose.yaml` sets: `MESSENGER_DSN`,

@@ -83,7 +83,7 @@ missing bind source, a wrong pool deploys "successfully". Before trusting a bind
   want `DATABASE_URL` at build time or a committed `.sqlx/` cache, and the Docker build
   has to stay hermetic. No caller value is ever interpolated into SQL.
 - **Migrations are forward-only and never edited once applied.** They are embedded with
-  `include_str!` (`crates/core/src/db.rs`); `messenger-client` applies them at boot and
+  `include_str!` (`crates/core/src/db.rs`); `messenger-ingest` applies them at boot and
   the MCP only checks they are present.
 - **Nothing sends.** The inbox loops issue read tasks only (`145`/`trq` and
   `228`/`mrq.<thread_key>`); any other task label is a write of some kind, and nothing
