@@ -119,3 +119,22 @@ fn an_answer_is_logged_by_its_shape_not_its_values() {
     );
     assert!(!logged.contains("1234567890") && !logged.contains("secret"));
 }
+
+#[test]
+fn a_backup_answer_with_nulls_reads_as_go_reads_it() {
+    // The live answer's shape (2026-11-15), with synthetic values: Go reads `null` as "".
+    let answer = serde_json::json!({
+        "backup_tenancy": "0123456789",
+        "encryption_management_delegator_id": null,
+        "has_otc_eligible_devices": true,
+        "id": "100000000000001",
+        "is_user_opted_out": false,
+        "virtual_devices": [
+            {"client_generated_id": "aaaaaaaaaaaaaaaaaaaaaaaa", "creation_time": 1, "device_type": "GOOGLE_ONE_AUTO_BACKUP", "id": "100000000000002", "migration_status": null},
+            {"client_generated_id": "bbbbbbbbbbbbbbbbbbbbbbbb", "creation_time": 2, "device_type": "HSM", "id": "100000000000003", "migration_status": "x"},
+        ],
+    });
+    let backup: messenger_client::securehistory::Backup = serde_json::from_value(answer).unwrap();
+    assert_eq!(backup.delegator_id, "");
+    assert_eq!(backup.vesta_id(), Some("bbbbbbbbbbbbbbbbbbbbbbbb"));
+}

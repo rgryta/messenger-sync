@@ -106,7 +106,7 @@ pub fn fetch_request(
 
 #[derive(Deserialize)]
 struct FetchResponse {
-    #[serde(default)]
+    #[serde(default, deserialize_with = "super::nullable::deserialize")]
     ok: bool,
     #[serde(default)]
     error: Option<FetchResponseError>,
@@ -116,7 +116,7 @@ struct FetchResponse {
 
 #[derive(Deserialize)]
 struct FetchResponseError {
-    #[serde(default)]
+    #[serde(default, deserialize_with = "super::nullable::deserialize")]
     code: String,
 }
 

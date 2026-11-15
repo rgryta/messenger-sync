@@ -77,9 +77,13 @@ pub mod int_string {
 /// The account's backup, from `useMWEncryptedBackupsFetchBackupIdsV2Query`.
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct Backup {
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub id: String,
-    #[serde(default, rename = "encryption_management_delegator_id")]
+    #[serde(
+        default,
+        rename = "encryption_management_delegator_id",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub delegator_id: String,
     #[serde(
         default,
@@ -91,9 +95,17 @@ pub struct Backup {
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct BackupDevice {
-    #[serde(default, rename = "device_type")]
+    #[serde(
+        default,
+        rename = "device_type",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub kind: String,
-    #[serde(default, rename = "client_generated_id")]
+    #[serde(
+        default,
+        rename = "client_generated_id",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub client_id: String,
 }
 
@@ -148,21 +160,41 @@ pub struct EpochData {
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct SyncEpoch {
-    #[serde(default, rename = "epoch_id")]
+    #[serde(
+        default,
+        rename = "epoch_id",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub id: String,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub backup_id: String,
-    #[serde(default, rename = "epoch_anon_id")]
+    #[serde(
+        default,
+        rename = "epoch_anon_id",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub anon_id: String,
     #[serde(default, with = "b64", rename = "epoch_auth_public_key")]
     pub auth_public_key: Vec<u8>,
     #[serde(default, with = "b64", rename = "encrypted_epoch_key")]
     pub encrypted_key: Vec<u8>,
-    #[serde(default, rename = "is_active_epoch")]
+    #[serde(
+        default,
+        rename = "is_active_epoch",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub active: bool,
-    #[serde(default, rename = "next_epoch_id")]
+    #[serde(
+        default,
+        rename = "next_epoch_id",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub next_id: String,
-    #[serde(default, rename = "prev_epoch_id")]
+    #[serde(
+        default,
+        rename = "prev_epoch_id",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub previous_id: String,
     #[serde(default, rename = "epoch_data_v2")]
     pub encrypted_data: Option<EpochData>,
@@ -172,7 +204,11 @@ pub struct SyncEpoch {
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct EpochRefId {
-    #[serde(default, rename = "epoch_id")]
+    #[serde(
+        default,
+        rename = "epoch_id",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub id: String,
 }
 
@@ -188,11 +224,11 @@ pub struct BackwardEdge {
 pub struct VirtualDeviceInfo {
     #[serde(default, rename = "encrypted_secret_values")]
     pub secrets: Option<EncryptedSecrets>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub epoch_id: String,
     #[serde(default, with = "b64")]
     pub epoch_storage_public_key: Vec<u8>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub last_epoch_id: String,
     #[serde(
         default,
@@ -248,9 +284,17 @@ pub struct Device {
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct EpochRef {
-    #[serde(default, rename = "epoch_id")]
+    #[serde(
+        default,
+        rename = "epoch_id",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub id: String,
-    #[serde(default, rename = "epoch_anon_id")]
+    #[serde(
+        default,
+        rename = "epoch_anon_id",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub anon_id: String,
 }
 
@@ -260,11 +304,11 @@ pub struct EpochForwardEdge {
     pub auth_public_key: Vec<u8>,
     #[serde(default, with = "b64")]
     pub encrypted_entropy: Vec<u8>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub entropy_fingerprint: String,
     #[serde(default, with = "b64", rename = "epoch_storage_public_key")]
     pub storage_public_key: Vec<u8>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub psk_fingerprint: String,
 }
 
@@ -278,9 +322,17 @@ pub struct EpochEdge {
     pub backward: Vec<u8>,
     #[serde(default, rename = "forward_edge")]
     pub forward: Option<EpochForwardEdge>,
-    #[serde(default, rename = "from_epoch_fingerprint")]
+    #[serde(
+        default,
+        rename = "from_epoch_fingerprint",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub from_fingerprint: String,
-    #[serde(default, rename = "to_epoch_fingerprint")]
+    #[serde(
+        default,
+        rename = "to_epoch_fingerprint",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub to_fingerprint: String,
 }
 
@@ -317,7 +369,7 @@ pub struct MessageRangeInfo {
 /// One page of a thread's archive, from `EBMessageRangeQueryForThreadsQuery`.
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct MessageRange {
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub backup_id: String,
     #[serde(
         default,
@@ -337,17 +389,33 @@ pub struct MessageRange {
     pub minos_keys: Vec<MinosKeyEntry>,
     #[serde(default, rename = "exception_string")]
     pub exception: Option<String>,
-    #[serde(default, rename = "thread_not_found")]
+    #[serde(
+        default,
+        rename = "thread_not_found",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub thread_missing: bool,
-    #[serde(default, rename = "should_delete_mailbox")]
+    #[serde(
+        default,
+        rename = "should_delete_mailbox",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub delete_mailbox: bool,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct ArchiveAttachment {
-    #[serde(default, rename = "attachment_cdn_url")]
+    #[serde(
+        default,
+        rename = "attachment_cdn_url",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub url: String,
-    #[serde(default, rename = "attachment_object_id")]
+    #[serde(
+        default,
+        rename = "attachment_object_id",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub object_id: String,
 }
 
@@ -355,17 +423,21 @@ pub struct ArchiveAttachment {
 pub struct ArchiveProtobuf {
     #[serde(default, with = "b64", rename = "encrypted_protobuf_stanza")]
     pub encrypted: Vec<u8>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub encryption_version: String,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub epoch_id: String,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub epoch_anon_id: String,
     #[serde(default, with = "int_string", rename = "protobuf_timestamp_ms")]
     pub timestamp_ms: i64,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub supplemental_key: String,
-    #[serde(default, rename = "supplemental_otid")]
+    #[serde(
+        default,
+        rename = "supplemental_otid",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub supplemental_id: String,
     #[serde(default, with = "b64", rename = "sk_ciphertext")]
     pub key_ciphertext: Vec<u8>,
@@ -373,11 +445,11 @@ pub struct ArchiveProtobuf {
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct MinosProtobuf {
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub actor_token: String,
     #[serde(default, with = "b64", rename = "encrypted_protobuf")]
     pub encrypted: Vec<u8>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub mek_fbid: String,
     #[serde(default, with = "b64")]
     pub mek_id: Vec<u8>,
@@ -387,21 +459,33 @@ pub struct MinosProtobuf {
     pub transport_signing_pk: Vec<u8>,
     #[serde(default, with = "b64", rename = "transport_sender_message_signature")]
     pub signature: Vec<u8>,
-    #[serde(default, rename = "message_encryption_version")]
+    #[serde(
+        default,
+        rename = "message_encryption_version",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub encryption_version: i64,
-    #[serde(default, rename = "message_metadata_version")]
+    #[serde(
+        default,
+        rename = "message_metadata_version",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub metadata_version: i64,
     #[serde(default)]
     pub server_origin_content_type: serde_json::Value,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub supplemental_key: String,
-    #[serde(default, rename = "supplemental_otid")]
+    #[serde(
+        default,
+        rename = "supplemental_otid",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub supplemental_id: String,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct MinosKeyEntry {
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub id: String,
     #[serde(default)]
     pub keys: Option<MinosKeyData>,
@@ -427,13 +511,21 @@ pub struct MinosMekInfo {
     pub encrypted: Vec<u8>,
     #[serde(default, with = "int_string", rename = "mek_creation_timestamp")]
     pub creation_timestamp: i64,
-    #[serde(default, rename = "mek_encryption_version")]
+    #[serde(
+        default,
+        rename = "mek_encryption_version",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub encryption_version: i64,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct MinosRecipientInfo {
-    #[serde(default, rename = "epoch_fbid")]
+    #[serde(
+        default,
+        rename = "epoch_fbid",
+        deserialize_with = "nullable::deserialize"
+    )]
     pub epoch_id: String,
     #[serde(default, with = "b64", rename = "epoch_anon_id")]
     pub epoch_anon: Vec<u8>,
@@ -473,9 +565,9 @@ pub struct MinosCreatorInfo {
 pub struct EchoDocument {
     #[serde(default, with = "b64", rename = "echo_document_string")]
     pub document: Vec<u8>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub encryption_version: String,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub epoch_anon_id: String,
     #[serde(default)]
     pub epoch_id: Option<String>,
@@ -522,7 +614,7 @@ pub struct ArchiveProtobufs {
 /// One archived message as the page lists it: `otid` is its id.
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct ArchiveMessage {
-    #[serde(default, rename = "otid")]
+    #[serde(default, rename = "otid", deserialize_with = "nullable::deserialize")]
     pub id: String,
     #[serde(
         default,
