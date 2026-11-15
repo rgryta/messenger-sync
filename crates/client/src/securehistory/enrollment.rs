@@ -89,9 +89,9 @@ pub struct Enrollment {
 
 #[derive(Deserialize)]
 struct AddDeviceResponse {
-    #[serde(default)]
+    #[serde(default, deserialize_with = "super::nullable::deserialize")]
     device_id: String,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "super::nullable::deserialize")]
     code: String,
 }
 
