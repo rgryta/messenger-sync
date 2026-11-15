@@ -246,6 +246,13 @@ impl Fake {
     }
 }
 
+impl Fake {
+    /// Something the sync stream of `database` pushes unprompted, as between passes.
+    pub fn push(&mut self, database: u32, steps: Value) {
+        self.queue.push_back(Event::Sync { database, steps });
+    }
+}
+
 impl Gateway for Fake {
     async fn open_sync(&mut self, database: u32, cursor: &str) -> Result<(), GatewayError> {
         self.opened.push((database, cursor.to_owned()));

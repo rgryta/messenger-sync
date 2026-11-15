@@ -5,13 +5,13 @@ mod support;
 
 use chrono::{DateTime, Utc};
 use messenger_client::collect::Collector;
-use messenger_client::daemon::{DailyBudget, PassError, Settings, Tally, walk};
+use messenger_client::daemon::{DailyBudget, PassError, Settings, Tally, listen, walk};
 use messenger_client::ls::SyncCursor;
 use messenger_core::models::{Account, Thread};
 use messenger_core::store::writes;
 use serde_json::json;
 use sqlx::postgres::PgPool;
-use support::{Fake, MINUTE, T0, history, message, thread};
+use support::{Fake, MINUTE, T0, edit, history, message, thread, unsent};
 
 const ONE: &str = "1000000000000001";
 const TWO: &str = "1000000000000002";
@@ -307,4 +307,64 @@ async fn only_consecutive_empty_pages_finish_a_thread() {
     assert_eq!(tally.history_tasks, 4);
     assert_eq!(tally.finished, 1);
     assert_eq!(state(&pool, ONE).await.0, Some(at(T0)));
+}
+
+#[tokio::test]
+async fn between_passes_the_stream_is_stored_as_it_pushes() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    seed(&pool, ONE, Some(T0), Some(T0), Some(T0), true).await;
+    {
+        let mut conn = pool.acquire().await.unwrap();
+        let mut batch = Collector::new("me");
+        batch.feed(
+            Some(1),
+            &json!([
+                message(ONE, "mid.$old", T0, "200", "helo"),
+                message(ONE, "mid.$gone", T0 + MINUTE, "200", "oops"),
+            ]),
+        );
+        messenger_client::collect::persist(&mut conn, &batch)
+            .await
+            .unwrap();
+    }
+    let mut fake = Fake::new(|_| Vec::new());
+    // What the live stream pushes while no pass is running: a new message, then an edit and
+    // an unsend of older ones.
+    fake.push(
+        1,
+        json!([message(ONE, "mid.$new", T0 + 2 * MINUTE, "200", "fresh")]),
+    );
+    fake.push(
+        1,
+        json!([
+            edit("mid.$old", "hello"),
+            unsent(ONE, "mid.$gone", T0 + MINUTE, T0 + 3 * MINUTE)
+        ]),
+    );
+    let heard = listen(&pool, &mut fake, "me", tokio::time::Instant::now()).await;
+    assert_eq!(heard.syncs, 2);
+    assert_eq!(heard.new_messages, 1);
+    assert_eq!(heard.ended_early, None);
+
+    assert_eq!(messages(&pool, ONE).await, 3);
+    let edited: String =
+        sqlx::query_scalar("SELECT text FROM message WHERE message_id = 'mid.$old'")
+            .fetch_one(&pool)
+            .await
+            .unwrap();
+    assert_eq!(edited, "hello");
+    let revisions: i64 = sqlx::query_scalar("SELECT count(*) FROM message_revision")
+        .fetch_one(&pool)
+        .await
+        .unwrap();
+    assert_eq!(revisions, 2);
+    let gone: bool = sqlx::query_scalar(
+        "SELECT deleted_at IS NOT NULL FROM message WHERE message_id = 'mid.$gone'",
+    )
+    .fetch_one(&pool)
+    .await
+    .unwrap();
+    assert!(gone);
 }
