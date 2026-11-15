@@ -51,8 +51,8 @@ pub struct Edit {
     pub text: String,
 }
 
-/// `deleteThenInsertMessage` with `IsUnsent`: the sender unsent it for everyone, and
-/// LightSpeed swapped it for a placeholder.
+/// A message with `IsUnsent`: the sender unsent it for everyone, and LightSpeed swapped it
+/// for a placeholder.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Unsend {
     pub thread_key: String,
@@ -154,10 +154,13 @@ pub fn edit(op: &[Value]) -> Option<Edit> {
     })
 }
 
-/// `deleteThenInsertMessage` whose argument 17, `IsUnsent`, is true; argument 18 is when
-/// (`LSDeleteThenInsertMessage`). Any other `deleteThenInsertMessage` is a plain message.
+/// `upsertMessage` or `deleteThenInsertMessage` whose argument 17, `IsUnsent`, is true;
+/// argument 18 is when (`LSUpsertMessage`, `LSDeleteThenInsertMessage`). Live, an unsend
+/// arrives as the latter; a snapshot or page taken after it shows the former.
 pub fn unsend(op: &[Value], thread_key: Option<&str>) -> Option<Unsend> {
-    if name(op)? != "deleteThenInsertMessage" || op.get(19)?.as_bool() != Some(true) {
+    if !matches!(name(op)?, "upsertMessage" | "deleteThenInsertMessage")
+        || op.get(19)?.as_bool() != Some(true)
+    {
         return None;
     }
     let thread = boxed(op, 5).filter(|t| *t != "0").or(thread_key)?;
