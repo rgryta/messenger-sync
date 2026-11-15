@@ -290,7 +290,8 @@ pub async fn listen<G: Gateway>(
 }
 
 /// Picks up messages that arrived since the last pass: threads whose listing is ahead of the
-/// newest message held, paged from now back to that watermark.
+/// newest message held, paged from now back to that watermark. A walk the page cap or the
+/// budget cuts short is resumed next pass from where it stopped, down to the same watermark.
 async fn walk_forward<G: Gateway>(
     pool: &PgPool,
     gateway: &mut G,
@@ -310,10 +311,17 @@ async fn walk_forward<G: Gateway>(
             tracing::warn!("a thread key or sync group a task cannot carry, skipped");
             continue;
         };
-        let mut reference = Utc::now();
-        for _ in 0..settings.forward_pages_per_thread {
+        let resuming = row.forward_resume_at.is_some();
+        let floor = row
+            .forward_floor_at
+            .or(row.newest_seen_at)
+            .unwrap_or(DateTime::UNIX_EPOCH);
+        let mut reference = row.forward_resume_at.unwrap_or_else(Utc::now);
+        let (mut pages, mut reached, mut out_of_budget) = (0, false, false);
+        while pages < settings.forward_pages_per_thread {
             if tally.forward_tasks >= allowance {
-                return Ok(());
+                out_of_budget = true;
+                break;
             }
             collector.begin_page();
             collector.expect = Some((row.thread_key.clone(), group));
@@ -324,6 +332,7 @@ async fn walk_forward<G: Gateway>(
             drain(gateway, collector, settings.task_settle).await?;
             collector.expect = None;
             tally.forward_tasks += 1;
+            pages += 1;
 
             let decoded = collector.decoded_messages;
             tally.new_messages += persist(pool, collector).await?;
@@ -336,21 +345,29 @@ async fn walk_forward<G: Gateway>(
                 writes::set_forward_progress(&mut conn, account, &row.thread_key, newest, None)
                     .await?;
             }
-            if decoded == 0 {
-                // An empty forward page costs a retry next pass, not a truncated archive.
-                break;
-            }
             match oldest {
-                Some(oldest) if row.newest_seen_at.is_none_or(|w| oldest > w) => {
-                    reference = oldest;
+                Some(oldest) if decoded > 0 && oldest > floor => reference = oldest,
+                // Reached what the archive already holds, or nothing older is left.
+                _ => {
+                    reached = true;
+                    break;
                 }
-                // Reached what the archive already holds.
-                _ => break,
             }
         }
-        // Not reached through the `return` above: a walk the allowance cut short has not
-        // answered the activity report it was selected on.
+        if pages == 0 {
+            return Ok(());
+        }
         let mut conn = pool.acquire().await?;
+        let resume = (!reached).then_some(reference);
+        writes::set_forward_resume(&mut conn, account, &row.thread_key, resume, floor).await?;
+        // A walk the budget cut short has not answered the activity report it was selected
+        // on, and a resumed walk read only the gap, not what is new above it.
+        if out_of_budget {
+            return Ok(());
+        }
+        if resuming {
+            continue;
+        }
         writes::set_forward_progress(
             &mut conn,
             account,

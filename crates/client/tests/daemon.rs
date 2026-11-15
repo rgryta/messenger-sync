@@ -98,6 +98,15 @@ async fn state(pool: &PgPool, key: &str) -> State {
     .unwrap()
 }
 
+/// (forward_resume_at, forward_floor_at)
+async fn resume(pool: &PgPool, key: &str) -> (Option<DateTime<Utc>>, Option<DateTime<Utc>>) {
+    sqlx::query_as("SELECT forward_resume_at, forward_floor_at FROM thread WHERE thread_key = $1")
+        .bind(key)
+        .fetch_one(pool)
+        .await
+        .unwrap()
+}
+
 async fn messages(pool: &PgPool, key: &str) -> i64 {
     sqlx::query_scalar("SELECT count(*) FROM message WHERE thread_key = $1")
         .bind(key)
@@ -239,6 +248,50 @@ async fn a_forward_walk_cut_short_by_the_budget_answers_nothing() {
         "a walk the budget cut short answered nothing"
     );
     assert_eq!(budget.remaining(), 0);
+    // Minutes 199..140 read: the next pass carries on below them, down to the beginning.
+    assert_eq!(
+        resume(&pool, ONE).await,
+        (Some(at(T0 + 140 * MINUTE)), Some(DateTime::UNIX_EPOCH))
+    );
+}
+
+#[tokio::test]
+async fn a_forward_walk_cut_by_the_page_cap_resumes_without_a_hole() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    // Held through minute 0; 200 new minutes is more than one pass's 4 pages of 20.
+    let activity = T0 + 200 * MINUTE;
+    seed(&pool, ONE, Some(activity), None, Some(T0), true).await;
+    let mut fake = Fake::new(history(ONE, minutes(0..200)));
+    let mut budget = DailyBudget::new(400, 120);
+
+    let tally = run(&pool, &mut fake, &mut budget).await.unwrap();
+    assert_eq!(tally.forward_tasks, 4);
+    assert_eq!(
+        resume(&pool, ONE).await,
+        (Some(at(T0 + 120 * MINUTE)), Some(at(T0)))
+    );
+    let (_, newest, _, answered) = state(&pool, ONE).await;
+    assert_eq!(newest, Some(at(T0 + 199 * MINUTE)));
+    assert_eq!(answered, Some(at(activity)));
+
+    // The next pass starts where this one stopped, not from now.
+    run(&pool, &mut fake, &mut budget).await.unwrap();
+    assert_eq!(fake.tasks[4].reference_ms, T0 + 120 * MINUTE);
+    assert_eq!(resume(&pool, ONE).await.0, Some(at(T0 + 40 * MINUTE)));
+
+    let tally = run(&pool, &mut fake, &mut budget).await.unwrap();
+    assert_eq!(
+        tally.forward_tasks, 2,
+        "minutes 39..20, then 19..0 at the watermark"
+    );
+    assert_eq!(resume(&pool, ONE).await, (None, None));
+    assert_eq!(messages(&pool, ONE).await, 200);
+
+    // Done: nothing is walked until the listing moves again.
+    let tally = run(&pool, &mut fake, &mut budget).await.unwrap();
+    assert_eq!(tally.forward_tasks, 0);
 }
 
 #[tokio::test]

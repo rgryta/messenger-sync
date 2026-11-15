@@ -199,6 +199,14 @@ db_test!(the_writers_leave_the_archive_as_the_python_does, |f| {
             }
         }
     }
+    // The forward walk's resume point (migration 0018) postdates it too; no writer here sets it.
+    for row in tables["thread"].as_array_mut().into_iter().flatten() {
+        if let Some(row) = row.as_object_mut() {
+            for column in ["forward_resume_at", "forward_floor_at"] {
+                row.remove(column);
+            }
+        }
+    }
     let expected = fixture["tables"].as_object().expect("tables");
     assert_eq!(
         tables

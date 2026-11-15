@@ -175,6 +175,9 @@ pub struct ForwardTarget {
     pub newest_seen_at: Option<DateTime<Utc>>,
     pub last_activity_at: Option<DateTime<Utc>>,
     pub title: Option<String>,
+    /// Where a walk cut short stopped, and the watermark it still has to reach.
+    pub forward_resume_at: Option<DateTime<Utc>>,
+    pub forward_floor_at: Option<DateTime<Utc>>,
 }
 
 /// A thread the backward crawl has not finished.

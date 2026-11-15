@@ -687,7 +687,33 @@ pub async fn set_forward_progress(
     Ok(())
 }
 
-/// Threads that have moved since we last read them: the listing is ahead of what we
+/// Where a forward walk cut short stopped and the watermark it still has to reach; `None`
+/// once a walk reached it.
+pub async fn set_forward_resume(
+    conn: &mut PgConnection,
+    account_id: &str,
+    thread_key: &str,
+    resume_at: Option<DateTime<Utc>>,
+    floor_at: DateTime<Utc>,
+) -> sqlx::Result<()> {
+    sqlx::query(
+        "
+        UPDATE thread
+           SET forward_resume_at = $3,
+               forward_floor_at = CASE WHEN $3::timestamptz IS NULL THEN NULL ELSE $4 END
+         WHERE account_id = $1 AND thread_key = $2
+        ",
+    )
+    .bind(account_id)
+    .bind(thread_key)
+    .bind(resume_at)
+    .bind(floor_at)
+    .execute(conn)
+    .await?;
+    Ok(())
+}
+
+/// Threads that have moved since we last read them, or whose last walk was cut short: the listing is ahead of what we
 /// hold, and of the activity report the last walk answered.
 ///
 /// The second test is what stops a thread from qualifying forever: in the encrypted
@@ -701,14 +727,16 @@ pub async fn threads_with_new_activity(
 ) -> sqlx::Result<Vec<ForwardTarget>> {
     sqlx::query_as(
         "
-        SELECT thread_key, sync_group, newest_seen_at, last_activity_at, title
+        SELECT thread_key, sync_group, newest_seen_at, last_activity_at, title,
+               forward_resume_at, forward_floor_at
           FROM thread
          WHERE account_id = $1
-           AND last_activity_at IS NOT NULL
-           AND (newest_seen_at IS NULL OR last_activity_at > newest_seen_at)
-           AND (forward_attempted_activity_at IS NULL
-                OR last_activity_at > forward_attempted_activity_at)
-         ORDER BY last_activity_at DESC
+           AND (forward_resume_at IS NOT NULL
+                OR (last_activity_at IS NOT NULL
+                    AND (newest_seen_at IS NULL OR last_activity_at > newest_seen_at)
+                    AND (forward_attempted_activity_at IS NULL
+                         OR last_activity_at > forward_attempted_activity_at)))
+         ORDER BY last_activity_at DESC NULLS LAST
          LIMIT $2
         ",
     )
