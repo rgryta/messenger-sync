@@ -51,6 +51,16 @@ pub struct Edit {
     pub text: String,
 }
 
+/// `updateOrInsertEditMessageHistory`: one earlier text of an edited message, sent with a
+/// page of its thread (mautrix-meta's `LSUpdateOrInsertEditMessageHistory`).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct EditHistory {
+    pub thread_key: String,
+    pub message_id: String,
+    pub edited_ms: i64,
+    pub text: String,
+}
+
 /// A message with `IsUnsent`: the sender unsent it for everyone, and LightSpeed swapped it
 /// for a placeholder.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -151,6 +161,20 @@ pub fn edit(op: &[Value]) -> Option<Edit> {
     Some(Edit {
         message_id: mid(op, 2)?.to_owned(),
         text: string(op, 4)?.to_owned(),
+    })
+}
+
+/// `updateOrInsertEditMessageHistory`: argument 0 the message id, 1 the thread, 2 the
+/// server's edit time, 3 the text.
+pub fn edit_history(op: &[Value]) -> Option<EditHistory> {
+    if name(op)? != "updateOrInsertEditMessageHistory" {
+        return None;
+    }
+    Some(EditHistory {
+        message_id: mid(op, 2)?.to_owned(),
+        thread_key: boxed(op, 3).filter(|t| digits(t))?.to_owned(),
+        edited_ms: stamp(op, 4)?,
+        text: string(op, 5)?.to_owned(),
     })
 }
 

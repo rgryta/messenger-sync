@@ -114,6 +114,21 @@ pub fn edit(mid: &str, text: &str) -> Value {
     op("editMessage", 6, vec![(2, json!(mid)), (4, json!(text))])
 }
 
+/// `updateOrInsertEditMessageHistory`: one earlier text of an edited message.
+pub fn edit_history(thread: &str, mid: &str, edited_ms: i64, text: &str) -> Value {
+    op(
+        "updateOrInsertEditMessageHistory",
+        7,
+        vec![
+            (2, json!(mid)),
+            (3, boxed(thread)),
+            (4, boxed(&edited_ms.to_string())),
+            (5, json!(text)),
+            (6, boxed("2")),
+        ],
+    )
+}
+
 /// `deleteThenInsertMessage` with `IsUnsent`: the placeholder LightSpeed puts where an
 /// unsent message was.
 pub fn unsent(thread: &str, mid: &str, ts_ms: i64, unsent_ms: i64) -> Value {

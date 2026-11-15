@@ -8,6 +8,11 @@
 //! ids from 1. The client pings every 10 s and gives up after 30 s of silence, as mautrix's
 //! `dgw/socket.go` does.
 //!
+//! Each sync stream follows its cursor: when a push names a new one, the next query goes out
+//! on the same stream (mautrix's `recursivelySyncSocketData`). The server pushes live changes
+//! only to a stream that keeps up; one left on a stale cursor stays silent (seen live
+//! 2026-11-15, where an open stream heard nothing for minutes until it followed).
+//!
 //! [`Gateway`] is the part the daemon uses, so its walks run against a fake in the tests.
 
 use std::collections::{HashMap, VecDeque};
@@ -75,6 +80,21 @@ enum Stream {
     Task,
 }
 
+/// Where a sync stream stands: the cursor last asked from, and the next data frame's ack id.
+struct Followed {
+    cursor: String,
+    ack: u16,
+}
+
+/// Whether a push's cursor is one to follow: new, real, and not where the stream already is
+/// (mautrix's stop conditions).
+pub fn follows(asked: &str, cursor: &ls::SyncCursor) -> bool {
+    !cursor.next.is_empty()
+        && cursor.next != "dummy_cursor"
+        && cursor.next != asked
+        && cursor.current.as_deref() != Some(cursor.next.as_str())
+}
+
 pub struct Socket {
     ws: WebSocketStream<MaybeTlsStream<TcpStream>>,
     app_id: String,
@@ -83,6 +103,7 @@ pub struct Socket {
     next_request: u16,
     epochs: i64,
     streams: HashMap<u16, Stream>,
+    followed: HashMap<u16, Followed>,
     pending: VecDeque<Event>,
     ping: Interval,
     last_heard: Instant,
@@ -125,6 +146,7 @@ impl Socket {
             next_request: 1,
             epochs: 0,
             streams: HashMap::new(),
+            followed: HashMap::new(),
             pending: VecDeque::new(),
             ping: tokio::time::interval_at(Instant::now() + PING_INTERVAL, PING_INTERVAL),
             last_heard: Instant::now(),
@@ -156,8 +178,15 @@ impl Socket {
         id
     }
 
-    /// A new stream carrying one request that must be acknowledged.
-    async fn open(&mut self, kind: Stream, payload: Vec<u8>) -> Result<(), GatewayError> {
+    /// The next query on an open sync stream, from `cursor`.
+    fn sync_query(&mut self, database: u32, cursor: &str) -> Vec<u8> {
+        let (epoch, request_id) = (self.epoch(), self.request_id());
+        let query = ls::database_query(database, cursor, &self.version, epoch);
+        ls::sync_request(&self.app_id, &query, request_id)
+    }
+
+    /// A new stream carrying one request that must be acknowledged; returns its id.
+    async fn open(&mut self, kind: Stream, payload: Vec<u8>) -> Result<u16, GatewayError> {
         let stream = self.next_stream;
         self.next_stream = self.next_stream.wrapping_add(1);
         self.streams.insert(stream, kind);
@@ -174,7 +203,8 @@ impl Socket {
                 payload,
             },
         ])
-        .await
+        .await?;
+        Ok(stream)
     }
 
     /// Every frame of one websocket message: replies go out together, events queue up.
@@ -208,6 +238,9 @@ impl Socket {
                                 .and_then(|r| r.steps().ok());
                             match steps {
                                 Some(steps) => {
+                                    if let Some(next) = self.follow(stream, database, &steps) {
+                                        reply.push(next);
+                                    }
                                     self.pending.push_back(Event::Sync { database, steps })
                                 }
                                 None => tracing::warn!(
@@ -244,12 +277,43 @@ impl Socket {
     }
 }
 
+impl Socket {
+    /// The query that follows a sync push to its new cursor, if it names one.
+    fn follow(&mut self, stream: u16, database: u32, steps: &Value) -> Option<Frame> {
+        let cursor = ls::sync_cursor(steps)?;
+        let asked = self.followed.get(&stream)?;
+        if !follows(&asked.cursor, &cursor) {
+            return None;
+        }
+        let payload = self.sync_query(database, &cursor.next);
+        let followed = self.followed.get_mut(&stream)?;
+        followed.cursor = cursor.next;
+        let ack_id = followed.ack;
+        // 15 bits; 0 went out with the stream's first query.
+        followed.ack = (followed.ack + 1) & 0x7fff;
+        followed.ack = followed.ack.max(1);
+        Some(Frame::Data {
+            stream,
+            ack_id,
+            requires_ack: true,
+            content_type: None,
+            payload,
+        })
+    }
+}
+
 impl Gateway for Socket {
     async fn open_sync(&mut self, database: u32, cursor: &str) -> Result<(), GatewayError> {
-        let (epoch, request_id) = (self.epoch(), self.request_id());
-        let query = ls::database_query(database, cursor, &self.version, epoch);
-        let request = ls::sync_request(&self.app_id, &query, request_id);
-        self.open(Stream::Sync(database), request).await
+        let request = self.sync_query(database, cursor);
+        let stream = self.open(Stream::Sync(database), request).await?;
+        self.followed.insert(
+            stream,
+            Followed {
+                cursor: cursor.to_owned(),
+                ack: 1,
+            },
+        );
+        Ok(())
     }
 
     async fn send_task(
@@ -266,7 +330,7 @@ impl Gateway for Socket {
             epoch,
             &[(label, queue, payload)],
         );
-        self.open(Stream::Task, request).await
+        self.open(Stream::Task, request).await.map(drop)
     }
 
     async fn next_event(&mut self, deadline: Instant) -> Result<Option<Event>, GatewayError> {
