@@ -44,6 +44,19 @@ pub mod b64 {
     }
 }
 
+/// A list or map Go may write as `null`: read as empty, as Go's own decoding leaves it.
+pub mod nullable {
+    use serde::{Deserialize, Deserializer};
+
+    pub fn deserialize<'de, D, T>(d: D) -> Result<T, D::Error>
+    where
+        D: Deserializer<'de>,
+        T: Deserialize<'de> + Default,
+    {
+        Ok(Option::<T>::deserialize(d)?.unwrap_or_default())
+    }
+}
+
 /// An `int64` tagged `,string`: a JSON string holding the number.
 pub mod int_string {
     use serde::{Deserialize, Deserializer, Serializer};
@@ -67,7 +80,7 @@ pub struct Backup {
     pub id: String,
     #[serde(default, rename = "encryption_management_delegator_id")]
     pub delegator_id: String,
-    #[serde(default, rename = "virtual_devices")]
+    #[serde(default, rename = "virtual_devices", deserialize_with = "nullable::deserialize")]
     pub devices: Vec<BackupDevice>,
 }
 
@@ -172,11 +185,11 @@ pub struct VirtualDeviceInfo {
     pub epoch_storage_public_key: Vec<u8>,
     #[serde(default)]
     pub last_epoch_id: String,
-    #[serde(default, rename = "sync_epochs")]
+    #[serde(default, rename = "sync_epochs", deserialize_with = "nullable::deserialize")]
     pub epochs: Vec<SyncEpoch>,
     #[serde(default, rename = "minos_epoch")]
     pub minos: Option<MinosEpoch>,
-    #[serde(default, rename = "epoch_edges")]
+    #[serde(default, rename = "epoch_edges", deserialize_with = "nullable::deserialize")]
     pub edges: Vec<BackwardEdge>,
 }
 
@@ -212,6 +225,7 @@ pub struct Device {
     pub mailbox_root_key: Vec<u8>,
     #[serde(with = "b64")]
     pub ocmf_client_state: Vec<u8>,
+    #[serde(default, deserialize_with = "nullable::deserialize")]
     pub epochs: BTreeMap<String, Epoch>,
 }
 
@@ -255,7 +269,7 @@ pub struct EpochEdge {
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct EpochDerivationSet {
-    #[serde(default, rename = "epoch_edges")]
+    #[serde(default, rename = "epoch_edges", deserialize_with = "nullable::deserialize")]
     pub edges: Vec<EpochEdge>,
 }
 
@@ -276,13 +290,13 @@ pub struct MessageRangeInfo {
 pub struct MessageRange {
     #[serde(default)]
     pub backup_id: String,
-    #[serde(default, rename = "encrypted_messages")]
+    #[serde(default, rename = "encrypted_messages", deserialize_with = "nullable::deserialize")]
     pub messages: Vec<ArchiveMessage>,
     #[serde(default, rename = "message_range_info")]
     pub range: Option<MessageRangeInfo>,
     #[serde(default, rename = "epoch_derivation_set")]
     pub epochs: Option<EpochDerivationSet>,
-    #[serde(default, rename = "minos_decryption_keys")]
+    #[serde(default, rename = "minos_decryption_keys", deserialize_with = "nullable::deserialize")]
     pub minos_keys: Vec<MinosKeyEntry>,
     #[serde(default, rename = "exception_string")]
     pub exception: Option<String>,
@@ -444,15 +458,15 @@ pub struct UnencryptedProtobuf {
 pub struct ArchiveProtobufs {
     #[serde(default, rename = "top_level_protobuf")]
     pub message: Option<ArchiveProtobuf>,
-    #[serde(default, rename = "supplemental_protobufs")]
+    #[serde(default, rename = "supplemental_protobufs", deserialize_with = "nullable::deserialize")]
     pub supplementals: Vec<ArchiveProtobuf>,
     #[serde(default, rename = "top_level_protobuf_unencrypted")]
     pub unencrypted: Option<UnencryptedProtobuf>,
     #[serde(default, rename = "top_level_protobuf_v2")]
     pub minos_message: Option<MinosProtobuf>,
-    #[serde(default, rename = "supplemental_protobufs_v2")]
+    #[serde(default, rename = "supplemental_protobufs_v2", deserialize_with = "nullable::deserialize")]
     pub minos_supplementals: Vec<MinosProtobuf>,
-    #[serde(default, rename = "message_tags")]
+    #[serde(default, rename = "message_tags", deserialize_with = "nullable::deserialize")]
     pub tags: Vec<String>,
 }
 
@@ -461,7 +475,7 @@ pub struct ArchiveProtobufs {
 pub struct ArchiveMessage {
     #[serde(default, rename = "otid")]
     pub id: String,
-    #[serde(default, rename = "attachment_data")]
+    #[serde(default, rename = "attachment_data", deserialize_with = "nullable::deserialize")]
     pub attachments: Vec<ArchiveAttachment>,
     #[serde(default, rename = "echo_document")]
     pub echo: Option<EchoDocument>,

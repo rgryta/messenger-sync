@@ -15,8 +15,9 @@ aes-gcm = "0.11.1"
 base64 = "0.23.1"
 chacha20 = { version = "0.10.2", default-features = false, features = ["xchacha"] }
 chrono = { workspace = true }
-# Secure history's PIN login (a 2021 OPAQUE draft, by hand) and the HSM's signatures.
-curve25519-dalek = "5.0.0"
+# Secure history: the PIN login (a 2021 OPAQUE draft, by hand), the HSM's signatures, and
+# XEdDSA signing plus the OCMF scalar for history-device enrolment.
+curve25519-dalek = { version = "5.0.0", features = ["digest"] }
 ed25519-dalek = "3.0.0"
 futures-util = { version = "0.3.34", default-features = false, features = ["sink", "std"] }
 hkdf = "0.13.0"
@@ -44,8 +45,6 @@ whatsapp-client = { git = "https://github.com/rgryta/whatsapp-sync", rev = "11e7
 zeroize = "1.9.1"
 
 [dev-dependencies]
-# Signs the synthetic signed pre-key in tests/device.rs, as libsignal does.
-curve25519-dalek = { version = "5.0.0", features = ["digest"] }
 hex = "0.4.3"
 testcontainers = { version = "0.27.3", features = ["reusable-containers"] }
 testcontainers-modules = { version = "0.15.0", features = ["postgres"] }
