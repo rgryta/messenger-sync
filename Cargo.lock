@@ -382,6 +382,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "65c35e4b699c7e15ccbe7ee35c005e4fc0a278d22238a2857e6ce2dadeda1b06"
 dependencies = [
  "cfg-if",
+ "cipher",
  "cpufeatures 0.3.1",
  "rand_core 0.10.1",
 ]
@@ -1528,7 +1529,9 @@ checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 name = "messenger-client"
 version = "0.2.6"
 dependencies = [
+ "aes-gcm",
  "base64 0.23.1",
+ "chacha20",
  "chrono",
  "curve25519-dalek",
  "futures-util",

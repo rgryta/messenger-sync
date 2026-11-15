@@ -11,7 +11,9 @@ license = "AGPL-3.0-only"
 publish.workspace = true
 
 [dependencies]
+aes-gcm = "0.11.1"
 base64 = "0.23.1"
+chacha20 = { version = "0.10.2", default-features = false, features = ["xchacha"] }
 chrono = { workspace = true }
 futures-util = { version = "0.3.34", default-features = false, features = ["sink", "std"] }
 messenger-core.workspace = true
