@@ -99,6 +99,28 @@ async fn call(
         .unwrap_or(Value::Null))
 }
 
+/// One archive page, tried again after a transport failure: Meta's edge resets HTTP/2
+/// streams mid-body (seen on this query 2026-11-15). The query only reads, so a retry is safe.
+async fn range_page(
+    client: &mut Client,
+    config: &PageConfig,
+    variables: &Value,
+) -> Result<Value, RestoreError> {
+    for pause in [2, 10, 30] {
+        match client
+            .backup_call(config, &graphql::MESSAGE_RANGE, "viewer", variables)
+            .await
+        {
+            Err(PassError::Other(reason)) => {
+                tracing::warn!("archive page failed, trying again: {reason}");
+                tokio::time::sleep(std::time::Duration::from_secs(pause)).await;
+            }
+            other => return Ok(other?.unwrap_or(Value::Null)),
+        }
+    }
+    call(client, config, &graphql::MESSAGE_RANGE, "viewer", variables).await
+}
+
 /// What an answer looks like without what it says: field names and types, string lengths,
 /// and the values of a few fields that are kinds, not identities. Logged so a failed restore
 /// shows where Meta's answer differs from what mautrix expects, with no id or key in the log.
@@ -441,14 +463,7 @@ pub async fn fetch_all(
                 &device, &app_id, &peer, true, reference, PAGE_SIZE,
             )
             .map_err(|e| step("page request")(&e))?;
-            let viewer = call(
-                client,
-                &config,
-                &graphql::MESSAGE_RANGE,
-                "viewer",
-                &variables,
-            )
-            .await?;
+            let viewer = range_page(client, &config, &variables).await?;
             let bytes = serde_json::to_vec(&viewer).map_err(|e| step("page")(&e))?;
             let range =
                 archive::parse_message_range(&bytes, &device).map_err(|e| step("page")(&e))?;
