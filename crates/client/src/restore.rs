@@ -31,8 +31,8 @@ pub enum RestoreError {
     Pass(#[from] PassError),
     #[error(transparent)]
     Sql(#[from] sqlx::Error),
-    #[error("the account has no PIN-protected history backup")]
-    NoBackup,
+    #[error("the account has no PIN-protected history backup ({0})")]
+    NoBackup(String),
     #[error("{0}")]
     Recovery(vesta::RecoveryError),
     #[error("the recovery server's keys or signatures do not verify")]
@@ -99,6 +99,49 @@ async fn call(
         .unwrap_or(Value::Null))
 }
 
+/// What an answer looks like without what it says: field names and types, string lengths,
+/// and the values of a few fields that are kinds, not identities. Logged so a failed restore
+/// shows where Meta's answer differs from what mautrix expects, with no id or key in the log.
+pub fn shape(value: &Value) -> String {
+    const SHOWN: [&str; 3] = ["device_type", "__typename", "is_registered"];
+    fn walk(value: &Value, key: Option<&str>, out: &mut String) {
+        match value {
+            Value::Null => out.push_str("null"),
+            Value::Bool(b) => out.push_str(if *b { "true" } else { "false" }),
+            Value::Number(_) => out.push_str("number"),
+            Value::String(s) if key.is_some_and(|k| SHOWN.contains(&k)) => {
+                out.push_str(&format!("{s:?}"))
+            }
+            Value::String(s) => out.push_str(&format!("str({})", s.len())),
+            Value::Array(items) => {
+                out.push('[');
+                for (i, item) in items.iter().enumerate() {
+                    if i > 0 {
+                        out.push_str(", ");
+                    }
+                    walk(item, key, out);
+                }
+                out.push(']');
+            }
+            Value::Object(map) => {
+                out.push('{');
+                for (i, (k, v)) in map.iter().enumerate() {
+                    if i > 0 {
+                        out.push_str(", ");
+                    }
+                    out.push_str(k);
+                    out.push_str(": ");
+                    walk(v, Some(k), out);
+                }
+                out.push('}');
+            }
+        }
+    }
+    let mut out = String::new();
+    walk(value, None, &mut out);
+    out
+}
+
 /// Recovers the backup with the PIN and enrols a history device, returning it confirmed.
 /// `pin` is called once, with the attempts the server says remain, and returns the PIN or
 /// nothing to stop before any attempt is spent.
@@ -122,19 +165,29 @@ pub async fn enroll(
         .ok_or_else(|| RestoreError::Step("the page carries no web session id".into()))?;
     let user_id: i64 = config.user_id.parse().map_err(|e| step("user id")(&e))?;
 
-    let backup: Backup = serde_json::from_value(
-        call(
-            client,
-            &config,
-            &graphql::BACKUP_IDS,
-            "xfb_backup",
-            &json!({}),
-        )
-        .await?,
+    let answer = call(
+        client,
+        &config,
+        &graphql::BACKUP_IDS,
+        "xfb_backup",
+        &json!({}),
     )
-    .unwrap_or_default();
+    .await?;
+    tracing::info!("backup lookup answered: {}", shape(&answer));
+    if answer.is_null() {
+        return Err(RestoreError::NoBackup("the lookup answered null".into()));
+    }
+    let backup: Backup = serde_json::from_value(answer).map_err(|e| step("backup lookup")(&e))?;
+    let kinds: Vec<&str> = backup.devices.iter().map(|d| d.kind.as_str()).collect();
     let Some(vesta_id) = backup.vesta_id().filter(|_| !backup.id.is_empty()) else {
-        return Err(RestoreError::NoBackup);
+        return Err(RestoreError::NoBackup(format!(
+            "backup id {}, device kinds {kinds:?}",
+            if backup.id.is_empty() {
+                "missing"
+            } else {
+                "present"
+            }
+        )));
     };
     let mut variables = json!({
         "fbid": vesta_id,
@@ -142,19 +195,21 @@ pub async fn enroll(
         "vesta_client_api_version": 6,
     });
 
-    let init: vesta::VestaInit = serde_json::from_value(
-        call(
-            client,
-            &config,
-            &graphql::VESTA_INIT,
-            "fbid_based_auth_layer_vesta_login_init",
-            &json!({ "request": variables }),
-        )
-        .await?,
+    let answer = call(
+        client,
+        &config,
+        &graphql::VESTA_INIT,
+        "fbid_based_auth_layer_vesta_login_init",
+        &json!({ "request": variables }),
     )
-    .map_err(|e| step("recovery init")(&e))?;
+    .await?;
+    tracing::info!("recovery init answered: {}", shape(&answer));
+    let init: vesta::VestaInit =
+        serde_json::from_value(answer).map_err(|e| step("recovery init")(&e))?;
     if !init.registered {
-        return Err(RestoreError::NoBackup);
+        return Err(RestoreError::NoBackup(
+            "the PIN server has no PIN registered for it".into(),
+        ));
     }
     if init.attempts_remaining == Some(0) {
         return Err(RestoreError::Recovery(vesta::RecoveryError {
