@@ -20,6 +20,7 @@ pub mod enrollment;
 pub mod epochs;
 pub mod minos;
 pub mod opaque;
+pub mod proto;
 pub mod vesta;
 
 use std::collections::BTreeMap;
@@ -100,7 +101,11 @@ pub struct EncryptedSecrets {
     pub epoch_storage_private_key: Vec<u8>,
     #[serde(default, with = "b64", rename = "encrypted_mailbox_root_key_blob")]
     pub mailbox_root_key: Vec<u8>,
-    #[serde(default, with = "b64", rename = "encrypted_oblivious_validation_token_blob")]
+    #[serde(
+        default,
+        with = "b64",
+        rename = "encrypted_oblivious_validation_token_blob"
+    )]
     pub oblivious_validation_token: Vec<u8>,
     #[serde(default, with = "b64", rename = "encrypted_ocmf_client_state")]
     pub ocmf_client_state: Vec<u8>,
@@ -265,9 +270,17 @@ pub struct MessageRangeInfo {
     pub has_more_before: Option<bool>,
     #[serde(default)]
     pub has_more_after: Option<bool>,
-    #[serde(default, with = "int_string", rename = "next_message_timestamp_ms_before")]
+    #[serde(
+        default,
+        with = "int_string",
+        rename = "next_message_timestamp_ms_before"
+    )]
     pub before: i64,
-    #[serde(default, with = "int_string", rename = "next_message_timestamp_ms_after")]
+    #[serde(
+        default,
+        with = "int_string",
+        rename = "next_message_timestamp_ms_after"
+    )]
     pub after: i64,
 }
 

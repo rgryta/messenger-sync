@@ -1,0 +1,1467 @@
+{
+  "device": {
+    "id": "1000000000000001",
+    "backup_id": "2000000000000001",
+    "storage_public_key": "zgPFpNysL/iVxLbe+KA/3hsWVRjNbl1mfz0+cZlbtrU=",
+    "storage_private_key": "7TrTxMv9gUYOL9wApcAYOchf/6OIYraJqvd16Q3yvdQ=",
+    "mailbox_root_key": "OzUS25K9HfvxyMv11uYUK6SZP4RPm6ttrohhkNWP/i8=",
+    "ocmf_client_state": "/BNeOvdcZjjhIrImCh//Sn1nrp/1ctbVAFJht33aMs3T9ceh2kF5LgO2SsPyveuI",
+    "epochs": {
+      "3000000000000001": {
+        "id": "3000000000000001",
+        "anon_id": "NDAwMDAwMDAwMDAwMDAwMQ==",
+        "root_key": "I2qe9ewZCJ8Yp8g48e91Sg490SdcW+gCatvUd8k8R58="
+      },
+      "3000000000000002": {
+        "id": "3000000000000002",
+        "anon_id": "NDAwMDAwMDAwMDAwMDAwMg==",
+        "root_key": "8JTq5U+m9x7lNrIRevV37VWFDA8xMAgsTFy/SLABhVE="
+      }
+    }
+  },
+  "pages": [
+    {
+      "name": "dm",
+      "thread_id": "100000000000002",
+      "self_user_id": 100000000000001,
+      "is_group": false,
+      "response": {
+        "encrypted_backup": {
+          "mailbox": {
+            "messages_from_selected_threads": [
+              {
+                "backup_id": "2000000000000001",
+                "encrypted_messages": [
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "m-v0",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [
+                        {
+                          "encrypted_protobuf_stanza": "W6Bu4CssUGOTrWlP+sChcg6zp2vieotZ31PRId3dHjA8v/5Kx6fVLabAr4o9I2wT0DH/Ip7ECMUBdAmUuo/u9uks64OOB5C6ChHbS5DOXlKCSKay8HN/F5CgBlOnhyMMpJxGSE5G6rn1aj5CrB7rFgUF1TGLZjfrvkXC1GvBWCQ=",
+                          "encryption_version": "",
+                          "epoch_anon_id": "4000000000000001",
+                          "epoch_id": "3000000000000001",
+                          "protobuf_timestamp_ms": "1700000002000",
+                          "sk_ciphertext": "s4AqRSR/jwwgjkmg49jPePTTv7T4mGR402cgLxOfv110lOXERVEnfVw740V/glc4qjY2AzRczyk4mlpz8oUhdrKUFoU0L+eN+VN1i68=",
+                          "supplemental_key": "ignored-by-go",
+                          "supplemental_otid": ""
+                        },
+                        {
+                          "encrypted_protobuf_stanza": "PvPTnUxvKcuhfzT16lbiy+JoDABKXy9NqMnT/QAH5s0VUFTsGCoozID97gTLEuQ0ji3zptyfPl4WD8isAMPi2ajtv21quXJxs1dtzhEzKz3XIxlvQxV28h2x7XZUT6IYAhu9ezYRAh8Sj9ZnfQZu/yqLT7H9XY0dH4WISRebfU05t8rB5F6PjsyX",
+                          "encryption_version": "ENCRYPTION_KDF_WITH_NULL_SALT",
+                          "epoch_anon_id": "4000000000000002",
+                          "epoch_id": "3000000000000002",
+                          "protobuf_timestamp_ms": "1700000003000",
+                          "sk_ciphertext": "yVBrmyDiRO/7URvwXTqEJxl1654GXM0Ui4vgXCrv1wXF2JcuwgwlLceK/kdoJNmUjqZNvCj8ZN37Kw7wGsLEtCc=",
+                          "supplemental_key": "ignored-by-go",
+                          "supplemental_otid": ""
+                        },
+                        {
+                          "encrypted_protobuf_stanza": "YztXCrmoEUYiB1CeKeqYQK9nd0u3T6/CkQI01EA5NfpoedxyJlbbuTDP1DfJACXyr2xPU7vruFFAu2Lhg6+ooj5mbdNZh9Dkqr1JDj5o9msdvKUX+4Vih42BZE/nkYuBymRrTECuKhvnHAGU21E7f6GUaayeZhkbgrebmNzm0GRGucM=",
+                          "encryption_version": "ENCRYPTION_KDF_WITH_VERSION",
+                          "epoch_anon_id": "4000000000000001",
+                          "epoch_id": "3000000000000001",
+                          "protobuf_timestamp_ms": "1700000004000",
+                          "sk_ciphertext": "8tkokGDmoR7xeV+JR/R9lsjifjLgE+aw8ar+meTQpdPw4vVzqpubXt8YhDFalXuVhDN8cYLK9SYHN2+xNMA4riE=",
+                          "supplemental_key": "ignored-by-go",
+                          "supplemental_otid": ""
+                        }
+                      ],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "lYM2lKKFhIfVef78ttzcXBzScqv3t0xmTX3YdrzkhjhH14gxH9JN5w4wdYyvsFlOg3QXaVKzFOBSqERGsByAglSDA2UcBlhGArjbCSI/pP24GUIamU3knrRw5+G2UO7rAQhvWNZNx00TX0d87gAaLrPd6V7lJXcFB4o0INAiIp+P4qNJgPz0rlKjhggbVMpIh54qDoPvEKEfvb8c81g=",
+                        "encryption_version": "",
+                        "epoch_anon_id": "4000000000000001",
+                        "epoch_id": "3000000000000001",
+                        "protobuf_timestamp_ms": "1700000001000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [
+                      {
+                        "attachment_cdn_url": "https://cdn.synthetic.invalid/8100000000000001",
+                        "attachment_object_id": "8100000000000001"
+                      }
+                    ],
+                    "echo_document": null,
+                    "otid": "m-v2",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "AEgY4kO1CD0VgWWguEVLo/r3LiRYyUoncWptmkmewPfhsf3tM7GuT5Y49JHkOxHOKGj9i8s0m+7o30D4qUx8NAWDwcn/yhOPezbsaANPnv0hf4Nj2n1PszvhZ22+PQeNnsqoR2CC3oKcshRF6yVIKCeOXyoa+ZHRcejNEhpKtkaDMc51Evge8GYPznGD5ullKGydtSLI7fQ6UVYEgm0Y3m8qg5o8eRT1rHZ/BBoYbUcsBvsvAsC7v93iQB5lQzLseA7W6w7l9wBjzmus1/o9ks46sW3spyHaGjS9C7ZlZIZf+hPFuZS3S43xHnAL3MOdMry9E2Hprwyr79Cg1IMcacEdY3DADxgxGPB4ELMZqlRQw3GZTW3fUFZT9qUb1+iKu7q84woFWVETThq1uv/khrBYOvpGn7pe4UylZFypqQ==",
+                        "encryption_version": "ENCRYPTION_KDF_WITH_VERSION",
+                        "epoch_anon_id": "4000000000000001",
+                        "epoch_id": "3000000000000001",
+                        "protobuf_timestamp_ms": "1700000005000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "m-v3",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [
+                        {
+                          "encrypted_protobuf_stanza": "cOjSxYlgas80uZieOW8uiUIx2TPlGdZOU8ffTVuaBjg2CbiTjgN4nqPwhD/Zb9adAd1CjMpjFG6t22zfUz5W6hW7TSvrgBgx7B/ktgEznFLgJ8o6YT2RlDhrlX2y8BAGHfdUSquOtgQl21T5Fgn9+SktX1F87lP/WfgfZMQ=",
+                          "encryption_version": "",
+                          "epoch_anon_id": "4000000000000001",
+                          "epoch_id": "3000000000000001",
+                          "protobuf_timestamp_ms": "1700000006002",
+                          "sk_ciphertext": "qOB47br5z9joMXSi9SNwEegLEpHIxONzIspduKa4wSrt0GBTLUA0xu2LTNHX4Ht0lpghhcpQFTVKPVT/7bboCPR+hg==",
+                          "supplemental_key": "ignored-by-go",
+                          "supplemental_otid": ""
+                        },
+                        {
+                          "encrypted_protobuf_stanza": "P4ZtT/1VhdyeTzKCMruwUwleZgyuVqtnWG4kGGRAuhY1AUBycSnxU1FdMWlQvb60Av3EyUANTEeEcwB/MLFQGSiLRw6/+e/qR+C+G4CgX1mDWPR61o70PoJ+NkW7LOcjBNTwD8EBtaJWyBkoqWyF37p/vlOuoWi6HZOkpgc=",
+                          "encryption_version": "",
+                          "epoch_anon_id": "4000000000000001",
+                          "epoch_id": "3000000000000001",
+                          "protobuf_timestamp_ms": "1700000006001",
+                          "sk_ciphertext": "a7uIpwjZzsfZ8eVoJYmEKfj23rJCxidceZ5E5jSmGrgzfEa9kFrtG+Iwfw5WHvyvFvowT9UOu77IWuBTFamHn2y1BZ8=",
+                          "supplemental_key": "ignored-by-go",
+                          "supplemental_otid": ""
+                        },
+                        {
+                          "encrypted_protobuf_stanza": "JsaS+UJJOkIxTPgkl/1sq2YKZtHjiZ5zGbMD8pqzLjh4LaH5m6jRcB4gFKxe8VWSRJUF6qs9iKZZdCWW8qBz+C2TJ/hPmsT23fqT4AWsxlwCPt2y367u5oJqpPJ80jGtSyfvOE8RqjVYhqotHNFvRIxFmiPabAtF",
+                          "encryption_version": "",
+                          "epoch_anon_id": "4000000000000001",
+                          "epoch_id": "3000000000000001",
+                          "protobuf_timestamp_ms": "1700000006003",
+                          "sk_ciphertext": "vNVKLPaz9ePZ+dzLiOXrMgARIKH2uGOeyCW5ImY36IPZhZn5L7Nhec4l+pRwFwzLsHBMnjvqbwGI/g/DesR+aojl3lyLN4s=",
+                          "supplemental_key": "ignored-by-go",
+                          "supplemental_otid": ""
+                        }
+                      ],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "fNCGuaGUQ3TVATzCeEcs/YmhPXehU2utzqmv9asDvp1y8zdQhgHgJvB6GDC/scYijFs3HIfj4bNr11b6iJ2lCKDqCWHyTmSWSP2QiqF23IywyyFDq8LRPBHrGlTrNG9yO1B7pL3SAXSnqkTQy6ScwKja",
+                        "encryption_version": "ENCRYPTION_KDF_WITH_NULL_SALT",
+                        "epoch_anon_id": "4000000000000001",
+                        "epoch_id": "3000000000000001",
+                        "protobuf_timestamp_ms": "1700000006000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "m-v4",
+                    "protobuf_stanzas": {
+                      "message_tags": [
+                        "SOME_TAG"
+                      ],
+                      "supplemental_protobufs": [
+                        {
+                          "encrypted_protobuf_stanza": "tEwqxTt9htCwJWG7XTRk9+sTnYT0tZXqnVFNS4t4KQCja/8xqXCzGiPvE8qwZqOqWmDyp81Y0QGK0D99W/HYW/p6chsm9mGeMNklaMrHrN2dive6j7MTxGC1fveOc4+m5I7XC6us0Oy07CNEchlNC1MGcfSapu8uFWM1yH5BIztLvGVH",
+                          "encryption_version": "",
+                          "epoch_anon_id": "4000000000000001",
+                          "epoch_id": "3000000000000001",
+                          "protobuf_timestamp_ms": "1700000007000",
+                          "sk_ciphertext": "OqEO03kNzOWF4l84t0LbbcBoREU0SGVcoRIBuL2rQjCD0i+wQ/ajdp8lBiNKyThbbuMQUM9mTypAJuGjEfTw80a1Bp72LHU=",
+                          "supplemental_key": "ignored-by-go",
+                          "supplemental_otid": ""
+                        }
+                      ],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "ukqDr1wwhpMrSthSgio/E+ix/dwKNuRhB2sxXbc5hF9le2uz0Zl2nr/5Fl2iMLCb/CyMPRTRgqkyvX60g3dCktFJzFXO9Tdx6Jj1CyjNfSJ/+7d0I3zNDtNEg3CtjcVZLqikG4PWq3zrdIF6auz7",
+                        "encryption_version": "ENCRYPTION_KDF_WITH_NULL_SALT_DF_CANARY",
+                        "epoch_anon_id": "4000000000000001",
+                        "epoch_id": "3000000000000001",
+                        "protobuf_timestamp_ms": "1700000007000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "m-unknown",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "yOZN3FjWjk07kqdSoajgsOAOq3PWARNf8QpJXQFiIBq4aWWlR4BGzH4kAKLoSHWBzFD5eBq00CuUN6eqROFslrklfP4ZNpIBA19WQd4S7rUL5qb6rg/OitgxFhXnaejAS1ZYcAKbIcDl/NKvaDEW2kBl8qavEmX6DZKzaIY=",
+                        "encryption_version": "UNKNOWN",
+                        "epoch_anon_id": "4000000000000001",
+                        "epoch_id": "3000000000000001",
+                        "protobuf_timestamp_ms": "1700000008000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "m-bad-version",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "tzyQ2xnNHSBqGae/1PEhA5+thoVxLY7dZTRv2/jtYXhajVVhQ6/ivvhwa8Bwx1y5CPlPBBeo5+eDJApms6MZ/LMaV+G0JrAxRAX4EQjgXabcOQi7hhrBb7KcZpaRzOASuk51NlX/zkzdmu7tgSgs7waKaqfgg4oOgSpOAw==",
+                        "encryption_version": "ENCRYPTION_FROM_THE_FUTURE",
+                        "epoch_anon_id": "4000000000000001",
+                        "epoch_id": "3000000000000001",
+                        "protobuf_timestamp_ms": "1700000009000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "m-visibility",
+                    "protobuf_stanzas": {
+                      "message_tags": [
+                        "EB_VISIBILITY_METADATA"
+                      ],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "5gYSLb0EDSnxDHG+g8VBOWVZ2EsR7mu166DPB0e8onlimlE07xpTEf5E+BYe52jedrWSn0t9G1RGfACcI+66HnsSMdZCNQaxwCWWz/j8oHgpjnPH5HJtdmXoV/WyKPJipNKVI20yLTi8JaB/bPgENEnZfxooIDU=",
+                        "encryption_version": "",
+                        "epoch_anon_id": "4000000000000001",
+                        "epoch_id": "3000000000000001",
+                        "protobuf_timestamp_ms": "1700000010000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "m-wrong-epoch",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "GqJNWwbBpjY3+mVtd4Nem2deWOL8yxE1jqEYlSd54ze1ZevaghhU/grsMh1dTPYDIqooflcWU3C5Tpl1KmFkRGEGxZxRk82kBiy/j45KIW52/TEdSloRFTuCOoppi87hLoCGGZ8wNIzLvooHlS4cjM8ZehGTIhFCP5DCk7I=",
+                        "encryption_version": "",
+                        "epoch_anon_id": "4000000000000002",
+                        "epoch_id": "3000000000000001",
+                        "protobuf_timestamp_ms": "1700000011000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "m-keyless-supplemental",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [
+                        {
+                          "encrypted_protobuf_stanza": "3iSl1txMB9qbMie5Xf5CmxSvfX1BXaIzxQ/c3n/ZNdGkJZpVymBRQMWTYYcBKt/UWQcMfLffzkXmv19uIS4R5/cFIypqjFkzlRGDp28+vPSuh3Tg3bm60QwyC4Er1yTkPNWi7OCspQpWWHwg/6GNJs7YNV224LaBMsRu2VjoPUIzXchQBVcUB/s=",
+                          "encryption_version": "",
+                          "epoch_anon_id": "4000000000000001",
+                          "epoch_id": "3000000000000001",
+                          "protobuf_timestamp_ms": "1700000012000",
+                          "sk_ciphertext": null,
+                          "supplemental_key": "",
+                          "supplemental_otid": ""
+                        }
+                      ],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "DGhotabSScT8Rg7vsxMt7rTUfUUB0BO2EMrP7Rp8+RSSayptmhd/6laInWdLLaUYDlV9cUny0wa2XAy5p7PQ1pt/2IHrOZ6Vi7P9vq3sjCUqLb9g0gF1P2WkpMwCaa9jEoXFPnPVESYUWDi8psod+7rIun04uIYRbNs4hhcq0J5mxA==",
+                        "encryption_version": "",
+                        "epoch_anon_id": "4000000000000001",
+                        "epoch_id": "3000000000000001",
+                        "protobuf_timestamp_ms": "1700000012000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "m-plain",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": null,
+                      "top_level_protobuf_unencrypted": {
+                        "protobuf_timestamp_ms": "1700000013000",
+                        "unencrypted_protobuf": "CiEKDzEwMDAwMDAwMDAwMDAwMhIHbS1wbGFpbhjItZb/vDESHgocIhoSGAoUChIKEAoOCgxpbiB0aGUgY2xlYXIQAQ=="
+                      },
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "m-event",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "phjUi7ehMZG5CJkGuAvo62FZJeH+ceaBldsUeAWtLUrQLzXH6Mu7NQUBLqRMFhOQf+8g9twpJWZCUzruqBwCdPGtp5wRaJ7pr39NEmlJyhBirKAy5j49rRyJA7HqtJMU",
+                        "encryption_version": "",
+                        "epoch_anon_id": "4000000000000001",
+                        "epoch_id": "3000000000000001",
+                        "protobuf_timestamp_ms": "1700000014000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "KlZzrZNSZMApJzt+NuawKTufq+MFyqm/QrNOaw6V4m0OgAe1C+EN3LmZH8yWh+ydTmLGASDfAVrjGbka7bmmNR7JCrPrehWS6Ocsk60nNQYGNwOFzdJK+Llg+QZi5NvpH3X05Ywtl/UTaxpATF8yDaqvuS3x6gE0AhcxkDVe9e05+7hGOXRmMxfpOIizPfWVRHVva13YTZrUBKHR7VbUECgZhpW0EVgi2ZH8nIYKzUWbM6aS4ImOyKcQC4SGFn3yzqVt+yxCGXbZtaBoSYlv2QC66CyxtOwF1wOMOCBMteyw+ge/VsK7EvYKae5IzU1X2/LVG3qgQkTPKLktwHBK4s0fxaRqySCD57QLZgWKVCTF86g1DJVkPMGZH7uwZ0EZTOwOM56UwNGBUV+JT0OV7zJr1Pf7BldYQtmjOEQlOp02btoHYFqRx1WKg+5QUb9uwoMetJju7JPAVK0mfFMn3xa5bGU6gxBOfIVYBPrvFUZiWYoF/aW6hi3KG9IszkZahlWU81MB+jvfGBzPSTAWhVWhBA8UuUGXQn4pON3oACPV54houeNoyXdAaDXrUuz+z9Bc7NyGN4XCRsyG76myrVy4rP+AyHSQN/ZNm25fpsaKOBjhYpqFyB7YDp0F/3gGb2sV95hfNIo4tBuCwfTAoPwqPM4pk+jzEONiZOvAtS0NPxkMrOgH9x+Isgq22dra7IqkS2+dNkqMVWb1WayDbT3A7oXBk/5QpbA+1xYBsHNj//oY1+kYqQMeFssjYnZ4l4NTu65Pb5VGBUTcBccKdVhvgDusVVUbpva2FdZV29vWnJOkIEjFVaWEeO4H5LeOXZbz7P0bYCYHn7B3OGprvQlwTzFyKN4TtVgk6xHh9tV+NX1xHrrFPHb1m5FrjCBb+dMg+DXN3XgHIIBH0j9q8Pnq2+tcs2UIv7BZkLfU7ziCXdxu1fKQvLXKh1IWQgYwDckCNWzXkDrndNRsEwBYtG039288dz5ShrC3oEgOiy7CM0vyaOpuAiNNBMXZgqnHS9NIvUhQxgQB8Ua9E+PAtnKfe4fQTyRimEH90+iVB6Vhd00pnun4+EOdDtnGNAKQRBnoQRfxPiYTSge+R1wIwJyjRTnBrIp2zfSf5AUnilfmYN8JwbdEMOj/DoBMNuPpdduHRaofjva3y+BZOC/1CnWs",
+                      "encryption_version": "ENCRYPTION_KDF_WITH_NULL_SALT",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000001"
+                    },
+                    "otid": "e-text",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [
+                      {
+                        "attachment_cdn_url": "https://cdn.synthetic.invalid/8100000000000001",
+                        "attachment_object_id": "8100000000000001"
+                      }
+                    ],
+                    "echo_document": {
+                      "echo_document_string": "+m9VDl3NgXdU2YGFgiAsfuXO3pu1Jbs135OZ7RTJneheO13W2nouBM3N8G4/xi0og98QTN9JV+a/3IleCzdL3h7aL1LuQRX247/wBagP/9Yp7nvd6ljSjvazrAaBlJX1Pl5lzrAEaVDMq+aW01DNKiB1y8QCmYVcpAQBn5YcYFxn6rAA52q3YG353kSGZeEWa0HdqV8dzl1knSN0OyMJ1/EYhEZ2br+1qnEdwIILErqv8dcMCVB033fI76w4H8qgNdpmE6gD8glkuZpS/ELKUaJeJwDpq7GC2VSBy+m4m7zntiGzZwvJb3cxwaOXAnrL9mmk4T1DY1gx95NTt654IjtjBPFVDKHTv5jhjXsN4nlQ6ET/4h8jLB8pi+6rUF+SX8kWoyVr7EHRlOeSD5fwmflqUktg3lrQoaKLLu0F+YJUsHVNZNcK+nBpZsQZtVIQuWL1t4nBK839lJ2tPkzWFksqtTOABkURlL63Xin/9YBACdIv8F1/koGC/+2Pavny9EmVqhDyq6bWMqYgUIFaPni+NkNoSs0ngLKdzIPLTL/Slg1T7U2FOSV2rIJ6rmMVVSAWrHoPp/CHluoOgq503D0ojc3mgtHd5aTHpAPHxiXngD6w7Nl+UYP7a+5kr9MxjP3nFlLIFgi0cYjVO/GMfLNG1ROi/T4Hh5BLPKOsnBTzMobtmwTE+xLgsTCdTFII7Clfv2mBADKNNLKMHd/XFcoVV45vWmuek3Fr4ztztIX59aAFhluBKfwCV7oCF7PMftzjxeJtoO70grOa2yWtEC5o9PZe9elIC1yKCpSGMawW0+M8mYGlrTpt8JCu/CVnKkI+8M9xFV4fjeotF+3CoFe6K7kfPS6TK4YiCOlkHtO3673vz768/YcG5oDMUH/oZrHRc4d3541AAViH+fLrBT5H6jd49KUVgA==",
+                      "encryption_version": "",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": null
+                    },
+                    "otid": "e-video",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "TsTXB+G68wp94PDvznzjhtMqKO3u9CbawjL1p7GGL1n0YQkQnYOWBWCquikErFkYTC5QxzIvkFLW1PZ4mJsXYVCH2048jcKreITVaNcyawrHVzQ+s2DWyimDdWRv4m/2FI/rMbnm4IfpKBj7OxhnIQEHTRgual7frl6VsRSpLObo2cQqXMmnrlkVP5UX/JCjKHpuVqKv8XYCDdw7QhEsl+Zn4F5wGYGF/O4RnBIYvuaB6o59P04CRpjDegOtzuaQjn8t5qkPmbimZqC44ELNAUwY+mv17J4cutjhpeParX6wKygyk2iX8cmuBscZx9zTivL2TXQl6GqksgWLS99UOecEqK/XLqRvWbvXPUj77kSGO6/100oHqa2NiSwxDpJgnZ4mwUmCQ54rqj9ytTgRNv2tTV7lwPPAvU0o6dsHsC/jEBj1vC9Jr+nXh6zuX5HRXzOqVJ+NdFoL0WukWTR3iT3apEwMTq6dNJ8t5AJ0HX/MaWdhcz7aUzcv/TQmqFs3T3SOJhMWQwliLOpl08ua0hyBSQ8Qx6AknEReIMuOT65IGhP5RyhI+pCJk6c+MeT+cQkJ3DDAvK1BKJ2I5d2fctD5e7Ju6rEev34gEjZ3B2bSCru7l6dZA41qzYTf2fheXufAuiBT4LQ9Q/Utn8fuyw0v22geMxzabEhRsndeQ9STcgf+7sGOGbYsRyZ/lWUDDcVY6IFG8/bLUL8dCu4xjNni1O61az2vbUvM7yBH+LWvg8j/GerrmB0LtlyZXdV600nBjo/MMyAOaTBGTXULBhTptFN7K4p1jxJRSHxTtnmbzRiVF/b+5MlWfMiblVN6IxyN6X0uAnylQxdyTsoDERZd7x3jIY8AYWSKevTh0nQJDEFNns2uV3f6NiR7FeEJQJ5m",
+                      "encryption_version": "ENCRYPTION_KDF_WITH_VERSION",
+                      "epoch_anon_id": "4000000000000002",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000002"
+                    },
+                    "otid": "e-audio",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "ar7OqH9alZBn5fEasCzSv9fBj58jOBV/lCrUkwr3a5KDeHPFqBh7iHhSU2uZxD5MNkDZ0GAd8g/5VjJF6bsKmwQHCQVT1exNogawHHJzZPjN6jjh625xca3Vhyuudk07SLt3O4iqLChebcyNf/nkts9zQwXoj268F2jeM6QMKDck4zJjT5gksze9SLvaUzz8XsA5vqI79ZRD+f/nRH7pfNufbiBbHxzR+y16Q1uk+hnvsImBkikg/DKkOs7E64uW9OteQYRwcvVJNMemsG6nHTmAlQ0ncDGT+r7ptlooGJpDq7Qvt1DrGLCY3yZPRH+wYYN7M0SC7UejTrpYdY8AmOMP3HGYPfZogAiZuAFBp65j5uMmyNlstJPJHvsJ+Z8XRZubZZiuEDB33DyB1kQm29lAVJBIn81PvLElEieSOBs1tmQGif/vqlwKzZ2zt04+PG2rEqwqISULMTNi0tOEiQ+jjjyiTc3OTiscX6Oan8g/afWxPIv+YG+682j4RqhCqq+I401IrjCwhhWgNv5fvtvBywQkpmpXO8bOMu5peJ6BjeISE4ipwiT/cjrnsz26sx0255Ur02NnPOylRXcZ6aL8DFP3hCgstNJOtqtK/D8Nh2dsqmL4CaisHXRCDfPU9gUijLDv/SHH+oki/1U9ee5MrzC0pAl/JYXNsEfTFD6eADSuLGdDjFImXfkht8qf12q0Hua1jh3CmmAbIEQxmeWLf3ZRtw8xtxvLhroNd2byhPh5ol0vjOxACXL/ousdRRanirFPJN5BoEoEsqsuL7WciDdJOQkdE4E2W+3oxo++6ZSEP9XrTBUMCV+zJX+Sah529oK+Eb2+oIz0o2YTANPcDMVcjqlLJuBjM3Ch7zo=",
+                      "encryption_version": "",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000001"
+                    },
+                    "otid": "e-document",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "y1D7XYzeoAqDsm4f4eRxVLM+2uCM/iT471Eb230AHvsFXiJcNRnU3LNp5d2JMm9yQB20EAqil/nogqcVB+ggQXC6Dr925EIBZ4yeQKDNyDn/xK/PPACNqYuQW5/9okLdRQSxRutNAW+LQjuKEqEV4u+0HjTlZ00LaoRC+wzEvh0OSwNXy5VNxwLVH+jw/6zKFR8rILDHrXgytf/ZGPR8fv4hbSQwuSs8rGdCyaA0g6d7kg+yCoLRc8yjUZsJxiQEj1tw9GIBLZi9q6gl6nx6rEETwR63VUPikWERKxL5iAvAYKH+i9vyvn5RVlrz8weBXy3cAg4RWsjbldNDYHURJZhlrWs62A+TTiHWo5OHFnWxG6b7Cb1OZytGmYvgKZXehZgpggnYV4yj6jLa2CTujrsXUVt5qaQDK56ZMpcXGXrxWf2NkihOptSZebohfPiQrk9Y/2WtpVFbQXdSdyuAFO0qS4FITJZr76WFbbvdNwWMQY8RureZx0Qcr+8vOnmwTfpuoY/nc6BSYeT1CWOjoAJ53u7rRqWp9+0ykfoYBD9DMX7GtlQ4cfVNdVrc9w4iClmXXMVLW2FYVEBDMPVS7O7YzSH51HDljlT0U/3Ej4ms4SQ2cZ7hPQFaK6hxPVRFY5UvWOAGDysbXHV0JfAnqDSCiAx3xKrg+cVfM1/SYmMluWpW4pZ04A19PnkcIZu9q7N2u1882SWc6Vnz9qZQwqPOAUd7OY6vguEHuEYJd+aULw4MwPj4HtZdmqce8TczmUIRf9nTSD0ip1H8SK4lQ3JC/vktz2Tktq6TuOfBim7mREBmv8eG8Zvja9t5kML6HQn79BbwqJO4sZ4JnVvn4Q5Os2jECMr+/9pOhqDkS7a6ujJ4",
+                      "encryption_version": "",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000001"
+                    },
+                    "otid": "e-sticker",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "Nj43qf3i2CBSGKsa2yQynl331/k+OCB/fbZTghshQpUm1+sV39t6zlT0koyb4F51kns3D1VBhFvLZPJvOLUdx67VKTh7T1d4pZqgx1lCyXq6s/6w00FH18LPGXE8zokf64HVnNOW4NNsxTQ39Lnlvj+DKSDnlTHit18QQLC7GootKGxsqSuGDSkLzFWj7krSWtf8vV6TXQAoZeHiDT/MzRxdPFX3QBHt6xKAgQh3s51BXaJesRIEutiBHrO5D4reZT1lgF1TMTRWu3r5IFvh24DiWpd7aJ3SDbpP1vXa24vv0ZCRXy6S7655tC23EQvJziL5dfIkD1b9+qh7rcbmnLIdGlH5rFk0IFMCcVoDvYeXFmJ2hv5qEVN9pqLnyDKjnr+pbXuOzQcw5Q9rKzPsLP0MZ4wAOcFIRGbETghKqqAkIOtLUuJ4Zoj9/C4vN4/8z0m2QYqrWWg33UNc9IQ+Jk++fXgztG/7cqoGx2VoxUEQfF85zwsHYDzyj6rdRj7MT+5laMFIqlxIrio5sdtS+lfS7kZOuoaFlvhcCTLw/EdRcwmkO6ZcyujNy0TcBD6LxXvh99cGspMe0x2OAsNxq2kIyeq/zSszElqXw4uJr74Vn31ducV4UXFPITTpasFqAI9OpT+KaZoCS03x1NQMxo9uvG3dGF47B1QQq/9AbiiWmwTsNOWy+3EuZnmN8F5Eb9/B/vT/qv2L8LOLmBq/POwfn91zU5Fc9ZrTgeEokC150Hsz35U0bHNK8jATVeLs6/z19G6DtYV4NX5OjQQkQmr0W+btb0s7bFinXM9O9JpKeainFdM3jfpH2a0mSDde72hCb0ZCVFqUe10fwwrTgpV8jzd0fsJ9bNkxd0dWD1w76NTB6iBNKLkPhD8UsQXP7Wu2RrtPYMlqYXVPAAgT55POoBzYPZxM7gNNt15gETNKnpqG6uXHmIEFrcF7n0kuVqzK4LWOObwHcw==",
+                      "encryption_version": "ENCRYPTION_KDF_WITH_NULL_SALT_DF_CANARY",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000001"
+                    },
+                    "otid": "e-image",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "n0xXx1PLjynQAstUUvN3LBdxnV8i85wbrCRVZ44e3bWrwELNkGApZBzPGVPFcSqZ71FRSTDAdDb2bVdgO0IcPQyEZJHBsb4/oQqXvPNxhtYGFUR7C3o6JtoLeJX3S6XBzoQfBf3kwZUXornb1z0Ip5LWkdVooKQT4DdAwchpTCIYo95/SsuWY+e9VJVBq3hBG4Nt8UQr/9WZJEKdYOBbHjwLrXUbG/IiVvejnsUadEARlpaPAPjWhUw4Zqqn9zlf8XKq1fD+CXg56u8WEgL6Uc4Vku2Zc/d7ok2IMXKLp+TtivpWkz+9Jb2amvBzj+yGQI4ZuXIkww7LFG8nNcriF4ZFnIEYExnEywv9z83Pvwtmgz3Hab+IdY/Zm9vhEGO56mhHZstKIWnZF68boGgwKJCjvbZcrv84oTwIfalZcWYwY55WLmbJQaAdr3o1lbs1+ND7Pg8cfCUX1/FghNxazVPHFntwpJ/4YcgNH4NHDGbOXR++R5oZquQn46InPuRO30o1Z2j65tA/JPkAglNwvSO26LnaWaK6wxVGMNHcHWvEmBmk3dKBBqkTvOvPsaGUYanG4S4c4ill8IQo1NvARTcpiXX1PNmF8rl5C8qN9L4d67SnRZW0+9r4QppO87QXbr54/mtPDyzHhY3LQIgMFBeK++LHgXNGBNLpyKIoon74NvrWjk3zZEcwGrDssUA4dSsY9Q0U2Ab9LtomGpAqmWVdHbu8Tjo4lNTtJL8XLrmECShfUbiRXUqYV6eoTH9j9PxbgfEOT7k89C6OrUrxCYp5ESMBH8NlB4MO85LDtQxf3hYvhgeYWFfqRQHr74PqwmdPFikQ+yyWXuuX6F3MBiX9lgmsx36LUIhmH+zZUWSm2p5VMseS4Sudl7h6WrOd6cMo+sQaVSz+5nHIlbZ4LOPWFz2YuvQfCIdLo2N66pgKjPpH+kZsGb0l2jTVK0ES+bySNHnIwD0nC64f4+RD+FJLsYTZwxbrcv2/AhkhL0ddUm3JyUc+908KTmlONKbclt/gmDxNHsy6V/KyiiYmEo5UGsxCdPpbWBkimlAYqOE3rRGOt5pkrvXdhEEWlaqxGulrxHOc0AMiru5UtPxzevE0jjM=",
+                      "encryption_version": "",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000001"
+                    },
+                    "otid": "e-xma",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "GbdpLtHACxYiRLUzwdJ628ydyItNb7eh8OiCPNEParhSmRkhNlG9Qp0x7f7mfRM3U5QpUlzqdeRd+YCazOxhrcL5av+wqN9spA/+k3LyIw+mADMFXCcVYIjSbVAigJO8WRYgXXVFAXhgEvLz7hFxHI2gsUwGLVaYh1zUAOE+uXxsUDtwGRlOptdV0DZwHNIAAGABgPMy8yzAcsMLylmPH4r7/9Q6vW1Ms7AXtHQMHkUZwspXxASRHzRoXPEyBWEuEiWkDYGyZeQ44CnCDHYZdZ5d6DDRpTkxqgidbwFwV0K6UVK50WqKvTAyLqGizje0vAaabHmhf3UDplHwcHXpdRAz7mQvkxS/9yIxnYExpYKwKuG/P4YycGm0T+6A4sQu96TMww==",
+                      "encryption_version": "",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000001"
+                    },
+                    "otid": "e-unsent",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "dF3IIbFiIq+T24VBfh9Jky4h0EXs3bwEvFn5gEfR7U04TvB7qbf3AP2oLQVUH9LrD2DNy6+MiA3TzSBswzptdUy0XCeXRGo6APweE08wxdYhMjBCwtAUYtBgEApgoNCH33J2U/gS080iWIB5Y/+1/GJPizU7vhrCBLsabzGZpncXMzb4hHK6TmjU9WskUASJ4Ef2uEfzLNP7iqh1SdLslvYL7STASZ4xWvs6HscNDVvNyxIx8vfX+AbyjJ7KbpsrYEE6IhPFVx121la31TaAo2SwRYBLiuceVIAvdL3+AUP4GO325TFC6Eygy+0aoZJmr3tEnDtz4DVreGD6K9dfC+vfssu4ppYCQ3+2Jg+ajmqQnKIqQpUjK3+rEy9QQ40Df8KwaY8wzg==",
+                      "encryption_version": "",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000001"
+                    },
+                    "otid": "e-admin",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "h8LZSWrXockrHN45clTF4nSWNQgaCevvpGWyMpMklPAFVaDmxJnF7+drXe/883HiW1lRqNrvOnizh1WHR8VdEvwjhYRk4WdkXSuJpyrBPtBFfFFBbaQzplQI1KYQlrq1n9Yc2bvYDvgLeR65Re15ghv2X3gwsdqK/Tntkxyj6tiK/qnn8+6gBlg+6PdBJZj6+unc9VvbxWFKjQcPN+IYzE2dbwEDaKKrHFBUn0/fGM6T2Qw5gZRmjyU9aXwzpMCBVJglcGl+UCKZ/98VM7bdPUjCU+qoO2uS9iWDB/J8zj16OMMlzi+r6Cry7b6Ycqv4l/6VWBvxrHPZG+nYPvQpILfYaCcbnvEHR2c=",
+                      "encryption_version": "",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000001"
+                    },
+                    "otid": "e-unsupported",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "uu6N3fOnGvz5u/wo1Bo88S4oqB2WBbrlyxhf+1FOUdQ2HlKr0dTk2O0S1w9GYdjJFaJUoJkU899Wm8ySZJxpatFH2VOo+3GVTuojkxW7TVKC0mp9m8nTjtfVoWGlGD+OeurRWY6FxhSkjyZHT+ZL+JhiGv+VDTKxl9jFlSXG4dKZ4HKJEDq4sGMzkgIJsRsePZgk9Eio1Ac2HxVXhh3sW5blta4Vo0IVmZpLoUu+SbwuFWx1QZyve9I5BRJtv7vNdvkQrf0x8I+hlBGV40UqbButBfWlWWIE27yAXVKtJqy0UxGh8oDHI+94Mi/SQMMRX+IsypS/8OeC9AR0apS6BEKL",
+                      "encryption_version": "",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000001"
+                    },
+                    "otid": "e-bad-sender",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": {
+                      "echo_document_string": "ZqXG7ly2VqyPV+lTvOjl+d6HQReeGetCZVyyXF0JIxcAIsBzWi+M8+heUpNJ7aZdPmnMbDEscOAXz/cp/w/PR37FO5PrhINlte+QKKKymMimSIHwZS77z/kTL4kXsPJwSr4hmg7QIwwyOvbTLfRSrWksw1RBwxjApyrM8ZtIc2VP1kjlk9ysNtdkRa91f6INedNOwd8/rxfZ3Ev/NE+T0/2LYgCTgclHAUBdTz4PdKx5khuCe8Lu1qWYFcV86jGIIzI/TZeG8YtsMiR3pCGQ/qiiYQ/CV5vYfeEMXbd/LKRLR3U3H1TzGU0z2lyCzHW299sgW5b/WEPF9A/G+z2Zb28hfARS81GZhA==",
+                      "encryption_version": "",
+                      "epoch_anon_id": "4000000000000001",
+                      "epoch_fingerprint": null,
+                      "epoch_id": "3000000000000001"
+                    },
+                    "otid": "e-mismatched-id",
+                    "protobuf_stanzas": null
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "7130316967772160001",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [
+                        {
+                          "actor_token": "100000000000001",
+                          "encrypted_protobuf": "VGt0tUpgdvCCn+RLqozPPx1ECIpUAZHMfmAgvtTxo3ZHyPJ1bGHl6lNyD6sjEPRp4UnSdbtDQDYxj2zASh3OhvTK9jDECYrtIWOd1HoLzMAg8v42epwBtIDXTFH4ycU1ukvhozmUDjrt8qMlMU7zAhmxbBL/F7AfINTs5O7Qdo6w+Yn9Ucas4S5iLZEohq4dZ1S3XqtTALp5mI70ikImWmFyXTI04oOTD1gWejUv",
+                          "mek_fbid": "7000000000000001",
+                          "mek_id": "YkNWuXnmpIPRTwDI",
+                          "message_encryption_version": 2,
+                          "message_metadata_version": 2,
+                          "protobuf_timestamp": "1700000041000",
+                          "server_origin_content_type": null,
+                          "supplemental_key": "reaction:100000000000001",
+                          "supplemental_otid": "7130316971966464002",
+                          "transport_sender_message_signature": "BLuLmVHqXCN31ys+GkJcfHX5moSv7tvFoLFMMvurMeh8+0ggmgjDrNRywm70E2qbYVCOV8dmWHwahx07/wevYIo=",
+                          "transport_sender_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                        }
+                      ],
+                      "top_level_protobuf": null,
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": {
+                        "actor_token": "100000000000002",
+                        "encrypted_protobuf": "GNe67QA991JgbSmXwV9MJbDPdqDNAfTNzVVXKNbF/0E5HvvZxA0J10rknwyv3lL45Co1NPucSKUADLctGTjjFvMnyWH6MJ6Qy+Pz2MH4+YHIOrGsYPC5qSBw1QKx2HDyb5a8bfj5sAzU9eEQI/esl+3pmjSNp9jV9E4gvfBadLe8y0oOFgO7pBk94ECTYOhhm8yPTw==",
+                        "mek_fbid": "7000000000000001",
+                        "mek_id": "YkNWuXnmpIPRTwDI",
+                        "message_encryption_version": 2,
+                        "message_metadata_version": 2,
+                        "protobuf_timestamp": "1700000040000",
+                        "server_origin_content_type": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": "",
+                        "transport_sender_message_signature": "BCejtdCHFgE0lzuOE/fWXvN9TY/Iw/X0vG0ppUvuaW9GW098RPjJreiV6aR19XlgBTAc7DkUxEJZEto75iBdT4o=",
+                        "transport_sender_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                      }
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "7130316976160768003",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": null,
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": {
+                        "actor_token": "100000000000001",
+                        "encrypted_protobuf": "caPWW3rNq1EEBwYcSWgqKQ8qf4EJiz73DOttx4z8GmFrhw8eW9O3MDuZEAb4nITy4CRtVNO4H2uN9mmss//0kDukxu4yWg2nZvNAXV4Tqj1QUNUDTyqmAr2NRaDmLGH0dy3GbG/ofzqu2XGetf7+SaOTrxbEv2PHxA2AdwviM84AV+5jqUcYDFEvQlF55lWgm9U9LHyhvWiqCMJF6ek=",
+                        "mek_fbid": "7000000000000001",
+                        "mek_id": "YkNWuXnmpIPRTwDI",
+                        "message_encryption_version": 2,
+                        "message_metadata_version": 1,
+                        "protobuf_timestamp": "1700000042000",
+                        "server_origin_content_type": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": "",
+                        "transport_sender_message_signature": "BJE4r++IfRUrTLUFoyu3GFAS5GSIx12SSGy1f02/JWDNzvEL/6Hhs1DtoB6QLnUdRUagZah6jD1fZvyDsH2MYIk=",
+                        "transport_sender_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                      }
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "7130316980355072004",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": null,
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": {
+                        "actor_token": "100000000000002",
+                        "encrypted_protobuf": "G097D014e8XnYjVreTGMi58KP42rVz8PY3HGSQKoV5MNXGCTd99eIKCHjBD/2fWdZ47bws78OdmN5aeFsvqCDMcLBSdSn7MHUoYqLQCOerOR/e5Nm2iAzjrY0WE+qAirkD5vuphPD1PfGI9mgQc++A==",
+                        "mek_fbid": "7000000000000002",
+                        "mek_id": "EMOGRYt4+EdF1Ny1",
+                        "message_encryption_version": 1,
+                        "message_metadata_version": 1,
+                        "protobuf_timestamp": "1700000043000",
+                        "server_origin_content_type": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": "",
+                        "transport_sender_message_signature": "BM+IQgjQrvI7K8WtsNWT0bk27hZzwsBpy4hclO3s31r/huBmf4SNctT/7hWcA0aVsDGCV21m15jWAGdulRE9Yo8=",
+                        "transport_sender_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                      }
+                    }
+                  },
+                  {
+                    "attachment_data": [
+                      {
+                        "attachment_cdn_url": "https://cdn.synthetic.invalid/8100000000000001",
+                        "attachment_object_id": "8100000000000001"
+                      }
+                    ],
+                    "echo_document": null,
+                    "otid": "7130316984549376005",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": null,
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": {
+                        "actor_token": "100000000000002",
+                        "encrypted_protobuf": "A0w3vctfK5Nn/f2UREhGO1VCgN4kauYITMVSuILVtP97pavEG7LhQnSfUFiizdvX4ws16MjahT1AqMtvsxbVffxHFrsF7OmlFb0pSonF7WXGM0JjD1RdDqG2KziDgT+892isj8EhgpckeMy/UOvNjqSJusYln12vWr/L7SNaB/M8ZKOfFsYbaDMYoHUuNHWP4sZP//4abolVnBE3kFQ7n3israYEz7xuaYh1OomnGO+EeT24IZBSQ+hX6qbYDYMQ7s+MLEz451PulxoWIEzGmIYPjQ9qrvXs3aRHXKyU+WA+Cpky8ysQDNw8oNz2aKWIadC6m7adFmaUJpG6E6Jllp2/RI9zcgbqXBqth+PROhK+4oS0sXPuw7vSfDXHccrqNP+pFc2F9SJFbnRyJdQ8NwyOmot3wFiDUqixmHxAScyXfqXnUtbDueq+4bE3xHpmi+Cximt4+qGiR3Vxz8ucIgJ0rw==",
+                        "mek_fbid": "7000000000000003",
+                        "mek_id": "7OA/e+MKTgVIfK7A",
+                        "message_encryption_version": 2,
+                        "message_metadata_version": 2,
+                        "protobuf_timestamp": "1700000044000",
+                        "server_origin_content_type": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": "",
+                        "transport_sender_message_signature": "BEHMp2zE2+4IuWZeZHT19dILuoyY/FBtuXO2zOfhS78gCvRFrrvWKafofXytoMcmygSzDxOHmu3Ur8B5DHKiIY0=",
+                        "transport_sender_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                      }
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "7130316988743680006",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": null,
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": {
+                        "actor_token": "100000000000002",
+                        "encrypted_protobuf": "fpYIMt9/Eq799pXRqMB9NrQPAFm7ZnMSqXt7pbvNHrKSWQLQgmNRUYstOUEQjp8hVNfJsGQTaVq2N8WAzrQQVEJ6k0fvHoTIE8Xe5OlcRHetteSweuhQba9KIEhR8gT13EfM+k4DhHjbdaqavUmO672/oGEXcsO5V6IY/uJ0PJBjfFbNx4uxNM3861RHXm4OXeSAbDGUkj0=",
+                        "mek_fbid": "7000000000000001",
+                        "mek_id": "YkNWuXnmpIPRTwDI",
+                        "message_encryption_version": 2,
+                        "message_metadata_version": 2,
+                        "protobuf_timestamp": "1700000045000",
+                        "server_origin_content_type": "SOMETHING",
+                        "supplemental_key": "",
+                        "supplemental_otid": "",
+                        "transport_sender_message_signature": "BHNbm3PYXr8G3V7KgyCcBvOkl/V0yqlx76wfvZXSrZCtqqi8dZ5XbPYV6hCfDbf/1RGDZHnrT/5VDLoibDmgsII=",
+                        "transport_sender_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                      }
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "7130316992937984007",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": null,
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": {
+                        "actor_token": "100000000000003",
+                        "encrypted_protobuf": "nw+wX7JpOAUjjGXvO4sOjre+ctfPq+ICkqSDTb1ZV9von5peNCjXMrQ02ramVjMF74Hjo1rmd473McQ7mNZleoeq7RtxWgSoCYWa9es7pTu5yDknmCT6zyeLjRb13L4FVo/vRSsB6kvUsgtnWbrXBOQ1fMeOAcO3K4m73lsDHV7IhE4yFxidhMsBHd0g632lwDGtYCii",
+                        "mek_fbid": "7000000000000001",
+                        "mek_id": "YkNWuXnmpIPRTwDI",
+                        "message_encryption_version": 2,
+                        "message_metadata_version": 2,
+                        "protobuf_timestamp": "1700000046000",
+                        "server_origin_content_type": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": "",
+                        "transport_sender_message_signature": "BGVBCFPHU7Db6GU/bktt1Vc0aCfh1zkv6QIXSvVJw6ghvh0ehDrWZt+EXsEG6T/UTd91geF8RF3njuNQVjJSdII=",
+                        "transport_sender_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                      }
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "7130316997132288008",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": null,
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": {
+                        "actor_token": "100000000000002",
+                        "encrypted_protobuf": "Wduhr+jaOE/DX+PefnbHcNYGqXrSt3Qo6SkHoWm5z2oUBIZSwzNZvczgmQZpV0pQ+NyhZH6Y80e57w+MgEG6f6RAi9QW2O4QBhLH25udz6pHcWhC47J8b3/rWiuBMt4UIkNNnk3+kvRRV1B9TtDOejXZXS45TpysMwwE2DueE76KwtJ3UTU9vhLXOmJKMvmuKJQ13PV7jis=",
+                        "mek_fbid": "7000000000000001",
+                        "mek_id": "YkNWuXnmpIPRTwDI",
+                        "message_encryption_version": 3,
+                        "message_metadata_version": 2,
+                        "protobuf_timestamp": "1700000047000",
+                        "server_origin_content_type": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": "",
+                        "transport_sender_message_signature": "BMnyMY+qg1iexOzuB8i1/WESWaQg9nHam7V8sA71rUM63v9UXrx5CxhrA9PCjC/gB6bQKAwMpPEQcokV2JlMEIk=",
+                        "transport_sender_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                      }
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "7130317001326592009",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": null,
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": {
+                        "actor_token": "100000000000002",
+                        "encrypted_protobuf": "Ya8z9MlKmEWzsXGdDnWHICZUQ2uNGEipsu/oec7kkiv0OsHGp1hUQQZyBIg2uoRfSPmFrE0wovmtlPjsM7aTn4TkwhSYtrEmhwtLALesTKqix3ekISl6qthojJtNYgCX9mHy40flSVBAMjF87ORTtnVb/gRICF16LyxgJ21+nPUiE1lZvdA1bPzJbhEvS8bgAexL1M7UuMvwSQ==",
+                        "mek_fbid": "7000000000000001",
+                        "mek_id": "YkNWuXnmpIPRTwDI",
+                        "message_encryption_version": 2,
+                        "message_metadata_version": 3,
+                        "protobuf_timestamp": "1700000048000",
+                        "server_origin_content_type": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": "",
+                        "transport_sender_message_signature": "BCVT/VUc6PEt+uLpAlAWK38180HJoUUTS3X7K7nvIYIk/wvrdL1H90Ma+xhBVKfEAu6e7JxkEekDEaV4iM9+i4M=",
+                        "transport_sender_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                      }
+                    }
+                  }
+                ],
+                "epoch_derivation_set": null,
+                "exception_string": null,
+                "message_range_info": {
+                  "has_more_after": false,
+                  "has_more_before": true,
+                  "next_message_timestamp_ms_after": "1700000050000",
+                  "next_message_timestamp_ms_before": "1700000000000"
+                },
+                "minos_decryption_keys": [
+                  {
+                    "id": "7000000000000001",
+                    "keys": {
+                      "mek_creator_info": {
+                        "mandrake_keys": null,
+                        "minos_keys": null,
+                        "transport_keys": {
+                          "ephm_hpke_pk": "AwUM2EScsQgHBWzExxJQTpI1i/Duu4nqi++Vht8LDf5F",
+                          "ephm_signature": "BMtVlBKevRvLI2FNjiCaBeJdfJhsNty7ctNPjlkFn6O16KgLgWQGjUuGVnQeITc37hp8uJk4lHjUhfYEU8axn4A=",
+                          "mek_creator_transport_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                        }
+                      },
+                      "mek_info": {
+                        "encrypted_mek": "AzZXoOU9kUfwUFhUxUZm28IHpimENxmZcfOyK6t3o4NZ4E3Aj76CVpjzip7EzSd6Nyy48dArghi7qtnnnaZyMDfIe3v/jcCC3xMeUEhUcvSGciS/+vO2IIAf2j2NyfcuZoiF9rVFDk1DsiduOgDAjdh1dQ7aPevJNSwOKXtDXSLDuT+SFtg9LLxbN/5F4a/o00fwO/AItoXOrVoO2kpQfjSH+GSGUc+6vYpLPLydKW14J4IZ9Wzn+m8XtQxufVMXVZ9xnQBh9lEo09r6uF90VvxHNtCueZWKQj1IHR2X0lt41QGsYiiNrfRwqE0TesvcbZZw2tevJxjzn3fpnAkA3x2kNcgaYtZCd4icGpiz4ysm86oT4FbI2VMZiykkPy2BeoO8KlxoVgkEhs5X6YwN3UtiSErQ3k1r+hzhJ3yyw77WIYesNpCXwW/8Sjg4zk75SzShIzGSoz0CrEe4Rji4qqBjpV0XvXD+DfQY5up53XTWE9rQ4o+nKTBpmltx/7xvoC35LL+OjyjywLW2BCSG/mZbvmtceqvuCGN/dB3umloCf2Y4HY0fot+z0q+hLBFIU6NnJLFSjQNqGFwmwf/U5vlMiiOw3zfISr8PmxpD+hMOe/DHLajPB0ye59141d5Fa+9iVNaPUE/OnMu7XipMpRYUhut/IlC5tX8Kks9G6PgXwVG4CkqJJSXB0cLxkrxJmx6s61PZXUjhzlpRLZHPHIkM1YvfuFbV6MLoZZc2XxNXIQ/6EB7jG4ei2fVQc1iTNfzkbZg0lz8Ai/ZF5WhQuB8YD718KSRMB2e+NVstmQ0rZBloYJioTwnWzO3fybztqwtkEsxponLV1YzO+BQPovxyfWge0DhJdF6bDEDxNRNUsXw9Qr6vzUarDp9ZcFQZoQR046rfM2Gp2YwY9w510cbNdcgVYBVSLaoriXVmParw9ey53z2IQlPyA2GDRTq140bcwrbP6ZGJ/iyqTVqOWzVJ4ON/X9uLwpNA2x5EenIY6DPMy34kqWYjaUkuJqKwgPK3FU5eSDIXBlgOBzk8nlAxWze+P6erAwdH+m8uYgJ6TtkSb5vpie8gv18trmkgB8aaDW/8rcrOLPY5QsB3yniBN2rvywYC4r5yqOnyUM0jYqXbr+MRm4ci+NMUgukcbpx1iyTzt5Pzb8PGyg7bEeXT0cWXBAYPAxPJWFmLXgldVFa7egaMhKpA7+pT8lSc3azDrEl0sTA6E1kDiaK1pMwjJfhaeGeYogyok4NbQzW7fWMhNM1pyeiX9Kl1C1Bqvzo9LT8gd/IjdMdNcfSYf6mW93PiwrM/fNO8p5wL+og/tY9IE3SIHNSuIhhjF8oo+aCy1aM22e4XO4KZP0M4hRtRzkLlhrfMKUq9suHT8HrlRofMqbf7A3LLjtLZvkYGg++HKU1RdKZz74yQzP+zlszft6PoYw9lYOz5RM82t9A1+wRFEax/No6qlYIP9fJs1T4fc2VnRkiiigw5NOViIMe1wtKtHu5QBnatErXCOeEJL47fdV6GLLIg2mZUKe9riAorBb4RHzpqP2WkD7nAga+r",
+                        "mek_creation_timestamp": "1700000000000",
+                        "mek_encryption_version": 2,
+                        "mek_id": "YkNWuXnmpIPRTwDI",
+                        "roster_hash": "nAK26RIx9fGynLMWhx6ScSOE92j9n5KqSDXqJBwbrPk="
+                      },
+                      "recipient_info": {
+                        "epoch_anon_id": "NDAwMDAwMDAwMDAwMDAwMQ==",
+                        "epoch_fbid": "3000000000000001",
+                        "epoch_head": "hRT/qmc+FnBSfiMFsgAIIqK3Igscru8KNXwgV9gzmlU="
+                      }
+                    }
+                  },
+                  {
+                    "id": "7000000000000002",
+                    "keys": {
+                      "mek_creator_info": {
+                        "mandrake_keys": null,
+                        "minos_keys": {
+                          "sender_auth_pk": "A85r5BfO7IHw4s2QuZRA8qmZsYeo+uExGk1PGsnI4MBU",
+                          "sender_epoch_head": "D65Ds0dI9WDyuZ8nLYQURzlZBPfj2iT8Ji6fi4DNv8w="
+                        },
+                        "transport_keys": null
+                      },
+                      "mek_info": {
+                        "encrypted_mek": "A90coS/7+VNMNq0FOGlC6b4rJC4XrAe/NplREfgDz/JewIAzChpMFplOLfi2KTFH42xwcwe96NUDHkotzZmSpWNjRs46PlhttqIdnYce0j4cOC90UQJIluD0lBtI1Sd/qE57EdZ2GxDES/+G8OnOc/Uq02/1xOKivXWN6M1s9LtoSoVN2JEeT53HubvUdGmuflKJr+FleovvPkDJ0atocwGrEeNznPu3g7JWyk6dFLsiJRjkP4T0PwKHH+m0+NzV7MKmzHUh49zb6ACBMmMm73IScY3Y9lmhfdXV5/tE9dQN1uzEnBFKmBiTFAXM/14iTY1lziG84yCSRQQsXu1veeK7Nc1NEpySi0SV0ek4R4XRFAmthFydnHJxxXNG2ReMaE1QH1IZd4Rp4goZaUW7L/qFdhrJVzZHUIIgGK06kKcQouZjNV2MOXtHYm+b7amvNomAtSd0fmavB7XsIEm/0Zuvtz2OE17wBQLmUSTxUlbvfaOOkB/Q1hr91qdKm60AcbTZdLakgF4y0CAmNUA5TzDAnOm04qkmH9gCBSxiDo+suXTYODmfLaKFVzEL6aUAOwG6hXcMsL6Iazj7z2QHuRct/Z8cPypjWBOFpf9YHvXmtOL/R9ApdWth3qHNFQcbkHzPzsn67PlkTy82jqxFOg7dW9JAvqnTFVWnP/MEI6LA7dnB2RpYBoSJEPTquq+fkod8qQQPlD2EAabrQhzIxo8JUIzFTNoiG/gksAQWZpRLVCid/fVJdV0xay5zCt4XRjRYvvo1n/fyXmhkigP1WEVad6bqm95DI/Phj56lr8faGVHkWdv4qH2NSZWG0T/1Nb5Os3h0FCWINcQybWBki0NZGRc9bHVrpXms1Mrwek86t9MyLLasQBdAKCwAmsFI7hIxau41QOHng0gYqjMExTJehrXJyig7HkG1k7ozEsKTO8UrVN/2XpNjSAm4+tIYYOSiOm3kZijyXiZT/VBDookYxhpvMn1E5k9U/qbu5+riZIMmVHG2c9iNgz2M/WooFL4mxZSYFHgAWBOrDGtFzKEEAp9qMMquk9Z3I548ziARG11FzaDhftYRLoiX74ufx7YX+U17idEuGiyrRk8qbfswNWKcxpH0NHQ1ej+idP4s9ty5ovo4UrQ4DQ44XRdkGPfrtA/Mx9EkGk6emdwQOUbMqmbx5oYRGE68qZI/Kb5zAICFfLmkLfN4bMlrBDk7W/f0lm+ziQjqJqSdIdlgkTTx3olH/eCT9LDKm2wEyvmHOWdNKQrUUQprz15k5RYmRno8cbmJCj+XFnfUU5rpJcJRX5NrU1T1hF7ylpsxlnj48NgSi+l/mICKKJeWDW+luuHUtkdfXSDvNjiM2cJLgu1pmJSKBWLd+SI0B9gExegovk28PKhSUUBpg/LMjPf1LF96eTqljm9W4+SeFfjF5loIhcyfRFTOHC923ug5OUhhSj5ONwdCn8lNmnUVj1ujFwFJFqOJH4q149dHG85QZwL+qS0oQZ1g3JcEw91KuOertqOrPQ5j/Q+4wB+WR+qJBBY=",
+                        "mek_creation_timestamp": "0",
+                        "mek_encryption_version": 1,
+                        "mek_id": "EMOGRYt4+EdF1Ny1",
+                        "roster_hash": "nTHzvdRCgxwICZvGyNCSHRteG17CByXaVhoq+M/qNd4="
+                      },
+                      "recipient_info": {
+                        "epoch_anon_id": "NDAwMDAwMDAwMDAwMDAwMQ==",
+                        "epoch_fbid": "3000000000000001",
+                        "epoch_head": null
+                      }
+                    }
+                  },
+                  {
+                    "id": "7000000000000003",
+                    "keys": {
+                      "mek_creator_info": {
+                        "mandrake_keys": null,
+                        "minos_keys": null,
+                        "transport_keys": {
+                          "ephm_hpke_pk": "A7dEMb0cIaX2YtpYmaIELmy4Jkyk1cVV0DCI8OtzkI5Y",
+                          "ephm_signature": "BIpX9+/jiDmbOJWy2c0+Kw2ZydTdHFuB6qmVx0mCRcoy/oVV72bEgYMy945alF6Z1ABDDyKxkby6WaNknylkgI8=",
+                          "mek_creator_transport_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                        }
+                      },
+                      "mek_info": {
+                        "encrypted_mek": "AwmMF800IKZBSl9x7rNRONg+tqGl3gg0Td0io9RHEFt8HNaYDN55DHHjZTtOAqUvSwHI2G+dfHTsIuCrlYU8kVSEr8BG4WdiTsJVWVav2Yw2tr6zpwJ5kMesoTU34OtRqnkBCSGeifTek/ssCmxniA8ayIH4wdwMDF+1lEC/7NLQvxeO2Ks5dqB2zf6jxuCgB9WUT40BpT3c33gKYmKsCUk3IAob/73PXxmNTOyzqH8NpREJ0A09JXnHgAqID+WG2+KvEpE36SNxJfPekaREKpgWcPwUBMxtMAFJ7fwtavBQW122HBYnbRsR3MnP/bkEj0BPda98DoIjSeFjJR3jX/4l7Xy/l6BlFsxRcbWOFF0dmNl3Uo+FGx0iyyNYgLVLdAg4Fd5WlLbqhEmlt1qhOVbkHjlEYyR3ILO7GYJ/STTTqO1ITHA91Mtu6EQ+6J0k57dwoCePCSOMQjl5KrWS+/aO2ja8ZaazwB7g5fTaa3zAuIMBMrNr1/ics4IYWHXPLozuE0vLkNM6B/vw0E5hldCEKgTRlu0Ohfy2riFCwpkwmVLwxHqZFT/Iy+S9UrxuLYNrB5ZqYEm/69e59C5Slwo8F6fID3GCmbelCFdGPdFLEhhwBkXhe+aH0kG3LOrdnnHmfDSIGIV8zu/llvoVB28MNDCkX+8vKuxaISq41NTFDZKLevSfC17Wau2NqDb8Tr/nRzZDpMtJksPHoyDg3i/cXwbgmd93YqZt8AUjmz9LaMVOAaZ0MjEzuXd3kcbT2gRHs9d2or1ieeTpOE/9NJcDQXbgZzYnI4ILjXarhPETpRLJqrqrUILY61hJWdVzuHKZUAEEjcIP8RHPqaeo0OhaSYRWvw93n1pU635ggB6VR2c2IwIed29/ysXcsSWQgunDiL7X1EUSqSc6sfK14s3uvOv/T9N+ICX+12mHY1YAWzTjHksyHc29nJKk52VjLoGbeC4c9c+PQvCcDxq/UItEVYMDW09v618aHh0l5aTe6sddI/8qU2exqcGWU3DQUB8qPQ6cckLJCO7qncLXmn03AulPSEGDoyl/Q+JQXhQyFwxWfj+lNJ+LaOWkeTm3DXrH5huMrjujcLhaKwIwrtUkLVj8JiylrRuOrqsaVAAD2P51O1lBxr2tyNNQozxx/fZLW1LvZEpbCMJk3r2+H/SybpFN18Jvp8Oonh1QAA6si5ZyI1CeRzf2mKftzRMVMaOV0xSl+P/gFLRs79spM1bXU6Rx4qglOXtc113XB8QDB9vTogJ+7rkgBusAUOLc1NYwTx//fUZFxkKa4wNuHrzV8ACB2E75ZVcbOEiK/pl65U2Gk80facl5b7UoILOPdV0w1ELKjxXdcBqGI7F2H55ajKS9uGuNYrbF4d6xRZ1F8pPlwsCcx1LXYhkPKUtgoIJQU7E3PcHgd3hn6f67C+Rz7XQxlBsQjLPd6sEcod23tWzwxZ/IkYDPXGvG1E6kiXCzOfVR6jUumI48xT6NRE/8NG2QnRv0FUYumtJVzvrX4sqhVbON8unEkVyqB2G1mKgmV7h/dQUi0CMsdhLbIB/o",
+                        "mek_creation_timestamp": "0",
+                        "mek_encryption_version": 2,
+                        "mek_id": "7OA/e+MKTgVIfK7A",
+                        "roster_hash": "nAK26RIx9fGynLMWhx6ScSOE92j9n5KqSDXqJBwbrPk="
+                      },
+                      "recipient_info": {
+                        "epoch_anon_id": "NDAwMDAwMDAwMDAwMDAwMQ==",
+                        "epoch_fbid": "3000000000000001",
+                        "epoch_head": "hRT/qmc+FnBSfiMFsgAIIqK3Igscru8KNXwgV9gzmlU="
+                      }
+                    }
+                  }
+                ],
+                "should_delete_mailbox": false,
+                "thread_not_found": false
+              }
+            ]
+          }
+        }
+      },
+      "decrypted": [
+        {
+          "id": "m-v0",
+          "message": {
+            "timestamp_ms": 1700000001000,
+            "message": "Ch4KDzEwMDAwMDAwMDAwMDAwMhIEbS12MBjo15X/vDESRwobIhkSFwoTChEKDwoNCgtmaXJzdCBkcmFmdBABEihSJgoObS1yZXBseS10YXJnZXQaFDEwMDAwMDAwMDAwMDAwMUBtc2dy"
+          },
+          "supplementals": {
+            "edit:m-v0-e1": {
+              "timestamp_ms": 1700000003000,
+              "message": "CiEKDzEwMDAwMDAwMDAwMDAwMhIHbS12MC1lMRi455X/vDESMAouIiwSKgomCiQKIpoBHwoGGgRtLXYwEg4KDHNlY29uZCBkcmFmdBi455X/vDEQAQ=="
+            },
+            "edit:m-v0-e2": {
+              "timestamp_ms": 1700000004000,
+              "message": "CiEKDzEwMDAwMDAwMDAwMDAwMhIHbS12MC1lMhig75X/vDESKQonIiUSIwofCh0KG5oBGAoGGgRtLXYwEgwKCmZpbmFsIHRleHQYABAB"
+            },
+            "reaction:100000000000001": {
+              "timestamp_ms": 1700000002000,
+              "message": "CiEKDzEwMDAwMDAwMDAwMDAwMRIHbS12MC1yMRjQ35X/vDESJgokIiISIAocChoKGIIBFQoGGgRtLXYwEgTwn5GNINDflf+8MRAB"
+            }
+          },
+          "attachments": [],
+          "tags": []
+        },
+        {
+          "id": "m-v2",
+          "message": {
+            "timestamp_ms": 1700000005000,
+            "message": "Ch4KDzEwMDAwMDAwMDAwMDAwMRIEbS12MhiI95X/vDES5wEK5AEi4QES3gEK2QEK1gEK0wES0AEKwAEKuwEKsAEKrQEKhwEKIK38EubPOWsCuVw3/CB/JVrYRzAK78YVw2Kudxp2shBUEiC8MBC0doNnezYSeqSweHHTAttdoLbmeqcoZZXHITxn6hogIOx1VeQik7gcbruDnHZqRfGK98DFq1IhYR4ZwSI/CiEiHy92L3Q2Mi4wLTI0L3N5bnRoZXRpY19pbWFnZS5lbmMSIQiAIBIKaW1hZ2UvanBlZyIQODEwMDAwMDAwMDAwMDAwMRIGCOADEIAFEAESCwoJYSBjYXB0aW9uEAE="
+          },
+          "supplementals": {},
+          "attachments": [
+            {
+              "attachment_cdn_url": "https://cdn.synthetic.invalid/8100000000000001",
+              "attachment_object_id": "8100000000000001"
+            }
+          ],
+          "tags": []
+        },
+        {
+          "id": "m-v3",
+          "message": {
+            "timestamp_ms": 1700000006000,
+            "message": "Ch4KDzEwMDAwMDAwMDAwMDAwMhIEbS12Mxjw/pX/vDESGwoZIhcSFQoRCg8KDQoLCgludWxsIHNhbHQQAQ=="
+          },
+          "supplementals": {
+            "reaction:first": {
+              "timestamp_ms": 1700000006002,
+              "message": "CiEKDzEwMDAwMDAwMDAwMDAwMxIHbS12My1yMRjy/pX/vDESIwohIh8SHQoZChcKFYIBEgoGGgRtLXYzEgFiIPL+lf+8MRAB"
+            },
+            "reaction:second": {
+              "timestamp_ms": 1700000006001,
+              "message": "CiEKDzEwMDAwMDAwMDAwMDAwMxIHbS12My1yMhjx/pX/vDESIwohIh8SHQoZChcKFYIBEgoGGgRtLXYzEgFhIPH+lf+8MRAB"
+            },
+            "reaction:withdrawn": {
+              "timestamp_ms": 1700000006003,
+              "message": "CiEKDzEwMDAwMDAwMDAwMDAwMRIHbS12My1yMxjz/pX/vDESHgocIhoSGAoUChIKEIIBDQoCGgASACDz/pX/vDEQAQ=="
+            }
+          },
+          "attachments": [],
+          "tags": []
+        },
+        {
+          "id": "m-v4",
+          "message": {
+            "timestamp_ms": 1700000007000,
+            "message": "Ch4KDzEwMDAwMDAwMDAwMDAwMhIEbS12NBjYhpb/vDESGAoWIhQSEgoOCgwKCgoICgZjYW5hcnkQAQ=="
+          },
+          "supplementals": {
+            "reaction:elsewhere": {
+              "timestamp_ms": 1700000007000,
+              "message": "CiEKDzEwMDAwMDAwMDAwMDAwMxIHbS12NC1yMRjYhpb/vDESKgooIiYSJAogCh4KHIIBGQoNGgttLWVsc2V3aGVyZRIBYyDYhpb/vDEQAQ=="
+            }
+          },
+          "attachments": [],
+          "tags": [
+            "SOME_TAG"
+          ]
+        },
+        {
+          "id": "m-unknown",
+          "message": {
+            "timestamp_ms": 1700000008000,
+            "message": "CiMKDzEwMDAwMDAwMDAwMDAwMRIJbS11bmtub3duGMCOlv+8MRIhCh8iHRIbChcKFQoTChEKD3Vua25vd24gaXMgemVybxAB"
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": []
+        },
+        {
+          "id": "m-plain",
+          "message": {
+            "timestamp_ms": 1700000013000,
+            "message": "CiEKDzEwMDAwMDAwMDAwMDAwMhIHbS1wbGFpbhjItZb/vDESHgocIhoSGAoUChIKEAoOCgxpbiB0aGUgY2xlYXIQAQ=="
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": []
+        },
+        {
+          "id": "m-event",
+          "message": {
+            "timestamp_ms": 1700000014000,
+            "message": "CiEKDzEwMDAwMDAwMDAwMDAwMhIHbS1ldmVudBiwvZb/vDEqBgoCAQIQAQ=="
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": []
+        },
+        {
+          "id": "e-text",
+          "message": {
+            "timestamp_ms": 1700000020000,
+            "message": "CiAKDzEwMDAwMDAwMDAwMDAwMhIGZS10ZXh0GKDslv+8MRJHCiMiIRIfChsKGQoXChUKE2xpbmUgb25lCmxpbmUgInR3byIQARIgMAFSHAoEbS12MBoUMTAwMDAwMDAwMDAwMDAxQG1zZ3I="
+          },
+          "supplementals": {
+            "edit:e-text-edit": {
+              "timestamp_ms": 1700000021000,
+              "message": "CiUKDzEwMDAwMDAwMDAwMDAwMhILZS10ZXh0LWVkaXQYiPSW/7wxEjEKLyItEisKJwolCiOaASAKCBoGZS10ZXh0Eg0KC2VkaXRlZCB0ZXh0GIj0lv+8MRAB"
+            },
+            "reaction:100000000000001": {
+              "timestamp_ms": 1700000022000,
+              "message": "CiMKDzEwMDAwMDAwMDAwMDAwMRIJZS10ZXh0LXIxGPD7lv+8MRIqCigiJhIkCiAKHgocggEZCggaBmUtdGV4dBIG4p2k77iPIPD7lv+8MRAB"
+            },
+            "reaction:100000000000003": {
+              "timestamp_ms": 1700000023000,
+              "message": "CiMKDzEwMDAwMDAwMDAwMDAwMxIJZS10ZXh0LXIyGNiDl/+8MRIoCiYiJBIiCh4KHAoaggEXCggaBmUtdGV4dBIE8J+YgCDYg5f/vDEQAQ=="
+            }
+          },
+          "attachments": [],
+          "tags": null
+        },
+        {
+          "id": "e-video",
+          "message": {
+            "timestamp_ms": 1700000030000,
+            "message": "CiEKDzEwMDAwMDAwMDAwMDAwMhIHZS12aWRlbxiwupf/vDEShQIK/gEi+wES+AEK8wEK8AEK7QFK6gEK1gEK0QEKxAEKwQEKjQEKIClPt8dwrBODUuHd8yA/hUki9aqIzFpltJxMJpQ2/nh+EiARLhZwL4GaCPLF8nrkfal13NdSwIuEpR1SkpESefkMNRogWr4YHgjOvVWYHY9lXe0U7kqQg2gyZ2HhJR1QM/1HKzsiHy92L3Q2Mi4wLTI0L3N5bnRoZXRpY192aWRlby5lbmMogOLPqgYSLwjAxAcSF2FwcGxpY2F0aW9uL3gtc3ludGhldGljIhA4MjAwMDAwMDAwMDAwMDAxEggIKiDQBSiAChABEg8KDXZpZGVvIGNhcHRpb24QARICMAA="
+          },
+          "supplementals": {},
+          "attachments": [
+            {
+              "attachment_cdn_url": "https://cdn.synthetic.invalid/8100000000000001",
+              "attachment_object_id": "8100000000000001"
+            }
+          ],
+          "tags": null
+        },
+        {
+          "id": "e-audio",
+          "message": {
+            "timestamp_ms": 1700000030000,
+            "message": "CiEKDzEwMDAwMDAwMDAwMDAwMhIHZS1hdWRpbxiwupf/vDES8AEK6QEi5gES4wEK3gEK2wEK2AFC1QEK0AEKywEKxAEKwQEKjQEKIClPt8dwrBODUuHd8yA/hUki9aqIzFpltJxMJpQ2/nh+EiARLhZwL4GaCPLF8nrkfal13NdSwIuEpR1SkpESefkMNRogWr4YHgjOvVWYHY9lXe0U7kqQg2gyZ2HhJR1QM/1HKzsiHy92L3Q2Mi4wLTI0L3N5bnRoZXRpY19hdWRpby5lbmMogOLPqgYSLwjAxAcSF2FwcGxpY2F0aW9uL3gtc3ludGhldGljIhA4MjAwMDAwMDAwMDAwMDAxEgIIDxABEAEQARICMAA="
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": null
+        },
+        {
+          "id": "e-document",
+          "message": {
+            "timestamp_ms": 1700000030000,
+            "message": "CiQKDzEwMDAwMDAwMDAwMDAwMhIKZS1kb2N1bWVudBiwupf/vDES9wEK8AEi7QES6gEK5QEK4gEK3wE63AEKzQEKyAEKwwEKwAEKjAEKIClPt8dwrBODUuHd8yA/hUki9aqIzFpltJxMJpQ2/nh+EiARLhZwL4GaCPLF8nrkfal13NdSwIuEpR1SkpESefkMNRogWr4YHgjOvVWYHY9lXe0U7kqQg2gyZ2HhJR1QM/1HKzsiHi92L3Q2Mi4wLTI0L3N5bnRoZXRpY19maWxlLmVuYyiA4s+qBhIvCMDEBxIXYXBwbGljYXRpb24veC1zeW50aGV0aWMiEDgyMDAwMDAwMDAwMDAwMDESABABEgpyZXBvcnQucGRmEAESAjAA"
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": null
+        },
+        {
+          "id": "e-sticker",
+          "message": {
+            "timestamp_ms": 1700000030000,
+            "message": "CiMKDzEwMDAwMDAwMDAwMDAwMhIJZS1zdGlja2VyGLC6l/+8MRL0AQrtASLqARLnAQriAQrfAQrcAWLZAQrWAQrRAQrGAQrDAQqPAQogKU+3x3CsE4NS4d3zID+FSSL1qojMWmW0nEwmlDb+eH4SIBEuFnAvgZoI8sXyeuR9qXXc11LAi4SlHVKSkRJ5+Qw1GiBavhgeCM69VZgdj2Vd7RTuSpCDaDJnYeElHVAz/UcrOyIhL3YvdDYyLjAtMjQvc3ludGhldGljX3N0aWNrZXIuZW5jKIDiz6oGEi8IwMQHEhdhcHBsaWNhdGlvbi94LXN5bnRoZXRpYyIQODIwMDAwMDAwMDAwMDAwMRIGEIAEGIAEEAEQARICMAA="
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": null
+        },
+        {
+          "id": "e-image",
+          "message": {
+            "timestamp_ms": 1700000031000,
+            "message": "CiEKDzEwMDAwMDAwMDAwMDAwMhIHZS1pbWFnZRiYwpf/vDES5wEK4AEi3QES2gEK1QEK0gEKzwESzAEKuAEKswEKqAEKpQEKigEKIClPt8dwrBODUuHd8yA/hUki9aqIzFpltJxMJpQ2/nh+EiARLhZwL4GaCPLF8nrkfal13NdSwIuEpR1SkpESefkMNRogWr4YHgjOvVWYHY9lXe0U7kqQg2gyZ2HhJR1QM/1HKzsiIC92L3Q2Mi4wLTI0L3N5bnRoZXRpY19zZWNvbmQuZW5jKAASFggAEgAiEDgzMDAwMDAwMDAwMDAwMDISBgjIARDAAhABEg8KDWltYWdlIGNhcHRpb24QARICMAA="
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": null
+        },
+        {
+          "id": "e-xma",
+          "message": {
+            "timestamp_ms": 1700000032000,
+            "message": "Ch8KDzEwMDAwMDAwMDAwMDAwMhIFZS14bWEYgMqX/7wxEvoCCvMCIvACOu0CCugCCuUCCuICIt8CENAPGgAiEDg0MDAwMDAwMDAwMDAwMDEogKSn2gYwAzpCCAsaHmh0dHBzOi8vc3ludGhldGljLmludmFsaWQvbGluayIeaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9saW5rQrcBCrIBCqkBCqYBCosBCiApT7fHcKwTg1Lh3fMgP4VJIvWqiMxaZbScTCaUNv54fhIgES4WcC+BmgjyxfJ65H2pddzXUsCLhKUdUpKREnn5DDUaIFq+GB4Izr1VmB2PZV3tFO5KkINoMmdh4SUdUDP9Rys7IiEvdi90NjIuMC0yNC9zeW50aGV0aWNfcHJldmlldy5lbmMoABIWCAASACIQODUwMDAwMDAwMDAwMDAwMRIECAAQABACShBBIHN5bnRoZXRpYyBsaW5rUhFzeW50aGV0aWMuaW52YWxpZHoAgAEDogEMbG9vayBhdCB0aGlzqgEAsgEAugEAEAESAjAA"
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": null
+        },
+        {
+          "id": "e-unsent",
+          "message": {
+            "timestamp_ms": 1700000033000,
+            "message": "CiIKDzEwMDAwMDAwMDAwMDAwMhIIZS11bnNlbnQY6NGX/7wxKgA="
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": null
+        },
+        {
+          "id": "e-admin",
+          "message": {
+            "timestamp_ms": 1700000034000,
+            "message": "CiEKDzEwMDAwMDAwMDAwMDAwMhIHZS1hZG1pbhjQ2Zf/vDESIwodIhsSGQoVChMKEQoPCg1hbiBhZG1pbiBsaW5lEAESAjAA"
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": null
+        },
+        {
+          "id": "7130316967772160001",
+          "message": {
+            "timestamp_ms": 1700000040000,
+            "message": "Ci0KDzEwMDAwMDAwMDAwMDAwMhITNzEzMDMxNjk2Nzc3MjE2MDAwMRjAiJj/vDESGwoZIhcSFQoRCg8KDQoLCgltaW5vcyBvbmUQAQ=="
+          },
+          "supplementals": {
+            "reaction:100000000000001": {
+              "timestamp_ms": 1700000041000,
+              "message": "Ci0KDzEwMDAwMDAwMDAwMDAwMRITNzEzMDMxNjk3MTk2NjQ2NDAwMhiokJj/vDESNQozIjESLworCikKJ4IBJAoVGhM3MTMwMzE2OTY3NzcyMTYwMDAxEgTwn5SlIKiQmP+8MRAB"
+            }
+          },
+          "attachments": [],
+          "tags": []
+        },
+        {
+          "id": "7130316976160768003",
+          "message": {
+            "timestamp_ms": 1700000042000,
+            "message": "Ci0KDzEwMDAwMDAwMDAwMDAwMRITNzEzMDMxNjk3NjE2MDc2ODAwMxiQmJj/vDESJQojIiESHwobChkKFwoVChNtaW5vcyB0d28sIHNhbWUga2V5EAE="
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": []
+        },
+        {
+          "id": "7130316980355072004",
+          "message": {
+            "timestamp_ms": 1700000043000,
+            "message": "Ci0KDzEwMDAwMDAwMDAwMDAwMhITNzEzMDMxNjk4MDM1NTA3MjAwNBj4n5j/vDESIwohIh8SHQoZChcKFQoTChFtaW5vcyB2ZXJzaW9uIG9uZRAB"
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": []
+        },
+        {
+          "id": "7130316984549376005",
+          "message": {
+            "timestamp_ms": 1700000044000,
+            "message": "Ci0KDzEwMDAwMDAwMDAwMDAwMhITNzEzMDMxNjk4NDU0OTM3NjAwNRjgp5j/vDES6QEK5gEi4wES4AEK2wEK2AEK1QES0gEKwAEKuwEKsAEKrQEKhwEKIJkq4GHj6plBCokZLJZXVkBErwECgTkkx0J23VvPMOzGEiA7iTJZaarIsp0eYhOPg4t4whYNCoxvA7aDW6UF832NxRogzJ4r8x7qQZK+9swrEXKJkZDRlNRQGVeos32QqBQE4IAiHy92L3Q2Mi4wLTI0L3N5bnRoZXRpY19pbWFnZS5lbmMSIQiAIBIKaW1hZ2UvanBlZyIQODEwMDAwMDAwMDAwMDAwMRIGCOADEIAFEAESDQoLbWlub3MgaW1hZ2UQAQ=="
+          },
+          "supplementals": {},
+          "attachments": [
+            {
+              "attachment_cdn_url": "https://cdn.synthetic.invalid/8100000000000001",
+              "attachment_object_id": "8100000000000001"
+            }
+          ],
+          "tags": []
+        }
+      ],
+      "converted": [
+        {
+          "id": "m-v0",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000001000,
+          "kind": "MessageText",
+          "text": "final text",
+          "reply_to": "m-reply-target",
+          "edit_timestamp_ms": 1700000004000,
+          "reactions": [
+            {
+              "sender": "100000000000001",
+              "timestamp_ms": 1700000002000,
+              "emoji": "👍"
+            }
+          ]
+        },
+        {
+          "id": "m-v2",
+          "outcome": "converted",
+          "sender": "100000000000001",
+          "timestamp_ms": 1700000005000,
+          "kind": "ImageMessage",
+          "text": "a caption",
+          "reactions": []
+        },
+        {
+          "id": "m-v3",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000006000,
+          "kind": "MessageText",
+          "text": "null salt",
+          "reactions": [
+            {
+              "sender": "100000000000003",
+              "timestamp_ms": 1700000006002,
+              "emoji": "b"
+            }
+          ]
+        },
+        {
+          "id": "m-v4",
+          "outcome": "error",
+          "reactions": []
+        },
+        {
+          "id": "m-unknown",
+          "outcome": "converted",
+          "sender": "100000000000001",
+          "timestamp_ms": 1700000008000,
+          "kind": "MessageText",
+          "text": "unknown is zero",
+          "reactions": []
+        },
+        {
+          "id": "m-plain",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000013000,
+          "kind": "MessageText",
+          "text": "in the clear",
+          "reactions": []
+        },
+        {
+          "id": "m-event",
+          "outcome": "skipped",
+          "reactions": []
+        },
+        {
+          "id": "e-text",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000020000,
+          "kind": "MessageText",
+          "text": "edited text",
+          "reply_to": "m-v0",
+          "edit_timestamp_ms": 1700000021000,
+          "reactions": [
+            {
+              "sender": "100000000000001",
+              "timestamp_ms": 1700000022000,
+              "emoji": "❤️"
+            },
+            {
+              "sender": "100000000000003",
+              "timestamp_ms": 1700000023000,
+              "emoji": "😀"
+            }
+          ]
+        },
+        {
+          "id": "e-video",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000030000,
+          "kind": "VideoMessage",
+          "text": "video caption",
+          "reactions": []
+        },
+        {
+          "id": "e-audio",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000030000,
+          "kind": "AudioMessage",
+          "reactions": []
+        },
+        {
+          "id": "e-document",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000030000,
+          "kind": "DocumentMessage",
+          "reactions": []
+        },
+        {
+          "id": "e-sticker",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000030000,
+          "kind": "StickerMessage",
+          "reactions": []
+        },
+        {
+          "id": "e-image",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000031000,
+          "kind": "ImageMessage",
+          "text": "image caption",
+          "reactions": []
+        },
+        {
+          "id": "e-xma",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000032000,
+          "kind": "Armadillo",
+          "reactions": []
+        },
+        {
+          "id": "e-unsent",
+          "outcome": "skipped",
+          "reactions": []
+        },
+        {
+          "id": "e-admin",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000034000,
+          "kind": "MessageText",
+          "text": "an admin line",
+          "reactions": []
+        },
+        {
+          "id": "7130316967772160001",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000040000,
+          "kind": "MessageText",
+          "text": "minos one",
+          "reactions": [
+            {
+              "sender": "100000000000001",
+              "timestamp_ms": 1700000041000,
+              "emoji": "🔥"
+            }
+          ]
+        },
+        {
+          "id": "7130316976160768003",
+          "outcome": "converted",
+          "sender": "100000000000001",
+          "timestamp_ms": 1700000042000,
+          "kind": "MessageText",
+          "text": "minos two, same key",
+          "reactions": []
+        },
+        {
+          "id": "7130316980355072004",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000043000,
+          "kind": "MessageText",
+          "text": "minos version one",
+          "reactions": []
+        },
+        {
+          "id": "7130316984549376005",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000044000,
+          "kind": "ImageMessage",
+          "text": "minos image",
+          "reactions": []
+        }
+      ]
+    },
+    {
+      "name": "group",
+      "thread_id": "900000000000001",
+      "self_user_id": 100000000000001,
+      "is_group": true,
+      "response": {
+        "encrypted_backup": {
+          "mailbox": {
+            "messages_from_selected_threads": [
+              {
+                "backup_id": "2000000000000001",
+                "encrypted_messages": [
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "7130317051658240001",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": null,
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": {
+                        "actor_token": "100000000000003",
+                        "encrypted_protobuf": "oLmkUdXjNJFOcEh+CLuXcvDpHniyghAMWEpPuNG5HmLb+B+wcb3a7syPGtCZScdhWB1XO12GaOtb1F+OmefAR7g54doPge5sxsATDupH5ur89LMyzB/I9pwQlNU2UfuvbeCB6eCey4Y3lJHaQ0d52Xn8SOsQKpVH9emk+NMSI4pzxJ7AjZDD1hOJi4eR1T2/i+my8XO/",
+                        "mek_fbid": "7100000000000001",
+                        "mek_id": "sXuGs9hjFCUm19gF",
+                        "message_encryption_version": 2,
+                        "message_metadata_version": 2,
+                        "protobuf_timestamp": "1700000060000",
+                        "server_origin_content_type": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": "",
+                        "transport_sender_message_signature": "BI0g6cpTdm8J2tjaDYphByiQHXLsChT4rOyuXP93l8YO7lFtAFUV+CZHBv0By7eoUZfWMjzuCfm1CiI+UqEDbYg=",
+                        "transport_sender_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                      }
+                    }
+                  },
+                  {
+                    "attachment_data": [],
+                    "echo_document": null,
+                    "otid": "g-v3",
+                    "protobuf_stanzas": {
+                      "message_tags": [],
+                      "supplemental_protobufs": [],
+                      "supplemental_protobufs_v2": [],
+                      "top_level_protobuf": {
+                        "encrypted_protobuf_stanza": "a4kNUnFrJqgqx6+Bidh4RVxINMOLg6tJG2uO5gicosZ5e9omuHBO0ZOTHbVMzzUi8g5iRG4H/M5PNxpe1V01Ao25SZXjEK2K/ySUxOq4Htb6C/bCX8wzc9V4oZnPSIP8cB5fNXdeQM9xGNJ/yMi3ByC6mZQZjw==",
+                        "encryption_version": "ENCRYPTION_KDF_WITH_NULL_SALT",
+                        "epoch_anon_id": "4000000000000002",
+                        "epoch_id": "3000000000000002",
+                        "protobuf_timestamp_ms": "1700000061000",
+                        "sk_ciphertext": null,
+                        "supplemental_key": "",
+                        "supplemental_otid": ""
+                      },
+                      "top_level_protobuf_unencrypted": null,
+                      "top_level_protobuf_v2": null
+                    }
+                  }
+                ],
+                "epoch_derivation_set": null,
+                "exception_string": null,
+                "message_range_info": {
+                  "has_more_after": false,
+                  "has_more_before": false,
+                  "next_message_timestamp_ms_after": "0",
+                  "next_message_timestamp_ms_before": "0"
+                },
+                "minos_decryption_keys": [
+                  {
+                    "id": "7100000000000001",
+                    "keys": {
+                      "mek_creator_info": {
+                        "mandrake_keys": null,
+                        "minos_keys": null,
+                        "transport_keys": {
+                          "ephm_hpke_pk": "A1r5pUgIiCRWGktvmNwRbBxNSUpW9155TVm6sjCaUMdM",
+                          "ephm_signature": "BLjJer7e0qkHmcYElb5Iv5nr5QjB+jlv85bDZ612MWcYWFRJgSUsvUs68u+o820IA19OV1oJ200DrmHVZvpT2I8=",
+                          "mek_creator_transport_signing_pk": "BEg8Cp9dr+lf3yy/vV3Tf0snQmYfspgjUWAkJTfPByVk"
+                        }
+                      },
+                      "mek_info": {
+                        "encrypted_mek": "A3GRge6j1N4tJ8ZGprWAj3ZzP+KTdR+u6M5rkbJaD9Q6B62djVWlyaeohnf6MCruOnT63tVYsCPAprXYVP2XKmxy+1hEWhLG/+b2QN6yN/QKYbWpHMrq4K1EACCFySVcZmdkjqiQ8/uiblzbblporTid1GceBT+j20st1+r7vt9A11yTtvYwzotwJusrX12qUu3mCVEThLfZmLxE5ii/xihEbgRLTR2dOHtRRZrwHVFZ/l8SLjy2vIWbB6ORAfvnspYHbVAv+jCyv0+It4MG8pC0p8rxYT1vY2EDl3y4gsAkwIL+LMLnhByd2ewalCdjOpIK4l8c/AeMVUk3EymL4RQVbdX1N49za32yt35Es9PC8Zroq6dRgcLX/nZuCWN+Ec3xI3WIwhyEwziA0GTaTmqgHTxKc8z1C404+6yr1n5DaEC8gxVexAYIdT81P8dihh+Lhw7hOy9drXpMDgt8v8CS/MNm73Z7km25DgbdE9YY62KT1YreBBv6+9KjiRkQgD8kpPsPX60KcqA7/aDR7jejtBv3pYM6zKcWErtD7cn+u1TAwezDE3/bLaRlEc7KDe1YSCKAZsnUHr/ON1m+8XHtpMO2hlxJdPDE33RrkmiHZUZ4LeehBkT3kfbU6G5yMFx7ml1MT3IL5QSnn1rvHx3UhE2SmVxpC2ioTkfkAQ7gxa1SkfYyowVa9+YiRuXmnylQ1YdRc2CRhqnIA6+Fg1aH55C8u+Uky1I6BiwM9IU2IdSz7LBYACnj85ycclSS2K37gW0eA/0RNxD4lJSMXXSf73CiZmMtykOOq7fSE7o0P6xtS8Wt+fUyBcC/nG8UgBW4wjHJLG4WTBb3FgC9XHULE10DqJCDbQnjKRugkgFFs4Moo/j0HXQjLDzjJOiqWDTCNn1/tRz1Y6WJPlhmDPms/RprjxhAv1dMMewl6OZfURrxjUDxL7gKNSPVbfWHQhUoPm5902NaDPxF1/cCEEtO0qtczwODR8+j0DROcxM3Iga2yQo+pENlmU+ll0H2lezsrR/PgMWzZysMNIHPCFYAsemD2ZMqPnd1uVNtRpdQaZozKz8pQe8705j8uAVNPLj+NLGHRbizvwjrpC/+0tUfxsUY2ze88Kv2bWxzxXAbbo1ThYRTuc/J0y8dhuGIikMi6zv3kLx8nSM06s6jhivqg6fWrho0JM1lwUybzdB+mMD5x8viagDhWl8HX1E7/kXIFQVvpBWVLz87ZzhYtabC0H9tjWKY6z+Hi68BNhXET3t1creHsTxSWcZgDMTsBXd8GVVBo+xRSNmp5EfvCu4ygB89YfzSfDccSDjOj9Abtm/yfH5wjHuReduTXUPEi6ieF4/t8EJpDX+zpTM82EJDqTqC9iLc0h6jxZrh3mXpzGuyfCunQAEXx9KuJnZUKVMS4OGnGLNW0EyAlArLwKIxSRNN+EJReolUETWUbSnDDrICys+U0QML6PcgbCOePl1N4GFjo7FGYocyLAEWlULNM+uAWt6T+hsnQ79KCnkCOQxFHLSbuwUStnRQvq1QNMYwfONjcPrmLhu7AOY/AE1L",
+                        "mek_creation_timestamp": "1700000000000",
+                        "mek_encryption_version": 2,
+                        "mek_id": "sXuGs9hjFCUm19gF",
+                        "roster_hash": "nAK26RIx9fGynLMWhx6ScSOE92j9n5KqSDXqJBwbrPk="
+                      },
+                      "recipient_info": {
+                        "epoch_anon_id": "NDAwMDAwMDAwMDAwMDAwMg==",
+                        "epoch_fbid": "3000000000000002",
+                        "epoch_head": "hRT/qmc+FnBSfiMFsgAIIqK3Igscru8KNXwgV9gzmlU="
+                      }
+                    }
+                  }
+                ],
+                "should_delete_mailbox": false,
+                "thread_not_found": false
+              }
+            ]
+          }
+        }
+      },
+      "decrypted": [
+        {
+          "id": "7130317051658240001",
+          "message": {
+            "timestamp_ms": 1700000060000,
+            "message": "Ci0KDzEwMDAwMDAwMDAwMDAwMxITNzEzMDMxNzA1MTY1ODI0MDAwMRjgpJn/vDESHQobIhkSFwoTChEKDwoNCgtncm91cCBtaW5vcxAB"
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": []
+        },
+        {
+          "id": "g-v3",
+          "message": {
+            "timestamp_ms": 1700000061000,
+            "message": "Ch4KDzEwMDAwMDAwMDAwMDAwMhIEZy12MxjIrJn/vDESHwodIhsSGQoVChMKEQoPCg1ncm91cCBhcmNoaXZlEAE="
+          },
+          "supplementals": {},
+          "attachments": [],
+          "tags": []
+        }
+      ],
+      "converted": [
+        {
+          "id": "7130317051658240001",
+          "outcome": "converted",
+          "sender": "100000000000003",
+          "timestamp_ms": 1700000060000,
+          "kind": "MessageText",
+          "text": "group minos",
+          "reactions": []
+        },
+        {
+          "id": "g-v3",
+          "outcome": "converted",
+          "sender": "100000000000002",
+          "timestamp_ms": 1700000061000,
+          "kind": "MessageText",
+          "text": "group archive",
+          "reactions": []
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "app_id": "999000000000001",
+    "before": true,
+    "count": 20,
+    "expected": {
+      "app_id": "999000000000001",
+      "includeAttachmentData": true,
+      "restore_payload_strings": [
+        "{\"restore_context\":{\"act_thread_id\":\"100000000000002\",\"site\":\"www\",\"source\":-1,\"tam_thread_subtype\":0},\"success\":{\"device_context\":{\"device_id\":\"1000000000000001\",\"locally_available_epochs\":[\"3000000000000001\",\"3000000000000002\"],\"raw_tokens\":{\"mailbox_root_key\":\"OzUS25K9HfvxyMv11uYUK6SZP4RPm6ttrohhkNWP/i8=\",\"ocmf_client_state_blob\":\"/BNeOvdcZjjhIrImCh//Sn1nrp/1ctbVAFJht33aMs3T9ceh2kF5LgO2SsPyveuI\"}},\"direction\":1,\"query_num_messages\":20,\"reference_timestamp\":\"1700000050000\",\"server_thread_key\":100000000000002,\"source\":-1}}"
+      ],
+      "restore_type": "RANGE_QUERY_RESTORE"
+    },
+    "thread_id": "100000000000002",
+    "timestamp_ms": 1700000050000
+  }
+}
