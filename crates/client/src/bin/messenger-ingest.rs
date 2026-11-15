@@ -22,8 +22,9 @@ use std::process::ExitCode;
 use messenger_client::chat::Chat;
 use messenger_client::cookies::Jar;
 use messenger_client::daemon::{Client, Settings};
-use messenger_client::{device, session, transcribe};
+use messenger_client::{device, restore, session, transcribe};
 use messenger_core::db::{create_pool, ensure_schema};
+use whatsapp_client::baileys::Device;
 
 #[tokio::main]
 async fn main() -> ExitCode {
@@ -112,6 +113,9 @@ async fn main() -> ExitCode {
         }
     };
     drop(conn);
+    if std::env::args().nth(1).as_deref() == Some("restore-history") {
+        return restore_history(pool, &account, jar, stored_device).await;
+    }
     let whisper =
         std::env::var("MESSENGER_WHISPER_URL").unwrap_or_else(|_| "http://whisper-cpp:8080".into());
     tokio::spawn(transcribe::Worker::new(pool.clone(), &whisper).run(transcribe::INTERVAL));
@@ -132,6 +136,62 @@ async fn main() -> ExitCode {
         None => client.run().await,
     }
     ExitCode::SUCCESS
+}
+
+/// `messenger-ingest restore-history`: once, by hand, in a terminal (`docker exec -it`).
+/// Recovers the encrypted backup with the PIN typed at the prompt, enrols a history device,
+/// and fills the encrypted chats' text from the archive. A second run skips straight to
+/// reading the archive with the device the first one enrolled.
+async fn restore_history(
+    pool: sqlx::PgPool,
+    account: &str,
+    jar: Jar,
+    stored_device: Option<(Device, device::Messenger)>,
+) -> ExitCode {
+    let Some((keys, _)) = stored_device else {
+        tracing::error!("no encrypted device stored: there is nothing to restore into");
+        return ExitCode::FAILURE;
+    };
+    let mut client = match Client::new(pool, Settings::new(account), jar) {
+        Ok(client) => client,
+        Err(e) => {
+            tracing::error!("cannot build the HTTP client: {e}");
+            return ExitCode::FAILURE;
+        }
+    };
+    let prompt = |attempts: Option<i64>| {
+        let left = attempts.map_or("an unknown number of".into(), |n| n.to_string());
+        eprintln!("Meta allows {left} more PIN attempt(s) for this backup. One is used now.");
+        rpassword::prompt_password("Secure storage PIN (empty to stop): ")
+            .ok()
+            .filter(|pin| !pin.is_empty())
+            .map(zeroize::Zeroizing::new)
+    };
+    let history = match restore::enroll(&mut client, account, &keys.identity, prompt).await {
+        Ok(device) => device,
+        Err(e) => {
+            tracing::error!("history recovery failed: {e}");
+            return ExitCode::FAILURE;
+        }
+    };
+    tracing::info!("history device enrolled; reading the archive");
+    match restore::fetch_all(&mut client, account, history).await {
+        Ok(done) => {
+            tracing::info!(
+                "restore finished: {} thread(s), {} page(s), {} message(s) read, {} stored, {} skipped",
+                done.threads,
+                done.pages,
+                done.messages,
+                done.stored,
+                done.failed
+            );
+            ExitCode::SUCCESS
+        }
+        Err(e) => {
+            tracing::error!("reading the archive failed: {e}");
+            ExitCode::FAILURE
+        }
+    }
 }
 
 /// Stores the browser's encrypted device on the first start that is given one.

@@ -11,18 +11,34 @@ license = "AGPL-3.0-only"
 publish.workspace = true
 
 [dependencies]
+aes = "0.9.4"
+aes-gcm = "0.11.1"
 base64 = "0.23.1"
+chacha20 = { version = "0.10.2", default-features = false, features = ["xchacha"] }
 chrono = { workspace = true }
+# Secure history: the PIN login (a 2021 OPAQUE draft, by hand), the HSM's signatures, and
+# XEdDSA signing plus the OCMF scalar for history-device enrolment.
+curve25519-dalek = { version = "5.0.0", features = ["digest"] }
+ed25519-dalek = "3.0.0"
 futures-util = { version = "0.3.34", default-features = false, features = ["sink", "std"] }
+hkdf = "0.13.0"
+hmac = "0.13.0"
 messenger-core.workspace = true
+ml-kem = "0.3.4"
+pbkdf2 = "0.13.0"
 prost = "0.14.6"
 rand = "0.10.3"
 # HTTP/2 as a browser speaks it: over HTTP/1.1 the page's chunked body started failing to
 # read on 2026-11-14 while curl, on either version, read it fine.
 reqwest = { version = "0.12.28", default-features = false, features = ["rustls-tls-webpki-roots", "http2"] }
+# The history restore asks for the backup PIN on the terminal, without echoing it.
+rpassword = "7.4.0"
+rsa = { version = "0.10.0", default-features = false, features = ["std", "encoding", "pkcs1v15"] }
 serde = { workspace = true }
 serde_json = { workspace = true }
+sha2 = "0.11.1"
 sqlx.workspace = true
+subtle = "2.6.1"
 thiserror = "2.0.18"
 tokio = { workspace = true, features = ["macros", "rt", "time", "net"] }
 tokio-tungstenite = { version = "0.30.0", features = ["rustls-tls-webpki-roots"] }
@@ -31,11 +47,10 @@ tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
 # The encrypted device is WhatsApp's: its Signal sessions, keys and their store. Pinned to a
 # commit of the public repo; AGPL like this crate.
 whatsapp-client = { git = "https://github.com/rgryta/whatsapp-sync", rev = "11e758d61374b3a8b85973d509df7ccdbccc135e" }
+x25519-dalek = { version = "3.0.0", features = ["static_secrets"] }
+zeroize = "1.9.1"
 
 [dev-dependencies]
-# Signs the synthetic signed pre-key in tests/device.rs, as libsignal does.
-curve25519-dalek = { version = "5.0.0", features = ["digest"] }
-sha2 = "0.11.0"
 hex = "0.4.3"
 testcontainers = { version = "0.27.3", features = ["reusable-containers"] }
 testcontainers-modules = { version = "0.15.0", features = ["postgres"] }

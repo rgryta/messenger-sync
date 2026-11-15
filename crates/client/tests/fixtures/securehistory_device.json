@@ -1,0 +1,3613 @@
+{
+  "apply_epochs": {
+    "device": {
+      "id": "500000000000001",
+      "backup_id": "200000000000001",
+      "storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+      "storage_private_key": "TB4LRusysP/aQpGaWG+f68VHjPwUUC6rfHI7hTwuATE=",
+      "mailbox_root_key": "vnCQSO3FknxjQ7LYwsRcz9mWFN0nSXhsqgZarGHwLtM=",
+      "ocmf_client_state": "q6UXfPVh9ics0noOFacSQ/+vWx7InUz+HDqkrHU/NAw=",
+      "epochs": {
+        "910000000000105": {
+          "id": "910000000000105",
+          "anon_id": "MTA1",
+          "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+        }
+      }
+    },
+    "result": {
+      "id": "500000000000001",
+      "backup_id": "200000000000001",
+      "storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+      "storage_private_key": "TB4LRusysP/aQpGaWG+f68VHjPwUUC6rfHI7hTwuATE=",
+      "mailbox_root_key": "vnCQSO3FknxjQ7LYwsRcz9mWFN0nSXhsqgZarGHwLtM=",
+      "ocmf_client_state": "q6UXfPVh9ics0noOFacSQ/+vWx7InUz+HDqkrHU/NAw=",
+      "epochs": {
+        "910000000000104": {
+          "id": "910000000000104",
+          "anon_id": "MTA0",
+          "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+        },
+        "910000000000105": {
+          "id": "910000000000105",
+          "anon_id": "MTA1",
+          "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+        },
+        "910000000000106": {
+          "id": "910000000000106",
+          "anon_id": "MTA2",
+          "root_key": "jEV/vncI/8Azy+X969BvcjuyGiHYqcfGFvVZrX6DBEE="
+        },
+        "910000000000107": {
+          "id": "910000000000107",
+          "anon_id": "MTA3",
+          "root_key": "x8ntx2pdWmtJTXJEl6rzZGBJgURyOFMMWfxH6f38FNQ="
+        }
+      }
+    },
+    "set": {
+      "epoch_edges": [
+        {
+          "from_epoch": {
+            "epoch_id": "910000000000105",
+            "epoch_anon_id": "MTA1"
+          },
+          "to_epoch": {
+            "epoch_id": "910000000000106",
+            "epoch_anon_id": "MTA2"
+          },
+          "backward_edge": null,
+          "forward_edge": {
+            "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+            "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+            "entropy_fingerprint": "unused",
+            "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+            "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+          },
+          "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+          "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+        },
+        {
+          "from_epoch": {
+            "epoch_id": "910000000000106",
+            "epoch_anon_id": "MTA2"
+          },
+          "to_epoch": {
+            "epoch_id": "910000000000107",
+            "epoch_anon_id": "MTA3"
+          },
+          "backward_edge": null,
+          "forward_edge": {
+            "auth_public_key": "dZKE7l84m1IEfK3668GX4l1Dd554e7btnbpqN7+6mnw=",
+            "encrypted_entropy": "ARs47qeHglQ85CcJ0k+Ov/39Zh56aUC60VWZE6e4ITUktPJeCYVeK7WZke4m1Ra71Yn9PyylezdB2nTpAChcSlBA08HU9vaodJRpmcmBH0Ci",
+            "entropy_fingerprint": "unused",
+            "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+            "psk_fingerprint": "9YNHxujF0FmKpnyTiJNCwnoq"
+          },
+          "from_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq",
+          "to_epoch_fingerprint": "P5VFqc7VYAsRKzxBBpg/vP+o"
+        },
+        {
+          "from_epoch": {
+            "epoch_id": "910000000000105",
+            "epoch_anon_id": "MTA1"
+          },
+          "to_epoch": {
+            "epoch_id": "910000000000104",
+            "epoch_anon_id": "MTA0"
+          },
+          "backward_edge": "ndSiVRjybacczL/ePUIjHLY5EGOf+Sm/1IVFwvTltJd9VGh6Cf8ekReJdeCPTbTLdYpN8usdoEiWLZmp7C9hfm07HRlMOLV/lzDlc0B6X3Kcu3EO6TqVgH7Ieh0=",
+          "forward_edge": null,
+          "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+          "to_epoch_fingerprint": "BPOVeKdNzGON8NU5OUjkkxFx"
+        }
+      ]
+    }
+  },
+  "apply_epochs_failures": [
+    {
+      "name": "source missing",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000107",
+              "epoch_anon_id": "MTA3"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "dZKE7l84m1IEfK3668GX4l1Dd554e7btnbpqN7+6mnw=",
+              "encrypted_entropy": "ARs47qeHglQ85CcJ0k+Ov/39Zh56aUC60VWZE6e4ITUktPJeCYVeK7WZke4m1Ra71Yn9PyylezdB2nTpAChcSlBA08HU9vaodJRpmcmBH0Ci",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "9YNHxujF0FmKpnyTiJNCwnoq"
+            },
+            "from_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq",
+            "to_epoch_fingerprint": "P5VFqc7VYAsRKzxBBpg/vP+o"
+          }
+        ]
+      },
+      "error": "backup epoch source mismatch"
+    },
+    {
+      "name": "source anon id differs",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA0"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "backup epoch source mismatch"
+    },
+    {
+      "name": "source fingerprint differs",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "BPOVeKdNzGON8NU5OUjkkxFx",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "backup epoch source mismatch"
+    },
+    {
+      "name": "destination anon id not base64",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "%%%"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "invalid Messenger backup epoch destination"
+    },
+    {
+      "name": "destination anon id not digits",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MXg2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "invalid Messenger backup epoch destination"
+    },
+    {
+      "name": "destination id empty",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "invalid Messenger backup epoch destination"
+    },
+    {
+      "name": "destination fingerprint differs",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM"
+          }
+        ]
+      },
+      "error": "backup epoch destination fingerprint mismatch"
+    },
+    {
+      "name": "forward skips a sequence",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA3"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "backup forward epoch mismatch"
+    },
+    {
+      "name": "forward to a foreign storage key",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "yfObL5KzQRckM/5JqLgErTZF1pHuz1ceR8oRYaLN5Qs=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "backup forward epoch mismatch"
+    },
+    {
+      "name": "forward without psk fingerprint",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": ""
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "backup forward epoch mismatch"
+    },
+    {
+      "name": "forward psk fingerprint differs",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "backup epoch PSK fingerprint mismatch"
+    },
+    {
+      "name": "forward envelope tampered",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DupsbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "failed to decrypt Messenger backup epoch entropy: cipher: message authentication failed"
+    },
+    {
+      "name": "forward envelope version",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AltWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "failed to decrypt Messenger backup epoch entropy: invalid or unsupported Messenger backup public-key envelope"
+    },
+    {
+      "name": "forward envelope short",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdH0=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "failed to decrypt Messenger backup epoch entropy: invalid or unsupported Messenger backup public-key envelope"
+    },
+    {
+      "name": "forward auth key short",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "9PzZKkn/RN0IYkDicZZLyWNPORqpJZfQ/mowGbJHdA==",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "failed to decrypt Messenger backup epoch entropy: crypto/ecdh: invalid public key"
+    },
+    {
+      "name": "forward auth key of small order",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000106",
+              "epoch_anon_id": "MTA2"
+            },
+            "backward_edge": null,
+            "forward_edge": {
+              "auth_public_key": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+              "encrypted_entropy": "AVtWLSP/gXo71/lRe7al7sWJqKvyKsak/gvKC9QHa3Ue1+KqhMC0qbyslX4BRNnQ7DuosbdW3kZM+eS/JWMbzbztMgUa0x/OFvH4C1XZKoR1",
+              "entropy_fingerprint": "unused",
+              "epoch_storage_public_key": "6XFu1/FEpM5LKqu687Q/QRKEU/0xPyUlswlqmK6Jti8=",
+              "psk_fingerprint": "wVNfpJxlY8arApFoRxj7aSy9"
+            },
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "WjkwKF1+22i3DjoRcr2mfYXq"
+          }
+        ]
+      },
+      "error": "failed to decrypt Messenger backup epoch entropy: crypto/ecdh: bad X25519 remote ECDH input: low order point"
+    },
+    {
+      "name": "backward skips a sequence",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000104",
+              "epoch_anon_id": "MTAz"
+            },
+            "backward_edge": "ndSiVRjybacczL/ePUIjHLY5EGOf+Sm/1IVFwvTltJd9VGh6Cf8ekReJdeCPTbTLdYpN8usdoEiWLZmp7C9hfm07HRlMOLV/lzDlc0B6X3Kcu3EO6TqVgH7Ieh0=",
+            "forward_edge": null,
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "BPOVeKdNzGON8NU5OUjkkxFx"
+          }
+        ]
+      },
+      "error": "backup backward epoch mismatch"
+    },
+    {
+      "name": "backward edge empty",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000104",
+              "epoch_anon_id": "MTA0"
+            },
+            "backward_edge": null,
+            "forward_edge": null,
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "BPOVeKdNzGON8NU5OUjkkxFx"
+          }
+        ]
+      },
+      "error": "backup backward epoch mismatch"
+    },
+    {
+      "name": "backward edge tampered",
+      "input": {
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000105",
+              "epoch_anon_id": "MTA1"
+            },
+            "to_epoch": {
+              "epoch_id": "910000000000104",
+              "epoch_anon_id": "MTA0"
+            },
+            "backward_edge": "ndSiVRjybacczL/ePUIjHLY5EGOf+Sm/1IVFwvTltJd9VGh6Cf8ekRaJdeCPTbTLdYpN8usdoEiWLZmp7C9hfm07HRlMOLV/lzDlc0B6X3Kcu3EO6TqVgH7Ieh0=",
+            "forward_edge": null,
+            "from_epoch_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+            "to_epoch_fingerprint": "BPOVeKdNzGON8NU5OUjkkxFx"
+          }
+        ]
+      },
+      "error": "failed to decrypt Messenger backup epoch: cipher: message authentication failed"
+    }
+  ],
+  "decrypt_secret": {
+    "blob_key": "SbtCTsAza/5ObAjhWYg5xGfzNwT76NxgxRstDyRjXKA=",
+    "cases": [
+      {
+        "ciphertext": "DNhydNZwhMqvDg02yEltt/71X+DhJXUKpgjV4otbowdr3idhpz7yQyk5NPRxib2J8X2PDWFQc6MlhOrifcF3k2OEv4VoWT5x9+qonzPWNFZdbVC2rIyoS1meOfI=",
+        "error": "",
+        "name": "epoch_root_key",
+        "value": "auZ4P0+96RtuuItzpI7SR9vliC4leWg0MsG/xSVFSt0="
+      },
+      {
+        "ciphertext": "D/wtEhL0pGVO+ivRHjqel+LiMOHuY1rMqKHi13NCT97noHng0kmpIYhxdLKOdGReWtCyCrhK+i3rEjE4JoprCfcL0mMGMicOi3iAa7uMDh1NX9jlDpWDOclhEhY=",
+        "error": "",
+        "name": "epoch_root_key",
+        "value": "auZ4P0+96RtuuItzpI7SR9vliC4leWg0MsG/xSVFSt0="
+      },
+      {
+        "ciphertext": "Z2Zj89QVckc6MR3oW82zIHt8gx0ckCAVdASJ6i9lGzTK3aHzzc4LX7GSCCSxwkAc7zpaDKazT7Up1Af6iC7TX4MC1hAh6nCeKqGNtkwEGIBfM6CnfiHo2lk+fak=",
+        "error": "failed to decrypt Messenger backup epoch_root_key",
+        "name": "epoch_root_key",
+        "value": null
+      },
+      {
+        "ciphertext": "FVQmOF+2eNcQ82f7KJ0E9CkZQf43QwPyIJ6kU6h+dBSPylzN4HZA32kCrRq16bQuLcnpfe+e9U6eZTs=",
+        "error": "failed to decrypt Messenger backup x",
+        "name": "x",
+        "value": null
+      }
+    ]
+  },
+  "derive_epochs_failures": [
+    {
+      "name": "no base epoch id",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "missing Messenger backup epoch metadata"
+    },
+    {
+      "name": "no secrets",
+      "input": {
+        "encrypted_secret_values": null,
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "missing Messenger backup epoch metadata"
+    },
+    {
+      "name": "anon id is not digits",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "DsoolCbeuiP3y1WU3JCc69Rbfvc0SDR82SI1FsJ1PRhdxeZ+BvL4eEle7EAusXet7p5jXg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "invalid Messenger backup epoch anonymous ID"
+    },
+    {
+      "name": "anon id too long",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "CHV1243GXckwh1d7bVd9/IPWcu7bu1szpzKCiigVbmdeulUmQeniV0a6Tv7VEGsi452+d8yqFP4zX6saXoIR+Q==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "invalid Messenger backup epoch anonymous ID"
+    },
+    {
+      "name": "root key under a foreign aad",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "waZ0bAqRmrJeqZHcOYqhg/5omdQSsz6WgkcVsEZ1h2rAAPWAMhcdnNUtkeWNLxCL5xo2teYCZYzgUBGnv9P9qP4B3NdLbSeppa6o1wCzL5lo9+obiLJ5GeRIOAI=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "failed to decrypt Messenger backup epoch_root_key"
+    },
+    {
+      "name": "short root key",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "Dd00U2XkNxiqTQQYjeFZixq2aAQMeoJHO1B9LQuG5tD8sWbgrJstHj6Ggdo7yVl/kXwmPhLFrqCxstqjSJmtf5RQkiZOJQK0XWsF5O2xpEkLKglnOiDeZwwnDHw=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "invalid Messenger backup epoch root key"
+    },
+    {
+      "name": "last epoch unreachable",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000999",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "missing Messenger backup forward epoch edge"
+    },
+    {
+      "name": "forward epoch missing",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "missing Messenger backup forward epoch"
+    },
+    {
+      "name": "forward cycle",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "cycle in Messenger backup epoch chain"
+    },
+    {
+      "name": "foreign storage public key",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "vPf+IU+258hGV1WiGwB3m/Q9KCliFvfe/r9m51lUllQ=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "failed to decrypt Messenger backup epoch entropy: cipher: message authentication failed"
+    },
+    {
+      "name": "tampered forward entropy",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/tHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "failed to decrypt Messenger backup epoch entropy: cipher: message authentication failed"
+    },
+    {
+      "name": "forward anon id invalid",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "abc",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "invalid Messenger backup forward epoch"
+    },
+    {
+      "name": "backward cycle",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "cycle in Messenger backup epoch chain"
+    },
+    {
+      "name": "backward data missing",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "missing or unsupported Messenger backup epoch edge"
+    },
+    {
+      "name": "backward epoch missing",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000099",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "missing or unsupported Messenger backup epoch edge"
+    },
+    {
+      "name": "tampered backward root key",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lBn4PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "failed to decrypt Messenger backup epoch: cipher: message authentication failed"
+    },
+    {
+      "name": "backward root key short",
+      "input": {
+        "encrypted_secret_values": {
+          "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+          "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+          "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+          "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+          "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+          "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+          "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+        },
+        "epoch_id": "910000000000103",
+        "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+        "last_epoch_id": "910000000000105",
+        "sync_epochs": [
+          {
+            "epoch_id": "910000000000101",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "101",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000102",
+            "prev_epoch_id": "",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000102",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "102",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000103",
+            "prev_epoch_id": "910000000000101",
+            "epoch_data_v2": {
+              "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+              "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000103",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "103",
+            "epoch_auth_public_key": null,
+            "encrypted_epoch_key": null,
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000104",
+            "prev_epoch_id": "910000000000102",
+            "epoch_data_v2": {
+              "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+              "epoch_root_key": "Csxat1tksRHux+C8ThBCL6c539reMhu8UAMZZMGy0fJ3yRiLhCKuWJCMDQr2CMWwl+XFmBqXEf7s/xhhShZ6WmGBxhGDz86p"
+            },
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000104",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "104",
+            "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+            "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+            "is_active_epoch": false,
+            "next_epoch_id": "910000000000105",
+            "prev_epoch_id": "910000000000103",
+            "epoch_data_v2": null,
+            "minos_epoch": null
+          },
+          {
+            "epoch_id": "910000000000105",
+            "backup_id": "200000000000001",
+            "epoch_anon_id": "105",
+            "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+            "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+            "is_active_epoch": true,
+            "next_epoch_id": "",
+            "prev_epoch_id": "910000000000104",
+            "epoch_data_v2": null,
+            "minos_epoch": {
+              "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+              "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+            }
+          }
+        ],
+        "minos_epoch": {
+          "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+          "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+        },
+        "epoch_edges": [
+          {
+            "from_epoch": {
+              "epoch_id": "910000000000102"
+            },
+            "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+          }
+        ]
+      },
+      "error": "invalid recovered Messenger backup epoch"
+    }
+  ],
+  "derive_virtual_device": [
+    {
+      "blob_key": "D0fdSvg2LshsKR7xvRSEIVuzYuNKhFbKuAfsNdwNk4U=",
+      "code": "1BQWERTYUIOPASDFGHJKLZXCVBNM234567QWERTY",
+      "error": "",
+      "id": "X3HRs4Ll/3g=",
+      "user_id": "100000000000001"
+    },
+    {
+      "blob_key": "SbtCTsAza/5ObAjhWYg5xGfzNwT76NxgxRstDyRjXKA=",
+      "code": "2CMNBVCXZLKJHGFDSAPOIUYTREWQ765432MNBVCX",
+      "error": "",
+      "id": "6nXR8Fq1RdF5IY1NaM/ZAQ==",
+      "user_id": "100000000000001"
+    },
+    {
+      "blob_key": "P7AE0TyslLVbOzuZNhE6fCLAW2aJZC+t00xh4hD9Jio=",
+      "code": "2CMNBVCXZLKJHGFDSAPOIUYTREWQ765432MNBVCX",
+      "error": "",
+      "id": "0ZASaeYdnGs0Id29lvM0Jg==",
+      "user_id": "400000000000001"
+    },
+    {
+      "blob_key": null,
+      "code": "1BQWERTYUIOPASDFGHJKLZXCVBNM234567QWERT",
+      "error": "invalid Messenger recovery code or account",
+      "id": null,
+      "user_id": "100000000000001"
+    },
+    {
+      "blob_key": null,
+      "code": "3BQWERTYUIOPASDFGHJKLZXCVBNM234567QWERTY",
+      "error": "invalid Messenger recovery code or account",
+      "id": null,
+      "user_id": "100000000000001"
+    },
+    {
+      "blob_key": null,
+      "code": "2CMNBVCXZLKJHGFDSAPOIUYTREWQ765432MNBVCX",
+      "error": "invalid Messenger recovery code or account",
+      "id": null,
+      "user_id": ""
+    }
+  ],
+  "prepare_device": {
+    "armadillo_private": "d/Tf2Sojp6o4JGJ3NLbpAxKfvuPCXx1Dy5fHozwaOhg=",
+    "armadillo_public": "m297BEsJ+qSIujFb8HkghdGs++6caoRJgmebr8zdQGw=",
+    "backup_id": "200000000000001",
+    "device": {
+      "id": "",
+      "backup_id": "200000000000001",
+      "storage_public_key": "DQ6BBwRQz/sd2C3cebn+rU6J8cWG6Kz909pjL4Xbzl4=",
+      "storage_private_key": "IDP4IzPD7i8UodoFoZvSBcjksO2m5LpW1dlIftlZvWs=",
+      "mailbox_root_key": "p2axOvPqTcivwMPp1X0uesVDdkcWRhrCQGqULJZC2pY=",
+      "ocmf_client_state": "Z3UiygZ8sDVnAfqer2Vso27Nukw8S2QIDbam5hFtSQs=",
+      "epochs": {
+        "910000000000101": {
+          "id": "910000000000101",
+          "anon_id": "MTAx",
+          "root_key": "5JihIxnPDsGLFVLQd4Zs/4zYRk0xps1N/JKKyIErZa8="
+        },
+        "910000000000102": {
+          "id": "910000000000102",
+          "anon_id": "MTAy",
+          "root_key": "N2Pdu8BnOS530QAJMPjuzZIi7jtnmC/l5o7E/p0XRy8="
+        },
+        "910000000000103": {
+          "id": "910000000000103",
+          "anon_id": "MTAz",
+          "root_key": "2PrjyDJ4wLTvndYDNNxHvOZAob5GWPxzzn0opsb7Nco="
+        },
+        "910000000000104": {
+          "id": "910000000000104",
+          "anon_id": "MTA0",
+          "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+        },
+        "910000000000105": {
+          "id": "910000000000105",
+          "anon_id": "MTA1",
+          "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+        }
+      }
+    },
+    "info": {
+      "backup_id": "200000000000001",
+      "base_epoch_id": "910000000000105",
+      "device_epoch_hmac": "uRAKrFnRg+6GK36hTj0tJymwHvUwHUvSreA6SEU7cc0=",
+      "device_public_key": "/wEELl+InIdIxdAjyd7HffWREx2nr5P0UucGGiWP8FbMag==",
+      "device_registration_id": "300000000000001",
+      "epoch_storage_pubkey": "DQ6BBwRQz/sd2C3cebn+rU6J8cWG6Kz909pjL4Xbzl4=",
+      "epoch_storage_pubkey_sig": "/wPt0IG+4ZvZweZsPeX6XL1EJEogZPayafDsdtQzbwUemDpYCfnzZxkBmkkwB9cVPgU7qqpateCLlC+Dof8k3h4H",
+      "epoch_auth_pubkey": "FYjbdN12sSHuDiJSgKLqYRNdcz+3423vHoreQPfsIhg=",
+      "epoch_auth_pubkey_sig": "/wPiv+T7Pzx2b9oUHNBk6vAt3pc3YNShKMyu87zDqZoxqvoS/ExCdA9a9qguezOp3vSoxMx2t9F3uUl//445cv8E",
+      "epoch_root_key_fingerprint": "m/scsC2tu6dAbZddpRqOIzIM",
+      "ocmf_rotation_token": "8fx2Xs808Gyv0UYu7DJqQSxJ+5k8Rkd6tC1Z5KuYDwA=",
+      "virtual_device_id": "6nXR8Fq1RdF5IY1NaM/ZAQ==",
+      "armadillo_public_key": "m297BEsJ+qSIujFb8HkghdGs++6caoRJgmebr8zdQGw=",
+      "armadillo_key_signature": "/wNxnL4zXRMWbo8S+MCEBGvH948vRefai4oeKhexfTRF9c9XZqr8cFlgTEX3NQja13OFirrTFW/BtWhmBj9QMikL",
+      "labyrinth_key_signature": "Wj5mFY1rRBqXuvJjfdLkQxckneByZSzPakA4ivsxQpOwgzwL5jr/BmQQTRaU5Ey8/SwMgvU3/4lOURRwocg+gA==",
+      "occam_only_eligible": true,
+      "trace_id": "242ee5b6-b36e-4eda-81e4-00390d3ba74f"
+    },
+    "random": "FJAGa3eJNbC7SSXj2xUcW0JK18Y73DB60R9+hxrmW/ozgB8TkOTUf477BFixqayzN8n1tj1UgBR6GPK7L+qiGg0rvr3dnnw1uHyVVwrncxagjSlsnhR5hk3JPfS+oI4cJTP4IzPD7i8UodoFoZvSBcjksO2m5LpW1dlIftlZvavECIQsk4gtSqcKk9+Cqzsr5fLK67nQ9rPWSyrkaYPDvHr3oWNssGgcdCoIUhe7LDFkqKwDljGyQXEGo8ueI8gIbjo5NqKo0xBSuLatC5LoILS6rQIiTlgfhub87a8qk29ua+g4XI7qoNLWUSnxQi3En81RksJLb/CwaSRWOvDINw1nmmzO3Pv6p58M84SU7q85JZqBpM5M9NtzbJLlrIxherV6YtnDhfqWzHKzOfy5vbD7koWZHBVPtboIJYN6txafpR0W5GXu5NDivXCZbDgxhRwuzNyS8+ZQfvueaKfd7jFzyxNK/6aJ8A79PjNQI122h8MHQoFR5N+p3ZZIuCiPjtj/PywU2VmE540oVJTgpjffyd12ydKSY5cZ4h2XuAIkLuW2s26u2gHkADkNO6dP",
+    "registration_id": "300000000000001"
+  },
+  "prepare_device_failures": [
+    {
+      "name": "no backup id",
+      "input": {
+        "backup_id": "",
+        "epochs": {
+          "910000000000101": {
+            "id": "910000000000101",
+            "anon_id": "MTAx",
+            "root_key": "5JihIxnPDsGLFVLQd4Zs/4zYRk0xps1N/JKKyIErZa8="
+          },
+          "910000000000102": {
+            "id": "910000000000102",
+            "anon_id": "MTAy",
+            "root_key": "N2Pdu8BnOS530QAJMPjuzZIi7jtnmC/l5o7E/p0XRy8="
+          },
+          "910000000000103": {
+            "id": "910000000000103",
+            "anon_id": "MTAz",
+            "root_key": "2PrjyDJ4wLTvndYDNNxHvOZAob5GWPxzzn0opsb7Nco="
+          },
+          "910000000000104": {
+            "id": "910000000000104",
+            "anon_id": "MTA0",
+            "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+          },
+          "910000000000105": {
+            "id": "910000000000105",
+            "anon_id": "MTA1",
+            "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+          }
+        },
+        "info": {
+          "encrypted_secret_values": {
+            "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+            "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+            "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+            "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+            "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+            "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+            "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+          },
+          "epoch_id": "910000000000103",
+          "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+          "last_epoch_id": "910000000000105",
+          "sync_epochs": [
+            {
+              "epoch_id": "910000000000101",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "101",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000102",
+              "prev_epoch_id": "",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000102",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "102",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000103",
+              "prev_epoch_id": "910000000000101",
+              "epoch_data_v2": {
+                "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+                "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000103",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "103",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000104",
+              "prev_epoch_id": "910000000000102",
+              "epoch_data_v2": {
+                "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+                "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000104",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "104",
+              "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+              "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000105",
+              "prev_epoch_id": "910000000000103",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000105",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "105",
+              "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+              "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+              "is_active_epoch": true,
+              "next_epoch_id": "",
+              "prev_epoch_id": "910000000000104",
+              "epoch_data_v2": null,
+              "minos_epoch": {
+                "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+                "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+              }
+            }
+          ],
+          "minos_epoch": {
+            "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+            "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+          },
+          "epoch_edges": [
+            {
+              "from_epoch": {
+                "epoch_id": "910000000000102"
+              },
+              "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+            }
+          ]
+        },
+        "registration_id": "300000000000001"
+      },
+      "error": "missing Messenger backup or connected device identity"
+    },
+    {
+      "name": "no registration id",
+      "input": {
+        "backup_id": "200000000000001",
+        "epochs": {
+          "910000000000101": {
+            "id": "910000000000101",
+            "anon_id": "MTAx",
+            "root_key": "5JihIxnPDsGLFVLQd4Zs/4zYRk0xps1N/JKKyIErZa8="
+          },
+          "910000000000102": {
+            "id": "910000000000102",
+            "anon_id": "MTAy",
+            "root_key": "N2Pdu8BnOS530QAJMPjuzZIi7jtnmC/l5o7E/p0XRy8="
+          },
+          "910000000000103": {
+            "id": "910000000000103",
+            "anon_id": "MTAz",
+            "root_key": "2PrjyDJ4wLTvndYDNNxHvOZAob5GWPxzzn0opsb7Nco="
+          },
+          "910000000000104": {
+            "id": "910000000000104",
+            "anon_id": "MTA0",
+            "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+          },
+          "910000000000105": {
+            "id": "910000000000105",
+            "anon_id": "MTA1",
+            "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+          }
+        },
+        "info": {
+          "encrypted_secret_values": {
+            "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+            "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+            "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+            "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+            "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+            "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+            "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+          },
+          "epoch_id": "910000000000103",
+          "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+          "last_epoch_id": "910000000000105",
+          "sync_epochs": [
+            {
+              "epoch_id": "910000000000101",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "101",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000102",
+              "prev_epoch_id": "",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000102",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "102",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000103",
+              "prev_epoch_id": "910000000000101",
+              "epoch_data_v2": {
+                "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+                "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000103",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "103",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000104",
+              "prev_epoch_id": "910000000000102",
+              "epoch_data_v2": {
+                "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+                "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000104",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "104",
+              "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+              "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000105",
+              "prev_epoch_id": "910000000000103",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000105",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "105",
+              "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+              "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+              "is_active_epoch": true,
+              "next_epoch_id": "",
+              "prev_epoch_id": "910000000000104",
+              "epoch_data_v2": null,
+              "minos_epoch": {
+                "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+                "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+              }
+            }
+          ],
+          "minos_epoch": {
+            "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+            "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+          },
+          "epoch_edges": [
+            {
+              "from_epoch": {
+                "epoch_id": "910000000000102"
+              },
+              "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+            }
+          ]
+        },
+        "registration_id": ""
+      },
+      "error": "missing Messenger backup or connected device identity"
+    },
+    {
+      "name": "latest epoch missing",
+      "input": {
+        "backup_id": "200000000000001",
+        "epochs": {
+          "910000000000104": {
+            "id": "910000000000104",
+            "anon_id": "MTA0",
+            "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+          }
+        },
+        "info": {
+          "encrypted_secret_values": {
+            "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+            "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+            "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+            "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+            "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+            "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+            "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+          },
+          "epoch_id": "910000000000103",
+          "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+          "last_epoch_id": "910000000000105",
+          "sync_epochs": [
+            {
+              "epoch_id": "910000000000101",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "101",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000102",
+              "prev_epoch_id": "",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000102",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "102",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000103",
+              "prev_epoch_id": "910000000000101",
+              "epoch_data_v2": {
+                "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+                "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000103",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "103",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000104",
+              "prev_epoch_id": "910000000000102",
+              "epoch_data_v2": {
+                "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+                "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000104",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "104",
+              "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+              "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000105",
+              "prev_epoch_id": "910000000000103",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000105",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "105",
+              "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+              "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+              "is_active_epoch": true,
+              "next_epoch_id": "",
+              "prev_epoch_id": "910000000000104",
+              "epoch_data_v2": null,
+              "minos_epoch": {
+                "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+                "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+              }
+            }
+          ],
+          "minos_epoch": {
+            "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+            "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+          },
+          "epoch_edges": [
+            {
+              "from_epoch": {
+                "epoch_id": "910000000000102"
+              },
+              "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+            }
+          ]
+        },
+        "registration_id": "300000000000001"
+      },
+      "error": "missing latest Messenger backup epoch"
+    },
+    {
+      "name": "no secrets",
+      "input": {
+        "backup_id": "200000000000001",
+        "epochs": {
+          "910000000000101": {
+            "id": "910000000000101",
+            "anon_id": "MTAx",
+            "root_key": "5JihIxnPDsGLFVLQd4Zs/4zYRk0xps1N/JKKyIErZa8="
+          },
+          "910000000000102": {
+            "id": "910000000000102",
+            "anon_id": "MTAy",
+            "root_key": "N2Pdu8BnOS530QAJMPjuzZIi7jtnmC/l5o7E/p0XRy8="
+          },
+          "910000000000103": {
+            "id": "910000000000103",
+            "anon_id": "MTAz",
+            "root_key": "2PrjyDJ4wLTvndYDNNxHvOZAob5GWPxzzn0opsb7Nco="
+          },
+          "910000000000104": {
+            "id": "910000000000104",
+            "anon_id": "MTA0",
+            "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+          },
+          "910000000000105": {
+            "id": "910000000000105",
+            "anon_id": "MTA1",
+            "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+          }
+        },
+        "info": {
+          "encrypted_secret_values": null,
+          "epoch_id": "910000000000103",
+          "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+          "last_epoch_id": "910000000000105",
+          "sync_epochs": [
+            {
+              "epoch_id": "910000000000101",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "101",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000102",
+              "prev_epoch_id": "",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000102",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "102",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000103",
+              "prev_epoch_id": "910000000000101",
+              "epoch_data_v2": {
+                "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+                "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000103",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "103",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000104",
+              "prev_epoch_id": "910000000000102",
+              "epoch_data_v2": {
+                "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+                "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000104",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "104",
+              "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+              "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000105",
+              "prev_epoch_id": "910000000000103",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000105",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "105",
+              "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+              "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+              "is_active_epoch": true,
+              "next_epoch_id": "",
+              "prev_epoch_id": "910000000000104",
+              "epoch_data_v2": null,
+              "minos_epoch": {
+                "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+                "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+              }
+            }
+          ],
+          "minos_epoch": {
+            "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+            "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+          },
+          "epoch_edges": [
+            {
+              "from_epoch": {
+                "epoch_id": "910000000000102"
+              },
+              "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+            }
+          ]
+        },
+        "registration_id": "300000000000001"
+      },
+      "error": "missing Messenger backup or connected device identity"
+    },
+    {
+      "name": "mailbox key unreadable",
+      "input": {
+        "backup_id": "200000000000001",
+        "epochs": {
+          "910000000000101": {
+            "id": "910000000000101",
+            "anon_id": "MTAx",
+            "root_key": "5JihIxnPDsGLFVLQd4Zs/4zYRk0xps1N/JKKyIErZa8="
+          },
+          "910000000000102": {
+            "id": "910000000000102",
+            "anon_id": "MTAy",
+            "root_key": "N2Pdu8BnOS530QAJMPjuzZIi7jtnmC/l5o7E/p0XRy8="
+          },
+          "910000000000103": {
+            "id": "910000000000103",
+            "anon_id": "MTAz",
+            "root_key": "2PrjyDJ4wLTvndYDNNxHvOZAob5GWPxzzn0opsb7Nco="
+          },
+          "910000000000104": {
+            "id": "910000000000104",
+            "anon_id": "MTA0",
+            "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+          },
+          "910000000000105": {
+            "id": "910000000000105",
+            "anon_id": "MTA1",
+            "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+          }
+        },
+        "info": {
+          "encrypted_secret_values": {
+            "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+            "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+            "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+            "encrypted_mailbox_root_key_blob": "P+GF+V6sFmG6Dq4t0+Krxgb74nSjQFBcTmv7x7mYHk8X05wWhRknlt+kapMMrC9lZ8CobBEIpy6TJBqGB6XSeeR8vEbLtBSwWpF7O/a/+/WR2dHYmHWMTMu28CA=",
+            "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+            "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+            "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+          },
+          "epoch_id": "910000000000103",
+          "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+          "last_epoch_id": "910000000000105",
+          "sync_epochs": [
+            {
+              "epoch_id": "910000000000101",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "101",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000102",
+              "prev_epoch_id": "",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000102",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "102",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000103",
+              "prev_epoch_id": "910000000000101",
+              "epoch_data_v2": {
+                "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+                "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000103",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "103",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000104",
+              "prev_epoch_id": "910000000000102",
+              "epoch_data_v2": {
+                "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+                "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000104",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "104",
+              "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+              "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000105",
+              "prev_epoch_id": "910000000000103",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000105",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "105",
+              "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+              "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+              "is_active_epoch": true,
+              "next_epoch_id": "",
+              "prev_epoch_id": "910000000000104",
+              "epoch_data_v2": null,
+              "minos_epoch": {
+                "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+                "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+              }
+            }
+          ],
+          "minos_epoch": {
+            "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+            "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+          },
+          "epoch_edges": [
+            {
+              "from_epoch": {
+                "epoch_id": "910000000000102"
+              },
+              "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+            }
+          ]
+        },
+        "registration_id": "300000000000001"
+      },
+      "error": "failed to decrypt Messenger backup mailbox_root_key"
+    },
+    {
+      "name": "ocmf state zero",
+      "input": {
+        "backup_id": "200000000000001",
+        "epochs": {
+          "910000000000101": {
+            "id": "910000000000101",
+            "anon_id": "MTAx",
+            "root_key": "5JihIxnPDsGLFVLQd4Zs/4zYRk0xps1N/JKKyIErZa8="
+          },
+          "910000000000102": {
+            "id": "910000000000102",
+            "anon_id": "MTAy",
+            "root_key": "N2Pdu8BnOS530QAJMPjuzZIi7jtnmC/l5o7E/p0XRy8="
+          },
+          "910000000000103": {
+            "id": "910000000000103",
+            "anon_id": "MTAz",
+            "root_key": "2PrjyDJ4wLTvndYDNNxHvOZAob5GWPxzzn0opsb7Nco="
+          },
+          "910000000000104": {
+            "id": "910000000000104",
+            "anon_id": "MTA0",
+            "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+          },
+          "910000000000105": {
+            "id": "910000000000105",
+            "anon_id": "MTA1",
+            "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+          }
+        },
+        "info": {
+          "encrypted_secret_values": {
+            "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+            "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+            "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+            "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+            "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+            "encrypted_ocmf_client_state": "6Yi7gE1DXTRvzmuIAMisxsZl+In5hUV6u3lOTCnGneSAHbULCMT9cyo4rNT0WI93xX173cU1K77ufSF51jU/432h2mnR30wFo5hhYX8UlUVZ0OHRnPU8b2AIAkA=",
+            "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+          },
+          "epoch_id": "910000000000103",
+          "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+          "last_epoch_id": "910000000000105",
+          "sync_epochs": [
+            {
+              "epoch_id": "910000000000101",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "101",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000102",
+              "prev_epoch_id": "",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000102",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "102",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000103",
+              "prev_epoch_id": "910000000000101",
+              "epoch_data_v2": {
+                "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+                "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000103",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "103",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000104",
+              "prev_epoch_id": "910000000000102",
+              "epoch_data_v2": {
+                "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+                "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000104",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "104",
+              "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+              "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000105",
+              "prev_epoch_id": "910000000000103",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000105",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "105",
+              "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+              "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+              "is_active_epoch": true,
+              "next_epoch_id": "",
+              "prev_epoch_id": "910000000000104",
+              "epoch_data_v2": null,
+              "minos_epoch": {
+                "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+                "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+              }
+            }
+          ],
+          "minos_epoch": {
+            "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+            "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+          },
+          "epoch_edges": [
+            {
+              "from_epoch": {
+                "epoch_id": "910000000000102"
+              },
+              "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+            }
+          ]
+        },
+        "registration_id": "300000000000001"
+      },
+      "error": "invalid Messenger backup OCMF state"
+    },
+    {
+      "name": "ocmf state not canonical",
+      "input": {
+        "backup_id": "200000000000001",
+        "epochs": {
+          "910000000000101": {
+            "id": "910000000000101",
+            "anon_id": "MTAx",
+            "root_key": "5JihIxnPDsGLFVLQd4Zs/4zYRk0xps1N/JKKyIErZa8="
+          },
+          "910000000000102": {
+            "id": "910000000000102",
+            "anon_id": "MTAy",
+            "root_key": "N2Pdu8BnOS530QAJMPjuzZIi7jtnmC/l5o7E/p0XRy8="
+          },
+          "910000000000103": {
+            "id": "910000000000103",
+            "anon_id": "MTAz",
+            "root_key": "2PrjyDJ4wLTvndYDNNxHvOZAob5GWPxzzn0opsb7Nco="
+          },
+          "910000000000104": {
+            "id": "910000000000104",
+            "anon_id": "MTA0",
+            "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+          },
+          "910000000000105": {
+            "id": "910000000000105",
+            "anon_id": "MTA1",
+            "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+          }
+        },
+        "info": {
+          "encrypted_secret_values": {
+            "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+            "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+            "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+            "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+            "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+            "encrypted_ocmf_client_state": "Fakv54bisA1WvF1bw36mLo7QH5OFK7YgM8GPAUS0feUFzqTSZ9SUO3y//0nYr0+fXStpjunCv/fFNOW4Mn5CwJmjSiz7GG4tu+v9tapSQn6uIeEfBV9IXgjLdQg=",
+            "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+          },
+          "epoch_id": "910000000000103",
+          "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+          "last_epoch_id": "910000000000105",
+          "sync_epochs": [
+            {
+              "epoch_id": "910000000000101",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "101",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000102",
+              "prev_epoch_id": "",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000102",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "102",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000103",
+              "prev_epoch_id": "910000000000101",
+              "epoch_data_v2": {
+                "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+                "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000103",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "103",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000104",
+              "prev_epoch_id": "910000000000102",
+              "epoch_data_v2": {
+                "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+                "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000104",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "104",
+              "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+              "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000105",
+              "prev_epoch_id": "910000000000103",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000105",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "105",
+              "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+              "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+              "is_active_epoch": true,
+              "next_epoch_id": "",
+              "prev_epoch_id": "910000000000104",
+              "epoch_data_v2": null,
+              "minos_epoch": {
+                "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+                "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+              }
+            }
+          ],
+          "minos_epoch": {
+            "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+            "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+          },
+          "epoch_edges": [
+            {
+              "from_epoch": {
+                "epoch_id": "910000000000102"
+              },
+              "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+            }
+          ]
+        },
+        "registration_id": "300000000000001"
+      },
+      "error": "invalid Messenger backup OCMF state"
+    },
+    {
+      "name": "ocmf state short",
+      "input": {
+        "backup_id": "200000000000001",
+        "epochs": {
+          "910000000000101": {
+            "id": "910000000000101",
+            "anon_id": "MTAx",
+            "root_key": "5JihIxnPDsGLFVLQd4Zs/4zYRk0xps1N/JKKyIErZa8="
+          },
+          "910000000000102": {
+            "id": "910000000000102",
+            "anon_id": "MTAy",
+            "root_key": "N2Pdu8BnOS530QAJMPjuzZIi7jtnmC/l5o7E/p0XRy8="
+          },
+          "910000000000103": {
+            "id": "910000000000103",
+            "anon_id": "MTAz",
+            "root_key": "2PrjyDJ4wLTvndYDNNxHvOZAob5GWPxzzn0opsb7Nco="
+          },
+          "910000000000104": {
+            "id": "910000000000104",
+            "anon_id": "MTA0",
+            "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+          },
+          "910000000000105": {
+            "id": "910000000000105",
+            "anon_id": "MTA1",
+            "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+          }
+        },
+        "info": {
+          "encrypted_secret_values": {
+            "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+            "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+            "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+            "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+            "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+            "encrypted_ocmf_client_state": "eOS45v4PD/cQobW/Q2f5eCtrd623q03ZZEmE7glL9uABzvNBsduLZ7lvIz10Yg85qFQDM8p23oXJjTDEVjeO5SpjRJikogks3Usrm6CEA3lo54DtXMmOmrLGLkk=",
+            "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+          },
+          "epoch_id": "910000000000103",
+          "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+          "last_epoch_id": "910000000000105",
+          "sync_epochs": [
+            {
+              "epoch_id": "910000000000101",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "101",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000102",
+              "prev_epoch_id": "",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000102",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "102",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000103",
+              "prev_epoch_id": "910000000000101",
+              "epoch_data_v2": {
+                "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+                "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000103",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "103",
+              "epoch_auth_public_key": null,
+              "encrypted_epoch_key": null,
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000104",
+              "prev_epoch_id": "910000000000102",
+              "epoch_data_v2": {
+                "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+                "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+              },
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000104",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "104",
+              "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+              "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+              "is_active_epoch": false,
+              "next_epoch_id": "910000000000105",
+              "prev_epoch_id": "910000000000103",
+              "epoch_data_v2": null,
+              "minos_epoch": null
+            },
+            {
+              "epoch_id": "910000000000105",
+              "backup_id": "200000000000001",
+              "epoch_anon_id": "105",
+              "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+              "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+              "is_active_epoch": true,
+              "next_epoch_id": "",
+              "prev_epoch_id": "910000000000104",
+              "epoch_data_v2": null,
+              "minos_epoch": {
+                "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+                "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+              }
+            }
+          ],
+          "minos_epoch": {
+            "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+            "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+          },
+          "epoch_edges": [
+            {
+              "from_epoch": {
+                "epoch_id": "910000000000102"
+              },
+              "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+            }
+          ]
+        },
+        "registration_id": "300000000000001"
+      },
+      "error": "invalid Messenger backup OCMF state"
+    }
+  ],
+  "virtual_device": {
+    "blob_key": "SbtCTsAza/5ObAjhWYg5xGfzNwT76NxgxRstDyRjXKA=",
+    "code": "2CMNBVCXZLKJHGFDSAPOIUYTREWQ765432MNBVCX",
+    "epochs": {
+      "910000000000101": {
+        "id": "910000000000101",
+        "anon_id": "MTAx",
+        "root_key": "5JihIxnPDsGLFVLQd4Zs/4zYRk0xps1N/JKKyIErZa8="
+      },
+      "910000000000102": {
+        "id": "910000000000102",
+        "anon_id": "MTAy",
+        "root_key": "N2Pdu8BnOS530QAJMPjuzZIi7jtnmC/l5o7E/p0XRy8="
+      },
+      "910000000000103": {
+        "id": "910000000000103",
+        "anon_id": "MTAz",
+        "root_key": "2PrjyDJ4wLTvndYDNNxHvOZAob5GWPxzzn0opsb7Nco="
+      },
+      "910000000000104": {
+        "id": "910000000000104",
+        "anon_id": "MTA0",
+        "root_key": "290h/wSz0JtC4m9q4+gW6tZ2Ds8Y2aB90LEF0plUgRc="
+      },
+      "910000000000105": {
+        "id": "910000000000105",
+        "anon_id": "MTA1",
+        "root_key": "CTESLP6ju09Ewa3aURc6z+BTJXW+r1LQ4Tw7Eq6SuCg="
+      }
+    },
+    "id": "6nXR8Fq1RdF5IY1NaM/ZAQ==",
+    "info": {
+      "encrypted_secret_values": {
+        "encrypted_epoch_anon_id": "U1V+npby+9Y2iYxI2zC3qullMQyCn+HzAxBmojQ+KBHLU/ov6QUor1a0ZWEqbOn0jBpctg==",
+        "encrypted_epoch_root_key": "M6TkJeSnLAYNpuKOj/gg37aICo0rG5GkxtOXd+rA82wIfZWcstTncSjhWTrpY0uKnMxHG85/Oocv7QiH39Rh7Ib4/HMotiRA8J3L47nUpCSNxM282f+XuxHHU9Y=",
+        "encrypted_epoch_storage_private_key": "e5Hq4T7i+FfCVibJrbgtgt+ra0JkVxJsskpfHUzEOQq5rSivGbzlrODGvxcajqNOBjoos9ZYsWwLXJbqkTFuv45F3Shq2tCLm091E7ZKcl758b41Dn+MyghNkio=",
+        "encrypted_mailbox_root_key_blob": "aSj5uY1vtcxloOWnIALLeYcqP2COlFEuniY1pz9kJSMIFbPPhMrx2wJz9IHH90oJPf6kyMMJw0oPpFX9tqodD443+twg6SkN7fXJmhc2LcWswuDZPM4g1VxLRdA=",
+        "encrypted_oblivious_validation_token_blob": "4pifdgOlpl89Iw8eFIWFpsR04ip0DwpQQWzjUQxE4oxkj0CEJ72ItBg/eKv5GZiv2OPYursdHxkvEoUIaKeuP1Uh2qXjy8XyMnIt3rqxrcRkVHbH6sBA++VVEOKh+1ZPC5vz8IPgyMr3CaLYXs6YRA==",
+        "encrypted_ocmf_client_state": "JFVJ/+BZr7SqsQGGs446PkBDIg3RbekqfIyH3LR94SPsau3an7lazE/0+cArYBP9m7R394oKYx4rf/yCpfjjLIIQKNQU9q+BETyLdssrYeIh0PtxqfM9wYxWJsw=",
+        "encrypted_orf_client_state_v2": "wsWPnwbBW4zc8eU1svHrhUuSSJAHZKsO05gbJWD9a5p7Mv57VAwaSAs9nVqXiS3lwBelRqDCEvFbGi2rY7Xp+VMPX5twTPHybEk0GSddlluARY6eMZ9m4FGTdrGX3PYvKfhlI+dg5OjmaScfNuZ9fQ=="
+      },
+      "epoch_id": "910000000000103",
+      "epoch_storage_public_key": "6/JQnAJjBK61Swyn4mxypDKMAt6wPB1UdjEitsD6iRI=",
+      "last_epoch_id": "910000000000105",
+      "sync_epochs": [
+        {
+          "epoch_id": "910000000000101",
+          "backup_id": "200000000000001",
+          "epoch_anon_id": "101",
+          "epoch_auth_public_key": null,
+          "encrypted_epoch_key": null,
+          "is_active_epoch": false,
+          "next_epoch_id": "910000000000102",
+          "prev_epoch_id": "",
+          "epoch_data_v2": null,
+          "minos_epoch": null
+        },
+        {
+          "epoch_id": "910000000000102",
+          "backup_id": "200000000000001",
+          "epoch_anon_id": "102",
+          "epoch_auth_public_key": null,
+          "encrypted_epoch_key": null,
+          "is_active_epoch": false,
+          "next_epoch_id": "910000000000103",
+          "prev_epoch_id": "910000000000101",
+          "epoch_data_v2": {
+            "epoch_anon_id": "P1UCSmLxXYETfegTSN0yXf+52jLL88F72W1QiCK/SbZtYFJfqGMik/fd0Sq+v0B8hQb02w==",
+            "epoch_root_key": "25G0vacOK5nz/YSBMGhbACD4KSgAA+63v0FG+x9CKGRbLp7iIxGxtb3Gv2vrZwH0R9HO4PVSbJRLBSDL1Y8lihMd/ELRBz7WcNNPi7t6oq+fDQzRlGj7HOB1INQ="
+          },
+          "minos_epoch": null
+        },
+        {
+          "epoch_id": "910000000000103",
+          "backup_id": "200000000000001",
+          "epoch_anon_id": "103",
+          "epoch_auth_public_key": null,
+          "encrypted_epoch_key": null,
+          "is_active_epoch": false,
+          "next_epoch_id": "910000000000104",
+          "prev_epoch_id": "910000000000102",
+          "epoch_data_v2": {
+            "epoch_anon_id": "DOGxRr7OWYufjgzQ6jI2dS8baD/ZLdYqbf7ChO9piLQezZffe75pb+1h4ZO6xIiT0WdYvw==",
+            "epoch_root_key": "JXqCzyiM2ldq5eIEXyWsN6De5dBLv68IKg48PB+lB34PJeV7WPZmMg4KywgcKCRE0U16nXsvgpPObPx6NKB4gyhRxxUWXVgh32iVdqIMOa++K3mO+zCunUaMQDg="
+          },
+          "minos_epoch": null
+        },
+        {
+          "epoch_id": "910000000000104",
+          "backup_id": "200000000000001",
+          "epoch_anon_id": "104",
+          "epoch_auth_public_key": "Z0CTsywFKvcBgP4ubzqtVUbBLNEYXdpHm4M+/jJ6K0k=",
+          "encrypted_epoch_key": "AfND3jSWLeOBXJKgGZhEn/rX5ZEO+O1X2MAKzJanSA1UmQZM5l+m5/pHJBftdsHUB2/ifz3q606HWIMB1Afcrzus/LDjAJf8tH0XYcA8uY3H",
+          "is_active_epoch": false,
+          "next_epoch_id": "910000000000105",
+          "prev_epoch_id": "910000000000103",
+          "epoch_data_v2": null,
+          "minos_epoch": null
+        },
+        {
+          "epoch_id": "910000000000105",
+          "backup_id": "200000000000001",
+          "epoch_anon_id": "105",
+          "epoch_auth_public_key": "Hfyn7+zI2Y0z5rvv4yNPxurhJZGZxccwV3Z376bAwhE=",
+          "encrypted_epoch_key": "AbhvhU4Zf3lFEQUYJykeGDndrEZStpPJtqpZ9g9Hk+4MTnhaLmfPuRXkolOHJtt/1f3UCoqY5Y+yK/AKmiRDnL7PU6PgnWjJ+OzJVzAqQ3pH",
+          "is_active_epoch": true,
+          "next_epoch_id": "",
+          "prev_epoch_id": "910000000000104",
+          "epoch_data_v2": null,
+          "minos_epoch": {
+            "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+            "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+          }
+        }
+      ],
+      "minos_epoch": {
+        "epoch_head": "2D6fGHkkOCvq2tS9JtCD6bJlRGhDa+aipA1TZgT0uiI=",
+        "self_epoch_signature": "QX/2LqGDywBTaJlI/u2BOrf4Oe6AjzxiX2OOBVAm1P7W6JGW8AQecVXAbE4sD/cZAmvlXFacmvRovzgyUUPg4g=="
+      },
+      "epoch_edges": [
+        {
+          "from_epoch": {
+            "epoch_id": "910000000000102"
+          },
+          "backward_edge": "hwZpWUa5YNu+SgjDmMKfAg=="
+        }
+      ]
+    },
+    "user_id": "100000000000001"
+  }
+}

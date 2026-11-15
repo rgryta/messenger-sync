@@ -15,5 +15,7 @@ pub mod inbox;
 pub mod ls;
 pub mod ops;
 pub mod page;
+pub mod restore;
+pub mod securehistory;
 pub mod session;
 pub mod transcribe;

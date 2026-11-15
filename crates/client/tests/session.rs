@@ -23,7 +23,11 @@ async fn migrations_apply_once() {
     };
     assert_eq!(
         session::migrate(&pool).await.unwrap(),
-        ["0001_session.sql", "0002_device.sql"]
+        [
+            "0001_session.sql",
+            "0002_device.sql",
+            "0003_history_device.sql"
+        ]
     );
     assert!(session::migrate(&pool).await.unwrap().is_empty());
     let mut conn = pool.acquire().await.unwrap();
