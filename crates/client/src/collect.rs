@@ -39,6 +39,8 @@ pub struct Collector {
     pub attachments: BTreeMap<(String, String), Attachment>,
     /// New texts, by message id: an edit names no thread.
     pub edits: BTreeMap<String, String>,
+    /// Earlier texts of edited messages, by (thread, message id), then edit time.
+    pub history: BTreeMap<(String, String), BTreeMap<i64, String>>,
     /// By (thread, message id): when it was unsent, if LightSpeed said.
     pub unsends: BTreeMap<(String, String), Option<DateTime<Utc>>>,
     pub per_thread_oldest: HashMap<String, DateTime<Utc>>,
@@ -63,6 +65,7 @@ impl Collector {
         self.attachments.clear();
         self.members.clear();
         self.edits.clear();
+        self.history.clear();
         self.unsends.clear();
         self.decoded_messages = 0;
     }
@@ -134,6 +137,11 @@ impl Collector {
                 );
             } else if let Some(e) = ops::edit(op) {
                 self.edits.insert(e.message_id, e.text);
+            } else if let Some(h) = ops::edit_history(op) {
+                self.history
+                    .entry((h.thread_key, h.message_id))
+                    .or_default()
+                    .insert(h.edited_ms, h.text);
             } else if let Some(a) = ops::attachment(op) {
                 let key = a
                     .attachment_id
@@ -247,6 +255,15 @@ pub async fn persist(conn: &mut PgConnection, batch: &Collector) -> sqlx::Result
             )
             .await?;
         }
+    }
+    // A message first seen already edited: its page carries the texts it had before.
+    for ((thread_key, message_id), versions) in &batch.history {
+        let earlier: Vec<(DateTime<Utc>, &str)> = versions
+            .iter()
+            .filter_map(|(ms, text)| Some((at(*ms)?, text.as_str())))
+            .collect();
+        writes::record_history(&mut tx, &batch.account_id, thread_key, message_id, &earlier)
+            .await?;
     }
     // After the messages, so an edit or unsend of a message in this same page finds it.
     for (message_id, text) in &batch.edits {

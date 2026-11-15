@@ -490,6 +490,94 @@ pub async fn record_revision(
     Ok(true)
 }
 
+/// The texts an edited message had before, oldest first, from LightSpeed's edit history:
+/// written as its revisions when the archive holds none for it, each ending at its edit
+/// time, the held text last and current. A message already tracked keeps its own record.
+/// Returns whether anything was written.
+pub async fn record_history(
+    conn: &mut PgConnection,
+    account_id: &str,
+    thread_key: &str,
+    message_id: &str,
+    earlier: &[(DateTime<Utc>, &str)],
+) -> sqlx::Result<bool> {
+    let mut tx = conn.begin().await?;
+    let current: Option<(Option<String>,)> = sqlx::query_as(
+        "
+        SELECT text FROM message
+         WHERE account_id = $1 AND thread_key = $2 AND message_id = $3 FOR UPDATE
+        ",
+    )
+    .bind(account_id)
+    .bind(thread_key)
+    .bind(message_id)
+    .fetch_optional(&mut *tx)
+    .await?;
+    let Some((current,)) = current else {
+        return Ok(false);
+    };
+    let tracked: bool = sqlx::query_scalar(
+        "
+        SELECT EXISTS (SELECT 1 FROM message_revision
+                        WHERE account_id = $1 AND thread_key = $2 AND message_id = $3)
+        ",
+    )
+    .bind(account_id)
+    .bind(thread_key)
+    .bind(message_id)
+    .fetch_one(&mut *tx)
+    .await?;
+    if tracked {
+        return Ok(false);
+    }
+    // A text repeated, or the one held now, is not an earlier version.
+    let mut versions: Vec<(DateTime<Utc>, &str)> = Vec::new();
+    for &(at, text) in earlier {
+        match versions.last_mut() {
+            Some(last) if same_text(Some(last.1), Some(text)) => last.0 = at,
+            _ => versions.push((at, text)),
+        }
+    }
+    if versions
+        .last()
+        .is_some_and(|(_, text)| same_text(current.as_deref(), Some(text)))
+    {
+        versions.pop();
+    }
+    let Some(&(last_edit, _)) = versions.last() else {
+        return Ok(false);
+    };
+    let mut rows = QueryBuilder::<Postgres>::new(
+        "INSERT INTO message_revision \
+         (account_id, thread_key, message_id, seq, text, first_seen_at, superseded_at) ",
+    );
+    let current_row = (last_edit, current.as_deref());
+    rows.push_values(
+        versions
+            .iter()
+            .map(|&(at, text)| (Some(at), Some(text)))
+            .chain(std::iter::once((None, current_row.1)))
+            .enumerate(),
+        |mut row, (i, (superseded, text))| {
+            let first_seen = if i == versions.len() {
+                Some(current_row.0)
+            } else {
+                None
+            };
+            row.push_bind(account_id)
+                .push_bind(thread_key)
+                .push_bind(message_id)
+                .push_bind(i as i32 + 1)
+                .push_bind(text)
+                .push_bind(first_seen)
+                .push_bind(superseded);
+        },
+    );
+    rows.build().execute(&mut *tx).await?;
+    tx.commit().await?;
+    Ok(true)
+}
+
 /// A message's new text from LightSpeed's `editMessage`, which names no thread: the
 /// message is found by id, and the old text kept as a revision. Returns whether anything
 /// changed; an edit of a message the archive does not hold is dropped.

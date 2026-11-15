@@ -202,3 +202,26 @@ fn a_database_query_keeps_the_version_a_bare_exact_number() {
     assert_eq!(request["request_id"], 3);
     assert_eq!(request["payload"], q.as_str());
 }
+
+#[test]
+fn a_sync_stream_follows_only_a_new_real_cursor() {
+    use messenger_client::gateway::follows;
+    use messenger_client::ls::SyncCursor;
+    let cursor = |current: Option<&str>, next: &str| SyncCursor {
+        database: 1,
+        current: current.map(str::to_owned),
+        next: next.to_owned(),
+    };
+    assert!(follows("a", &cursor(Some("a"), "b")));
+    assert!(follows("a", &cursor(None, "b")));
+    assert!(
+        !follows("b", &cursor(Some("a"), "b")),
+        "already asked from it"
+    );
+    assert!(
+        !follows("a", &cursor(Some("b"), "b")),
+        "where the stream already is"
+    );
+    assert!(!follows("a", &cursor(None, "")));
+    assert!(!follows("a", &cursor(None, "dummy_cursor")));
+}

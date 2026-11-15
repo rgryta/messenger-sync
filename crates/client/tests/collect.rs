@@ -7,7 +7,9 @@ use messenger_core::models::Account;
 use messenger_core::store::writes;
 use serde_json::json;
 use sqlx::Row;
-use support::{MINUTE, T0, blob, contact, e2ee, edit, member, message, reaction, thread, unsent};
+use support::{
+    MINUTE, T0, blob, contact, e2ee, edit, edit_history, member, message, reaction, thread, unsent,
+};
 
 const GROUP: &str = "1000000000000001";
 const SECRET: &str = "7000000000000000009";
@@ -264,4 +266,61 @@ async fn a_message_edited_or_unsent_between_passes_is_caught_on_the_next() {
     .await
     .unwrap();
     assert!(gone);
+}
+
+#[tokio::test]
+async fn a_message_first_seen_edited_gets_its_earlier_texts_from_the_page() {
+    let Some((pool, _, _turn)) = support::database("client_collect").await else {
+        return;
+    };
+    messenger_core::db::ensure_schema(&pool).await.unwrap();
+    let mut conn = pool.acquire().await.unwrap();
+    writes::upsert_account(
+        &mut conn,
+        &Account {
+            id: "me".into(),
+            fb_user_id: "100".into(),
+            username: None,
+            enabled: true,
+        },
+    )
+    .await
+    .unwrap();
+    let mut batch = Collector::new("me");
+    batch.feed(
+        Some(1),
+        &json!([
+            thread(GROUP, Some("a group"), T0),
+            message(GROUP, "mid.$one", T0, "200", "third"),
+            edit_history(GROUP, "mid.$one", T0 + 2 * MINUTE, "second"),
+            edit_history(GROUP, "mid.$one", T0 + MINUTE, "first"),
+            // The held text is not an earlier version.
+            edit_history(GROUP, "mid.$one", T0 + 3 * MINUTE, "third"),
+        ]),
+    );
+    persist(&mut conn, &batch).await.unwrap();
+    let rows: Vec<(i32, Option<String>, bool, bool)> = sqlx::query_as(
+        "SELECT seq, text, first_seen_at IS NOT NULL, superseded_at IS NULL
+           FROM message_revision WHERE message_id = 'mid.$one' ORDER BY seq",
+    )
+    .fetch_all(&mut *conn)
+    .await
+    .unwrap();
+    assert_eq!(
+        rows,
+        [
+            (1, Some("first".into()), false, false),
+            (2, Some("second".into()), false, false),
+            (3, Some("third".into()), true, true),
+        ]
+    );
+
+    // Seen again: a message already tracked keeps its record.
+    persist(&mut conn, &batch).await.unwrap();
+    let count: i64 =
+        sqlx::query_scalar("SELECT count(*) FROM message_revision WHERE message_id = 'mid.$one'")
+            .fetch_one(&mut *conn)
+            .await
+            .unwrap();
+    assert_eq!(count, 3);
 }
