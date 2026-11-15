@@ -21,6 +21,8 @@ fn config() -> (PageConfig, Preloader) {
         revision: Some("1012345678".into()),
         preloaders: vec![preloader.clone()],
         crypto_auth_token: None,
+        session_id: None,
+        user_app_id: None,
     };
     (config, preloader)
 }

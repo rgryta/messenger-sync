@@ -27,6 +27,11 @@ pub struct PageConfig {
     /// `MessengerWebInitData.cryptoAuthToken.encrypted_serialized_cat`: the encrypted chat's
     /// login token (see [`crate::e2ee`]).
     pub crypto_auth_token: Option<String>,
+    /// `MessengerWebInitData.sessionId`: the registration id the history backup knows this
+    /// client by (mautrix's `securehistory.Client.RegistrationID`).
+    pub session_id: Option<String>,
+    /// `CurrentUserInitialData.APP_ID`: the `app_id` the history backup's calls name.
+    pub user_app_id: Option<String>,
 }
 
 /// A `LSPlatformGraphQLLightspeedRequestQuery` the page would have run: replayed as is, it
@@ -144,7 +149,8 @@ pub fn scrape(html: &str) -> Result<PageConfig, PageError> {
             _ => None,
         }
     };
-    let user_id = text(define(html, "CurrentUserInitialData"), "USER_ID")
+    let current_user = define(html, "CurrentUserInitialData");
+    let user_id = text(current_user.clone(), "USER_ID")
         .filter(|id| id != "0")
         .ok_or(PageError::LoggedOut)?;
     Ok(PageConfig {
@@ -164,5 +170,7 @@ pub fn scrape(html: &str) -> Result<PageConfig, PageError> {
             .and_then(Value::as_str)
             .filter(|cat| !cat.is_empty())
             .map(str::to_owned),
+        session_id: text(define(html, "MessengerWebInitData"), "sessionId"),
+        user_app_id: text(current_user, "APP_ID"),
     })
 }

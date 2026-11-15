@@ -558,11 +558,13 @@ impl Web {
         Ok(config)
     }
 
-    async fn snapshot(
+    /// POSTs a GraphQL form as the page does and returns the answer's body.
+    async fn post_graphql(
         &mut self,
         config: &PageConfig,
-        preloader: &Preloader,
-    ) -> Result<Value, PassError> {
+        friendly_name: &str,
+        form: &[(&'static str, String)],
+    ) -> Result<String, PassError> {
         let request = self
             .browser(
                 self.http.post(format!("{BASE}/api/graphql/")),
@@ -575,27 +577,58 @@ impl Web {
             .header("sec-fetch-mode", "cors")
             .header("sec-fetch-site", "same-origin")
             .header("x-asbd-id", "359341")
-            .header(
-                "x-fb-friendly-name",
-                "LSPlatformGraphQLLightspeedRequestQuery",
-            )
+            .header("x-fb-friendly-name", friendly_name)
             .header("x-fb-lsd", config.lsd.clone().unwrap_or_default())
-            .form(&graphql::snapshot_form(config, preloader));
-        let database = preloader.database;
+            .form(form);
         let response = request
             .send()
             .await
-            .map_err(|e| PassError::Other(format!("snapshot {database}: {}", chain(&e))))?;
+            .map_err(|e| PassError::Other(format!("{friendly_name}: {}", chain(&e))))?;
         self.take_cookies(response.headers());
+        let status = response.status();
         let body = response
             .text()
             .await
-            .map_err(|e| PassError::Other(format!("snapshot {database}: {}", chain(&e))))?;
+            .map_err(|e| PassError::Other(format!("{friendly_name}: {}", chain(&e))))?;
+        if !status.is_success() {
+            return Err(PassError::Other(format!("{friendly_name}: HTTP {status}")));
+        }
+        Ok(body)
+    }
+
+    async fn snapshot(
+        &mut self,
+        config: &PageConfig,
+        preloader: &Preloader,
+    ) -> Result<Value, PassError> {
+        let database = preloader.database;
+        let body = self
+            .post_graphql(
+                config,
+                "LSPlatformGraphQLLightspeedRequestQuery",
+                &graphql::snapshot_form(config, preloader),
+            )
+            .await
+            .map_err(|e| PassError::Other(format!("snapshot {database}: {e}")))?;
         let payload = graphql::snapshot_payload(&body)
             .map_err(|e| PassError::Other(format!("snapshot {database}: {e}")))?;
         let data: Value = serde_json::from_str(&payload)
             .map_err(|e| PassError::Other(format!("snapshot {database} payload: {e}")))?;
         Ok(data.get("step").cloned().unwrap_or(Value::Null))
+    }
+
+    /// One persisted query of the history backup: `data.<field>` of its answer.
+    async fn backup_call(
+        &mut self,
+        config: &PageConfig,
+        doc: &graphql::Doc,
+        field: &str,
+        variables: &Value,
+    ) -> Result<Option<Value>, PassError> {
+        let body = self
+            .post_graphql(config, doc.name, &graphql::doc_form(config, doc, variables))
+            .await?;
+        graphql::data_field(&body, field).map_err(|e| PassError::Other(format!("{}: {e}", doc.name)))
     }
 }
 
