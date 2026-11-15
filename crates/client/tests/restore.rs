@@ -4,7 +4,7 @@
 use std::collections::BTreeMap;
 
 use messenger_client::armadillo::Content;
-use messenger_client::restore::{events, fbid};
+use messenger_client::restore::{events, fbid, shape};
 use messenger_client::securehistory::archive::{BackfillMessage, BackfillReaction};
 use messenger_core::models::E2eeWhat;
 
@@ -101,4 +101,21 @@ fn a_sender_is_its_fbid_whatever_wraps_it() {
     assert_eq!(fbid("100000000000002"), "100000000000002");
     assert_eq!(fbid("100000000000002@msgr"), "100000000000002");
     assert_eq!(fbid("100000000000002.0:3@msgr"), "100000000000002");
+}
+
+#[test]
+fn an_answer_is_logged_by_its_shape_not_its_values() {
+    let answer = serde_json::json!({
+        "id": "1234567890",
+        "virtual_devices": [{"device_type": "HSM", "client_generated_id": "secret"}],
+        "is_registered": true,
+        "count": 3,
+        "gone": null,
+    });
+    let logged = shape(&answer);
+    assert_eq!(
+        logged,
+        r#"{count: number, gone: null, id: str(10), is_registered: true, virtual_devices: [{client_generated_id: str(6), device_type: "HSM"}]}"#
+    );
+    assert!(!logged.contains("1234567890") && !logged.contains("secret"));
 }
