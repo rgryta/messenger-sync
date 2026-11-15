@@ -16,10 +16,14 @@ use sqlx::PgPool;
 use whatsapp_client::signal::curve::KeyPair;
 use zeroize::Zeroizing;
 
+use messenger_core::models::{E2eeEvent, E2eeWhat};
+use messenger_core::store::e2ee::{self, Stored};
+
+use crate::armadillo::Content;
 use crate::daemon::{Client, PassError};
 use crate::graphql;
 use crate::page::PageConfig;
-use crate::securehistory::{Backup, Device, device, enrollment, opaque, vesta};
+use crate::securehistory::{Backup, Device, archive, device, enrollment, opaque, vesta};
 
 #[derive(Debug, thiserror::Error)]
 pub enum RestoreError {
@@ -260,4 +264,193 @@ pub async fn enroll(
         }
         Err(e) => Err(step("enrolment")(&e)),
     }
+}
+
+/// What a restore run read and kept.
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct Restored {
+    pub threads: usize,
+    pub pages: usize,
+    pub messages: usize,
+    pub stored: usize,
+    pub failed: usize,
+}
+
+/// Archived messages asked for per page.
+pub const PAGE_SIZE: i64 = 50;
+
+/// The encrypted one-to-one threads and the person each is with: the archive files a chat
+/// under that person's id.
+async fn encrypted_threads(pool: &PgPool, account: &str) -> sqlx::Result<Vec<(String, String)>> {
+    sqlx::query_as(
+        "
+        SELECT t.thread_key, min(p.fb_user_id)
+          FROM thread t
+          JOIN account a ON a.id = t.account_id
+          JOIN thread_participant p
+            ON p.account_id = t.account_id AND p.thread_key = t.thread_key
+           AND p.fb_user_id <> a.fb_user_id
+         WHERE t.account_id = $1 AND t.sync_group = 95 AND NOT t.is_group
+         GROUP BY t.thread_key, t.last_activity_at
+        HAVING count(DISTINCT p.fb_user_id) = 1
+         ORDER BY t.last_activity_at DESC NULLS LAST
+        ",
+    )
+    .bind(account)
+    .fetch_all(pool)
+    .await
+}
+
+/// A sender as the archive names it (`<fbid>`, or a JID around it), as the fbid alone.
+pub fn fbid(sender: &str) -> String {
+    sender
+        .split(['@', ':', '.'])
+        .next()
+        .unwrap_or_default()
+        .to_owned()
+}
+
+fn at(ms: i64) -> chrono::DateTime<chrono::Utc> {
+    chrono::DateTime::from_timestamp_millis(ms).unwrap_or_default()
+}
+
+/// The archive's events for one restored message: the message, then its reactions.
+pub fn events(otid: &str, message: &archive::BackfillMessage) -> Vec<E2eeEvent> {
+    let what = match &message.content {
+        Content::Text { text, reply_to } => Some(E2eeWhat::Message {
+            text: Some(text.clone()),
+            reply_to: reply_to.clone(),
+            media: None,
+            media_ref: None,
+        }),
+        Content::Media {
+            kind,
+            caption,
+            reply_to,
+            ..
+        } => Some(E2eeWhat::Message {
+            text: caption.clone(),
+            reply_to: reply_to.clone(),
+            media: Some((*kind).into()),
+            // The archive's attachments are CDN references, not the chat's media keys.
+            media_ref: None,
+        }),
+        _ => None,
+    };
+    let mut events = Vec::new();
+    if let Some(what) = what {
+        events.push(E2eeEvent {
+            otid: otid.to_owned(),
+            ts: at(message.timestamp_ms),
+            sender_id: fbid(&message.sender),
+            what,
+        });
+    }
+    for reaction in &message.reactions {
+        events.push(E2eeEvent {
+            otid: otid.to_owned(),
+            ts: at(reaction.timestamp_ms),
+            sender_id: fbid(&reaction.sender),
+            what: E2eeWhat::Reaction {
+                target: otid.to_owned(),
+                emoji: reaction.emoji.clone(),
+            },
+        });
+    }
+    events
+}
+
+/// Reads every encrypted one-to-one thread's archive, newest page first, and stores what
+/// opens: text fills the envelope already held for it (matched by OTID), and a message the
+/// archive holds but the inbox never listed is added. Epoch keys a page brings are kept.
+pub async fn fetch_all(
+    client: &mut Client,
+    account: &str,
+    mut device: Device,
+) -> Result<Restored, RestoreError> {
+    let config = client.page().await?;
+    let app_id = config
+        .user_app_id
+        .clone()
+        .ok_or_else(|| RestoreError::Step("the page carries no app id".into()))?;
+    let self_id: i64 = config.user_id.parse().map_err(|e| step("user id")(&e))?;
+    let threads = encrypted_threads(client.pool(), account).await?;
+    let mut done = Restored {
+        threads: threads.len(),
+        ..Restored::default()
+    };
+    for (thread_key, peer) in threads {
+        let mut reference = chrono::Utc::now().timestamp_millis() + 60_000;
+        loop {
+            let variables = archive::message_range_variables(
+                &device, &app_id, &peer, true, reference, PAGE_SIZE,
+            )
+            .map_err(|e| step("page request")(&e))?;
+            let viewer = call(
+                client,
+                &config,
+                &graphql::MESSAGE_RANGE,
+                "viewer",
+                &variables,
+            )
+            .await?;
+            let bytes = serde_json::to_vec(&viewer).map_err(|e| step("page")(&e))?;
+            let range =
+                archive::parse_message_range(&bytes, &device).map_err(|e| step("page")(&e))?;
+            done.pages += 1;
+            if range.thread_missing {
+                break;
+            }
+            if range
+                .epochs
+                .as_ref()
+                .is_some_and(|set| !set.edges.is_empty())
+            {
+                device = device
+                    .with_epochs(range.epochs.as_ref())
+                    .map_err(|e| step("epochs")(&e))?;
+                store_device(client.pool(), account, &device).await?;
+            }
+            let mut conn = client.pool().acquire().await?;
+            for (otid, result) in range.decrypt_each(&device, &peer, self_id, false) {
+                done.messages += 1;
+                let converted = result
+                    .map_err(|e| e.to_string())
+                    .and_then(|m| m.convert().map_err(|e| e.to_string()));
+                match converted {
+                    Ok(Some(message)) => {
+                        for event in events(&otid, &message) {
+                            if e2ee::store(&mut conn, account, &thread_key, &event).await?
+                                == Stored::Applied
+                            {
+                                done.stored += 1;
+                            }
+                        }
+                    }
+                    Ok(None) => {}
+                    Err(reason) => {
+                        done.failed += 1;
+                        tracing::debug!("archived message skipped: {reason}");
+                    }
+                }
+            }
+            drop(conn);
+            let (more, next) = range.range.as_ref().map_or((false, 0), |r| {
+                (r.has_more_before.unwrap_or(false), r.before)
+            });
+            if !more || next >= reference {
+                break;
+            }
+            reference = next;
+            // A person scrolling back would not ask faster.
+            tokio::time::sleep(std::time::Duration::from_secs(1)).await;
+        }
+        tracing::info!(
+            "restore: a thread done; {} page(s), {} stored, {} skipped so far",
+            done.pages,
+            done.stored,
+            done.failed
+        );
+    }
+    Ok(done)
 }
