@@ -155,6 +155,9 @@ impl From<GatewayError> for PassError {
 
 /// Jittered, with a floor: a small interval and a large jitter must not collapse into a
 /// pass every few seconds.
+/// The pause before the next pass after the live stream dropped.
+const LIVE_RETRY: Duration = Duration::from_secs(60);
+
 pub fn next_interval(settings: &Settings) -> Duration {
     let interval = settings.interval.as_secs_f64();
     let spread = interval * settings.jitter;
@@ -241,6 +244,49 @@ pub async fn walk<G: Gateway>(
         budget.spend(tally.history_tasks);
     }
     Ok(())
+}
+
+/// What [`listen`] did until it stopped.
+#[derive(Debug, Default, PartialEq, Eq)]
+pub struct Heard {
+    pub syncs: usize,
+    pub new_messages: u64,
+    /// Why it stopped before `until`, if it did: the socket closed or failed.
+    pub ended_early: Option<String>,
+}
+
+/// Between passes, the sync streams stay open and whatever they push is stored as it
+/// arrives: new messages in real time, and the `editMessage` and unsend events that a pass
+/// can only see if they happen during its few seconds on the socket. Returns at `until`,
+/// or when the socket ends; the next pass reconnects either way.
+pub async fn listen<G: Gateway>(
+    pool: &PgPool,
+    gateway: &mut G,
+    account: &str,
+    until: Instant,
+) -> Heard {
+    let mut heard = Heard::default();
+    let mut collector = Collector::new(account);
+    loop {
+        match gateway.next_event(until).await {
+            Ok(Some(Event::Sync { database, steps })) => {
+                heard.syncs += 1;
+                collector.begin_page();
+                collector.clear_directory();
+                collector.feed(u8::try_from(database).ok(), &steps);
+                match persist(pool, &collector).await {
+                    Ok(n) => heard.new_messages += n,
+                    Err(e) => tracing::warn!("storing what the stream pushed failed: {e}"),
+                }
+            }
+            Ok(Some(Event::TaskDone)) => {}
+            Ok(None) => return heard,
+            Err(e) => {
+                heard.ended_early = Some(e.to_string());
+                return heard;
+            }
+        }
+    }
 }
 
 /// Picks up messages that arrived since the last pass: threads whose listing is ahead of the
@@ -578,8 +624,10 @@ impl Client {
             if let Err(e) = self.save_cookies().await {
                 tracing::error!("saving the rotated cookies failed: {e}");
             }
+            let mut live = None;
             let outcome = match result {
-                Ok(tally) => {
+                Ok((tally, socket)) => {
+                    live = Some(socket);
                     tracing::info!(
                         "pass: {} thread(s), {} new message(s), {} forward + {} history task(s), {} finished, {} stalled",
                         tally.threads,
@@ -610,7 +658,30 @@ impl Client {
             if let Err(e) = outcome {
                 tracing::error!("recording the pass failed: {e}");
             }
-            tokio::time::sleep(next_interval(&self.settings)).await;
+            let until = Instant::now() + next_interval(&self.settings);
+            match live {
+                Some(mut socket) => {
+                    let heard = listen(&self.pool, &mut socket, &account, until).await;
+                    socket.close().await;
+                    if heard.new_messages > 0 {
+                        tracing::info!(
+                            "live: {} new message(s) from {} sync push(es)",
+                            heard.new_messages,
+                            heard.syncs
+                        );
+                    }
+                    if let Some(why) = heard.ended_early {
+                        // The next pass reconnects; a short pause keeps a socket that keeps
+                        // dropping from turning into a tight loop of passes.
+                        tracing::warn!("live stream ended early: {why}");
+                        tokio::time::sleep(
+                            LIVE_RETRY.min(until.saturating_duration_since(Instant::now())),
+                        )
+                        .await;
+                    }
+                }
+                None => tokio::time::sleep_until(until).await,
+            }
         }
     }
 
@@ -634,7 +705,7 @@ impl Client {
         Ok(())
     }
 
-    async fn pass(&mut self) -> Result<Tally, PassError> {
+    async fn pass(&mut self) -> Result<(Tally, Socket), PassError> {
         let settings = self.settings.clone();
         let account = settings.account.as_str();
         let mut tally = Tally::default();
@@ -700,7 +771,12 @@ impl Client {
             &mut tally,
         )
         .await;
-        socket.close().await;
-        walked.map(|()| tally)
+        match walked {
+            Ok(()) => Ok((tally, socket)),
+            Err(e) => {
+                socket.close().await;
+                Err(e)
+            }
+        }
     }
 }
