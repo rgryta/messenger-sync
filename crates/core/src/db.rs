@@ -132,7 +132,7 @@ pub async fn create_pool(dsn: &str) -> Result<PgPool, sqlx::Error> {
 /// file. The whole pass runs in one transaction, so a failure part-way leaves neither
 /// the DDL nor the rows that would claim it had been applied.
 ///
-/// Called only by `messenger-client`, at boot, and by the test harness. The MCP process
+/// Called only by `messenger-ingest`, at boot, and by the test harness. The MCP process
 /// calls [`assert_migrations`].
 pub async fn ensure_schema(pool: &PgPool) -> Result<Vec<String>, sqlx::Error> {
     let mut applied_now = Vec::new();

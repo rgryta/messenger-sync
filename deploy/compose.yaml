@@ -49,13 +49,13 @@ services:
   #
   # No healthcheck: the inbox loop sleeps ~15 minutes between passes by design. The MCP
   # status tool shows both loops' last run.
-  messenger-client:
+  messenger-ingest:
     labels:
       - traefik.enable=false
       - wud.watch=true
       - wud.watch.digest=true
     image: ghcr.io/rgryta/messenger-sync:latest
-    container_name: messenger-client
+    container_name: messenger-ingest
     restart: unless-stopped
     cap_drop:
       - ALL
@@ -66,7 +66,7 @@ services:
       MESSENGER_ACCOUNT: ${MESSENGER_ACCOUNT}
       TZ: Europe/Warsaw
       # First start only, at cutover: the cookie export and the device export to adopt
-      # (formats in `crates/client/src/bin/messenger-client.rs`), mounted from
+      # (formats in `crates/client/src/bin/messenger-ingest.rs`), mounted from
       # /mnt/quick/apps/volumes/messenger-sync/client. Ignored once stored; remove the two
       # files, these lines and the volume once the log says both were adopted.
       # MESSENGER_COOKIES_FROM: /adopt/cookies.json
@@ -74,7 +74,7 @@ services:
     # volumes:
     #   - /mnt/quick/apps/volumes/messenger-sync/client:/adopt:ro
     command:
-      - /usr/local/bin/messenger-client
+      - /usr/local/bin/messenger-ingest
     networks:
       homelab-network:
         ipv4_address: 172.20.0.89

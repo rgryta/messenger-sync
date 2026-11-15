@@ -19,7 +19,7 @@ COPY crates/ ./crates/
 COPY src/ ./src/
 COPY db-migrations/ ./db-migrations/
 # `--workspace --bins` rather than `--bin`: `--bin` resolves only inside the default-run
-# package, so naming `messenger-client` that way fails.
+# package, so naming `messenger-ingest` that way fails.
 RUN cargo build --release --workspace --bins --target x86_64-unknown-linux-musl
 
 # Nothing but the binaries. No libc, no shell, no certificate store, and each absence is
@@ -29,12 +29,12 @@ RUN cargo build --release --workspace --bins --target x86_64-unknown-linux-musl
 FROM scratch
 # Root-owned and merely executable, so neither service can rewrite its own binary.
 COPY --from=rust /build/target/x86_64-unknown-linux-musl/release/messenger-mcp /usr/local/bin/messenger-mcp
-COPY --from=rust /build/target/x86_64-unknown-linux-musl/release/messenger-client /usr/local/bin/messenger-client
+COPY --from=rust /build/target/x86_64-unknown-linux-musl/release/messenger-ingest /usr/local/bin/messenger-ingest
 # Numeric: there is no /etc/passwd here. 65532 is distroless' `nonroot`.
 USER 65532:65532
 EXPOSE 8000
 # GIT_SHA last, on purpose: above the COPYs it would enter their layer cache key.
 ARG GIT_SHA=unknown
 ENV MESSENGER_GIT_SHA=$GIT_SHA
-# The client service overrides this with `messenger-client`.
+# The ingest service overrides this with `messenger-ingest`.
 CMD ["/usr/local/bin/messenger-mcp"]
