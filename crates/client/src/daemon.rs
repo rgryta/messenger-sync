@@ -642,6 +642,31 @@ pub struct Client {
 }
 
 impl Client {
+    /// The database the client archives into.
+    pub fn pool(&self) -> &PgPool {
+        &self.pool
+    }
+
+    /// The logged-in page, for work outside the inbox loop (the history restore).
+    pub async fn page(&mut self) -> Result<PageConfig, PassError> {
+        let config = self.web.page_with_retries().await?;
+        self.save_cookies().await?;
+        Ok(config)
+    }
+
+    /// One persisted query of the history backup: `data.<field>` of its answer.
+    pub async fn backup_call(
+        &mut self,
+        config: &PageConfig,
+        doc: &graphql::Doc,
+        field: &str,
+        variables: &Value,
+    ) -> Result<Option<Value>, PassError> {
+        let answer = self.web.backup_call(config, doc, field, variables).await;
+        self.save_cookies().await?;
+        answer
+    }
+
     pub fn new(pool: PgPool, settings: Settings, jar: Jar) -> Result<Self, reqwest::Error> {
         let http = reqwest::Client::builder()
             .redirect(reqwest::redirect::Policy::none())

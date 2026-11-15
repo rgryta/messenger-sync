@@ -20,6 +20,10 @@ pub const MIGRATIONS: &[(&str, &str)] = &[
         "0002_device.sql",
         include_str!("../migrations/0002_device.sql"),
     ),
+    (
+        "0003_history_device.sql",
+        include_str!("../migrations/0003_history_device.sql"),
+    ),
 ];
 
 const BOOTSTRAP: &str = "CREATE SCHEMA IF NOT EXISTS client; \
