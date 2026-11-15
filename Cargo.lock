@@ -1536,6 +1536,8 @@ dependencies = [
  "curve25519-dalek",
  "futures-util",
  "hex",
+ "hkdf",
+ "hmac",
  "messenger-core",
  "prost",
  "rand 0.10.3",

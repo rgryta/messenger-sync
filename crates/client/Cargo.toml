@@ -15,7 +15,12 @@ aes-gcm = "0.11.1"
 base64 = "0.23.1"
 chacha20 = { version = "0.10.2", default-features = false, features = ["xchacha"] }
 chrono = { workspace = true }
+# Secure history: XEdDSA signing and the OCMF scalar for history-device enrolment (and, in
+# tests/device.rs, the synthetic signed pre-key, as libsignal signs it).
+curve25519-dalek = { version = "5.0.0", features = ["digest"] }
 futures-util = { version = "0.3.34", default-features = false, features = ["sink", "std"] }
+hkdf = "0.13.0"
+hmac = "0.13.0"
 messenger-core.workspace = true
 prost = "0.14.6"
 rand = "0.10.3"
@@ -24,6 +29,7 @@ rand = "0.10.3"
 reqwest = { version = "0.12.28", default-features = false, features = ["rustls-tls-webpki-roots", "http2"] }
 serde = { workspace = true }
 serde_json = { workspace = true }
+sha2 = "0.11.0"
 sqlx.workspace = true
 thiserror = "2.0.18"
 tokio = { workspace = true, features = ["macros", "rt", "time", "net"] }
@@ -35,9 +41,6 @@ tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
 whatsapp-client = { git = "https://github.com/rgryta/whatsapp-sync", rev = "11e758d61374b3a8b85973d509df7ccdbccc135e" }
 
 [dev-dependencies]
-# Signs the synthetic signed pre-key in tests/device.rs, as libsignal does.
-curve25519-dalek = { version = "5.0.0", features = ["digest"] }
-sha2 = "0.11.0"
 hex = "0.4.3"
 testcontainers = { version = "0.27.3", features = ["reusable-containers"] }
 testcontainers-modules = { version = "0.15.0", features = ["postgres"] }
