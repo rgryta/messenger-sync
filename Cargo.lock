@@ -1619,7 +1619,7 @@ checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 
 [[package]]
 name = "messenger-client"
-version = "0.2.11"
+version = "0.3.0"
 dependencies = [
  "aes",
  "aes-gcm",
@@ -1659,7 +1659,7 @@ dependencies = [
 
 [[package]]
 name = "messenger-core"
-version = "0.2.11"
+version = "0.3.0"
 dependencies = [
  "chrono",
  "serde",
@@ -1670,7 +1670,7 @@ dependencies = [
 
 [[package]]
 name = "messenger-mcp"
-version = "0.2.11"
+version = "0.3.0"
 dependencies = [
  "axum",
  "chrono",
@@ -1687,7 +1687,7 @@ dependencies = [
 
 [[package]]
 name = "messenger-sync"
-version = "0.2.11"
+version = "0.3.0"
 dependencies = [
  "axum",
  "chrono",
@@ -3792,7 +3792,7 @@ dependencies = [
 [[package]]
 name = "whatsapp-client"
 version = "0.3.1"
-source = "git+https://github.com/rgryta/whatsapp-sync?rev=11e758d61374b3a8b85973d509df7ccdbccc135e#11e758d61374b3a8b85973d509df7ccdbccc135e"
+source = "git+https://github.com/rgryta/whatsapp-sync?rev=56bec5267b2db3c68939540d77e2c5052e204e73#56bec5267b2db3c68939540d77e2c5052e204e73"
 dependencies = [
  "aes",
  "aes-gcm",
@@ -3824,7 +3824,7 @@ dependencies = [
 [[package]]
 name = "whatsapp-core"
 version = "0.3.1"
-source = "git+https://github.com/rgryta/whatsapp-sync?rev=11e758d61374b3a8b85973d509df7ccdbccc135e#11e758d61374b3a8b85973d509df7ccdbccc135e"
+source = "git+https://github.com/rgryta/whatsapp-sync?rev=56bec5267b2db3c68939540d77e2c5052e204e73#56bec5267b2db3c68939540d77e2c5052e204e73"
 dependencies = [
  "chrono",
  "serde",

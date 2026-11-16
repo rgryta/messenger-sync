@@ -240,7 +240,9 @@ impl MessengerMcp {
 
     #[tool(
         name = "search",
-        description = "Full-text search the archive, best match first. `person` narrows by sender \
+        description = "Full-text search the archive, best match first. Ignores accents and \
+                       forgives a typo or a different word ending; a \"quoted phrase\" or -word \
+                       stays exact. `person` narrows by sender \
                        and takes an alias, a handle, a whole display name or a raw id; an unknown \
                        name is an error rather than a silently ignored filter. `after`/`before` \
                        (ISO 8601) narrow it to a period - which is what to use when the question \
