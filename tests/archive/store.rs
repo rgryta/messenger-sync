@@ -479,6 +479,63 @@ db_test!(an_alias_resolves_a_person_a_handle_and_a_raw_id, |f| {
     );
 });
 
+db_test!(people_match_with_or_without_diacritics, |f| {
+    // Polish names are typed without their accents as often as with them.
+    me(&f.pool).await;
+    participant(&f.pool, "301", Some("Michał Wiśniak"), None).await;
+    participant(&f.pool, "302", Some("Michal Grabek"), None).await;
+    participant(&f.pool, "303", Some("Łukasz Pąk"), Some("lpak")).await;
+    let ids = |rows: Vec<messenger_core::models::PersonRow>| {
+        let mut ids: Vec<_> = rows.into_iter().map(|row| row.fb_user_id).collect();
+        ids.sort();
+        ids
+    };
+    for (query, want) in [
+        ("Michal", vec!["301", "302"]),
+        ("michał", vec!["301", "302"]),
+        ("Michał Wiśniak", vec!["301"]),
+        ("wisniak", vec!["301"]),
+        ("ŁUKASZ", vec!["303"]),
+        ("lukasz", vec!["303"]),
+        ("Łukasz", vec!["303"]),
+    ] {
+        let rows = store::find_people(&f.pool, Some(query), 50)
+            .await
+            .expect("people");
+        assert_eq!(ids(rows), want, "{query}");
+    }
+    for (query, want) in [
+        ("michal wisniak", "301"),
+        ("Michał Grabek", "302"),
+        ("LUKASZ PAK", "303"),
+        ("Łukasz Pąk", "303"),
+    ] {
+        let found = store::resolve_people(&f.pool, query)
+            .await
+            .expect("resolve");
+        assert_eq!(found.len(), 1, "{query}");
+        assert_eq!(found[0].fb_user_id, want, "{query}");
+    }
+});
+
+db_test!(an_alias_resolves_without_its_diacritics, |f| {
+    me(&f.pool).await;
+    participant(&f.pool, "304", Some("Paweł Żurek"), None).await;
+    let members = [(ACCOUNT.to_owned(), "304".to_owned())];
+    store::set_alias(&f.pool, "Paweł", &members, None)
+        .await
+        .expect("set");
+    let found = store::resolve_people(&f.pool, "pawel")
+        .await
+        .expect("resolve");
+    assert_eq!(found.len(), 1);
+    assert_eq!(found[0].fb_user_id, "304");
+    let rows = store::find_people(&f.pool, Some("zurek"), 50)
+        .await
+        .expect("people");
+    assert_eq!(rows.len(), 1);
+});
+
 db_test!(resolve_message_separates_unknown_from_not_deleted, |f| {
     // NULL alone cannot carry both answers and the tool words them differently.
     me(&f.pool).await;
