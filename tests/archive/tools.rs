@@ -314,6 +314,26 @@ db_test!(search_by_a_known_person_narrows_to_what_they_said, |f| {
     assert!(all.contains("message m4"), "{all}");
 });
 
+db_test!(a_person_filter_resolves_without_diacritics, |f| {
+    seed(&f.pool).await;
+    participant(&f.pool, "305", Some("Wojciech Śliwa"), None).await;
+    said(&f.pool, Said::new(DM, "m5", 240).from("305").text("czesc")).await;
+    let out = tools::search(
+        &f.pool,
+        "czesc",
+        Some("wojciech sliwa"),
+        None,
+        None,
+        None,
+        None,
+        None,
+    )
+    .await
+    .expect("search");
+    assert!(out.contains("message m5"), "{out}");
+    assert!(!out.contains("message m1"), "{out}");
+});
+
 db_test!(an_unreadable_date_is_a_usage_error_naming_the_value, |f| {
     seed(&f.pool).await;
     let error = tools::messages(&f.pool, DM, None, Some("last tuesday"), None, None)
