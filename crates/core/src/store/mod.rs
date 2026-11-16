@@ -102,15 +102,24 @@ macro_rules! has_rendered_lines {
 /// as the whole record.
 macro_rules! rendered_lines {
     () => {
-        "
+        rendered_lines!("")
+    };
+    // `$filter` narrows `dom_message d` before the dedup. Postgres will not push a
+    // predicate through DISTINCT ON for us, and outside it no index can help.
+    ($filter:expr) => {
+        concat!(
+            "
         SELECT DISTINCT ON (c.account_id, c.thread_key, d.ts, d.text, d.sender_label)
                c.account_id, c.thread_key, d.ts, d.text, d.sender_label, d.search
           FROM dom_message d
           JOIN dom_capture c ON c.id = d.capture_id
-         WHERE d.ts IS NOT NULL
+         WHERE d.ts IS NOT NULL ",
+            $filter,
+            "
          ORDER BY c.account_id, c.thread_key, d.ts, d.text, d.sender_label,
                   c.captured_at DESC
 "
+        )
     };
 }
 

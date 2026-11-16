@@ -99,6 +99,10 @@ pub const MIGRATIONS: &[(&str, &str)] = &[
         "0018_forward_resume.sql",
         include_str!("../../../db-migrations/pg/0018_forward_resume.sql"),
     ),
+    (
+        "0019_fuzzy_search.sql",
+        include_str!("../../../db-migrations/pg/0019_fuzzy_search.sql"),
+    ),
 ];
 
 const SCHEMA_MIGRATION_DDL: &str = "

@@ -184,6 +184,47 @@ db_test!(search_finds_rendered_text, |f| {
     assert!(hits[0].message_id.is_none());
 });
 
+db_test!(search_forgives_accents_typos_and_endings, |f| {
+    me(&f.pool).await;
+    thread(&f.pool, Thread::encrypted(DM)).await;
+    said(
+        &f.pool,
+        Said::new(DM, "m1", 0).text("naprawa samochodu jutro"),
+    )
+    .await;
+    said(&f.pool, Said::new(DM, "m2", 1).text("samochód stoi")).await;
+    said(
+        &f.pool,
+        Said::new(DM, "m3", 2).text("Widziałem żółwia w zoo"),
+    )
+    .await;
+    captured(
+        &f.pool,
+        DM,
+        "run-1",
+        base(),
+        &[(0, Some(at(30)), "zjemy pierogi dziś?", "Zofia")],
+    )
+    .await;
+    async fn found(pool: &sqlx::PgPool, query: &str) -> Vec<String> {
+        store::search_messages(pool, query, None, None, None, None, None, 25)
+            .await
+            .expect("search")
+            .into_iter()
+            .map(|hit| hit.message_id.unwrap_or(hit.item_type))
+            .collect()
+    }
+    // Accents fold both ways, and an exact word outranks a near one.
+    assert_eq!(found(&f.pool, "samochod").await, ["m2", "m1"]);
+    assert_eq!(found(&f.pool, "zolw").await, ["m3"]);
+    // A typo in a rendered line, and words far apart in either order.
+    assert_eq!(found(&f.pool, "pierogki").await, ["rendered"]);
+    assert_eq!(found(&f.pool, "jutro samochod").await, ["m1"]);
+    // Same letters, different word: no match. A quoted phrase stays exact.
+    assert!(found(&f.pool, "kot").await.is_empty());
+    assert!(found(&f.pool, "\"pierogki\"").await.is_empty());
+});
+
 db_test!(search_by_person_leaves_rendered_text_out, |f| {
     // A rendered row has a sender *label*, not an id, so a person filter would have to
     // match a display string — and a filter that quietly matches differently per store is

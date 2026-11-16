@@ -161,7 +161,47 @@ pub async fn count_history(
     Ok(total.unwrap_or(0))
 }
 
-/// Full-text search over stored text and rendered lines, best match first.
+/// `$1` against a row: every word exactly, accents folded, or — for a plain query of three
+/// or more characters — every word within a typo or a different ending (pg_trgm word
+/// similarity over the folded text). Quoted phrases, `-exclusions` and `or` keep their
+/// strict meaning. `$folded` must be spelled as its `*_fold_trgm_idx` expression, or the
+/// planner cannot use the index.
+macro_rules! text_match {
+    ($search:literal, $folded:literal) => {
+        concat!(
+            "(",
+            $search,
+            " @@ websearch_to_tsquery('simple_fold', $1)
+           OR (char_length(btrim($1)) >= 3 AND $1 !~* '\"|(^|\\s)-|\\sor\\s'
+               AND ",
+            $folded,
+            " %> (regexp_split_to_array(btrim(search_fold($1)), '\\s+'))[1]
+               AND ",
+            $folded,
+            " %> ALL (regexp_split_to_array(btrim(search_fold($1)), '\\s+'))))"
+        )
+    };
+}
+
+/// Exact hits above fuzzy ones, each ordered by how well it matched.
+macro_rules! text_rank {
+    ($search:literal, $folded:literal) => {
+        concat!(
+            "CASE WHEN ",
+            $search,
+            " @@ websearch_to_tsquery('simple_fold', $1)
+              THEN 1::real + ts_rank(",
+            $search,
+            ", websearch_to_tsquery('simple_fold', $1))
+              ELSE word_similarity(search_fold($1), ",
+            $folded,
+            ") END"
+        )
+    };
+}
+
+/// Full-text search over stored text and rendered lines, best match first. Ignores
+/// accents and forgives a typo or a different word ending (see `text_match!`).
 ///
 /// Deleted messages are excluded rather than returned withheld: a search hit is a
 /// headline of the matching text, so returning one would print exactly what every other
@@ -190,10 +230,15 @@ pub async fn search_messages(
         SELECT m.account_id, m.thread_key, m.message_id, m.ts, m.sender_id, m.text,
                m.item_type, t.title AS thread_title,
                p.name AS sender_name, p.username AS sender_username,
-               ts_headline('simple', coalesce(m.text, m.transcript, ''),
-                           websearch_to_tsquery('simple', $1)) AS headline,
+               ts_headline('simple_fold', coalesce(m.text, m.transcript, ''),
+                           websearch_to_tsquery('simple_fold', $1)) AS headline,
                m.transcript,
-               ts_rank(m.search, websearch_to_tsquery('simple', $1)) AS rank,
+               ",
+        text_rank!(
+            "m.search",
+            "search_fold(coalesce(m.text, '') || ' ' || coalesce(m.transcript, ''))"
+        ),
+        " AS rank,
                ",
         total_matches!(),
         "
@@ -201,7 +246,12 @@ pub async fn search_messages(
           JOIN thread t ON t.account_id = m.account_id AND t.thread_key = m.thread_key
           LEFT JOIN participant p
             ON p.account_id = m.account_id AND p.fb_user_id = m.sender_id
-         WHERE m.search @@ websearch_to_tsquery('simple', $1)
+         WHERE ",
+        text_match!(
+            "m.search",
+            "search_fold(coalesce(m.text, '') || ' ' || coalesce(m.transcript, ''))"
+        ),
+        "
            AND m.deleted_at IS NULL
            AND ($2::text IS NULL OR m.account_id = $2)
            AND ($3::text IS NULL OR m.thread_key = $3)
@@ -217,19 +267,23 @@ pub async fn search_messages(
         SELECT d.account_id, d.thread_key, NULL::text, d.ts, NULL::text, d.text,
                'rendered'::text, t.title,
                d.sender_label, NULL::text,
-               ts_headline('simple', coalesce(d.text, ''),
-                           websearch_to_tsquery('simple', $1)),
+               ts_headline('simple_fold', coalesce(d.text, ''),
+                           websearch_to_tsquery('simple_fold', $1)),
                NULL::text,
-               ts_rank(d.search, websearch_to_tsquery('simple', $1)),
+               ",
+        text_rank!("d.search", "search_fold(d.text)"),
+        ",
                ",
         total_matches!(),
         "
           FROM (",
-        rendered_lines!(),
+        rendered_lines!(concat!(
+            "AND ",
+            text_match!("d.search", "search_fold(d.text)")
+        )),
         ") d
           JOIN thread t ON t.account_id = d.account_id AND t.thread_key = d.thread_key
-         WHERE d.search @@ websearch_to_tsquery('simple', $1)
-           AND $4::text[] IS NULL
+         WHERE $4::text[] IS NULL
            AND ($2::text IS NULL OR d.account_id = $2)
            AND ($3::text IS NULL OR d.thread_key = $3)
            AND ($5::timestamptz IS NULL OR d.ts < $5)
