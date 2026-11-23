@@ -46,7 +46,7 @@ tracing.workspace = true
 tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
 # The encrypted device is WhatsApp's: its Signal sessions, keys and their store. Pinned to a
 # commit of the public repo; AGPL like this crate.
-whatsapp-client = { git = "https://github.com/rgryta/whatsapp-sync", rev = "56bec5267b2db3c68939540d77e2c5052e204e73" }
+whatsapp-client = { git = "https://github.com/rgryta/whatsapp-sync", rev = "70662f410f0519f9be87e8b9fe89d663c71ce6e3" }
 x25519-dalek = { version = "3.0.0", features = ["static_secrets"] }
 zeroize = "1.9.1"
 
