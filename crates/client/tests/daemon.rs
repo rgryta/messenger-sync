@@ -11,7 +11,7 @@ use messenger_core::models::{Account, Thread};
 use messenger_core::store::writes;
 use serde_json::json;
 use sqlx::postgres::PgPool;
-use support::{Fake, MINUTE, T0, edit, history, message, thread, unsent};
+use support::{Fake, MINUTE, T0, edit, history, message, thread, unsent, voice_blob};
 
 const ONE: &str = "1000000000000001";
 const TWO: &str = "1000000000000002";
@@ -420,4 +420,96 @@ async fn between_passes_the_stream_is_stored_as_it_pushes() {
     .await
     .unwrap();
     assert!(gone);
+}
+
+#[tokio::test]
+async fn an_expired_voice_link_is_refreshed_by_rereading_its_page() {
+    let Some((pool, _turn)) = database().await else {
+        return;
+    };
+    seed(&pool, ONE, None, None, None, true).await;
+    let mut conn = pool.acquire().await.unwrap();
+    let stored = |mid: &str, ts: i64| messenger_core::models::Message {
+        account_id: "me".into(),
+        thread_key: ONE.into(),
+        message_id: mid.into(),
+        ts: at(ts),
+        sender_id: Some("200".into()),
+        text: None,
+        item_type: "text".into(),
+        reply_to_id: None,
+        attachments: json!([]),
+        sync_group: 1,
+        raw: json!({}),
+    };
+    writes::insert_messages(
+        &mut conn,
+        &[stored("mid.$voice", T0), stored("mid.$gone", T0 + MINUTE)],
+    )
+    .await
+    .unwrap();
+    let file = |mid: &str| messenger_core::models::Attachment {
+        account_id: "me".into(),
+        thread_key: ONE.into(),
+        message_id: mid.into(),
+        attachment_id: Some(format!("att-{mid}")),
+        kind: "blob".into(),
+        mime_type: Some("audio/mpeg".into()),
+        url: Some(format!("https://cdn.invalid/old/{mid}")),
+        preview_url: None,
+        raw: json!({}),
+    };
+    writes::insert_attachments(&mut conn, &[file("mid.$voice"), file("mid.$gone")])
+        .await
+        .unwrap();
+    sqlx::query("UPDATE message SET transcript_status = 'expired'")
+        .execute(&mut *conn)
+        .await
+        .unwrap();
+
+    // The page before the first clip holds it with a fresh link; the other page misses its clip.
+    let mut fake = Fake::new(|task: &support::Task| {
+        if task.reference_ms == T0 + 1 {
+            vec![
+                message(ONE, "mid.$voice", T0, "200", ""),
+                voice_blob(
+                    ONE,
+                    "mid.$voice",
+                    "att-mid.$voice",
+                    "https://cdn.invalid/fresh",
+                ),
+            ]
+        } else {
+            Vec::new()
+        }
+    });
+    let tally = run(&pool, &mut fake, &mut DailyBudget::new(400, 120))
+        .await
+        .unwrap();
+
+    assert_eq!(tally.relink_tasks, 2);
+    let references: Vec<i64> = fake.tasks.iter().map(|t| t.reference_ms).collect();
+    assert_eq!(references, vec![T0 + MINUTE + 1, T0 + 1], "newest first");
+    let state: Vec<(String, Option<String>, String)> = sqlx::query_as(
+        "SELECT m.message_id, m.transcript_status, a.url FROM message m \
+         JOIN message_attachment a USING (account_id, thread_key, message_id) ORDER BY m.ts",
+    )
+    .fetch_all(&pool)
+    .await
+    .unwrap();
+    assert_eq!(
+        state,
+        vec![
+            (
+                "mid.$voice".into(),
+                None,
+                "https://cdn.invalid/fresh".into()
+            ),
+            (
+                "mid.$gone".into(),
+                Some("failed".into()),
+                "https://cdn.invalid/old/mid.$gone".into()
+            ),
+        ]
+    );
 }

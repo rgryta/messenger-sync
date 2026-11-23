@@ -222,6 +222,21 @@ pub fn blob(thread: &str, mid: &str, id: &str) -> Value {
     )
 }
 
+/// A plain voice message's file, behind `url`.
+pub fn voice_blob(thread: &str, mid: &str, id: &str, url: &str) -> Value {
+    op(
+        "insertBlobAttachment",
+        51,
+        vec![
+            (2, json!(id)),
+            (5, json!(url)),
+            (8, json!("audio/mpeg")),
+            (29, boxed(thread)),
+            (34, json!(mid)),
+        ],
+    )
+}
+
 // ------------------------------------------------------------------------- the gateway
 
 /// A message-page task as the fake read it back off its payload.
