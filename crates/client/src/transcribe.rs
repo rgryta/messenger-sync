@@ -1,14 +1,18 @@
-//! Encrypted voice messages to text, as whatsapp-sync transcribes WhatsApp's.
+//! Voice messages to text, as whatsapp-sync transcribes WhatsApp's.
 //!
-//! Every pass takes the pending voice messages newest first, fetches each file from Meta's
-//! CDN by the reference its attachment keeps, opens it with whatsapp-client's audio
-//! decryption (Messenger's media use WhatsApp's keys: "WhatsApp Audio Keys"), and sends the
-//! audio to the whisper.cpp server. Only the words are stored.
+//! Every pass takes the waiting voice messages newest first and fetches each file from
+//! Meta's CDN. An encrypted one is fetched by the reference its attachment keeps and
+//! opened with whatsapp-client's audio decryption (Messenger's media use WhatsApp's keys:
+//! "WhatsApp Audio Keys"); a plain one (older history, group chats) is fetched by its
+//! stored link as it is. The audio goes to the whisper.cpp server, which converts any
+//! format. Only the words are stored.
 //!
 //! How a step fails decides what happens, as in whatsapp-sync:
 //!
 //! - the file is gone, does not decrypt, or whisper refuses the audio: `failed`, never retried;
-//! - the CDN or the whisper server cannot be reached: still `pending`, and the rest of the
+//! - a plain file's link has expired (the CDN refuses it): `expired`, until a re-read of the
+//!   message stores a fresh link and the status is cleared;
+//! - the CDN or the whisper server cannot be reached: left waiting, and the rest of the
 //!   batch waits for the next pass, which would only fail the same way.
 
 use std::time::Duration;
@@ -26,6 +30,8 @@ const DOWNLOAD_TIMEOUT: Duration = Duration::from_secs(60);
 enum Outcome {
     Done(String),
     Failed(String),
+    /// A plain file's link that the CDN no longer serves.
+    Expired(String),
     /// Try again next pass.
     Later(String),
 }
@@ -71,6 +77,10 @@ impl Worker {
                     e2ee::set_transcript(&mut conn, audio, None, "failed").await?;
                     tracing::warn!("a voice message will not be transcribed: {why}");
                 }
+                Outcome::Expired(why) => {
+                    e2ee::set_transcript(&mut conn, audio, None, "expired").await?;
+                    tracing::info!("a voice message's link has expired: {why}");
+                }
                 Outcome::Later(why) => {
                     tracing::warn!("transcription waits for the next pass: {why}");
                     break;
@@ -81,12 +91,20 @@ impl Worker {
     }
 
     async fn transcribe(&self, audio: &PendingAudio) -> Outcome {
-        let Some(file_ref) = MediaRef::from_raw(&audio.raw) else {
-            return Outcome::Failed("no usable file reference".into());
-        };
-        let url = match file_ref.location(media::MEDIA_BASE) {
-            Ok(url) => url,
-            Err(e) => return Outcome::Failed(e.to_string()),
+        // An encrypted file needs its reference to open; a plain one is its link.
+        let (url, file_ref) = if audio.kind == "blob" {
+            match &audio.url {
+                Some(url) => (url.clone(), None),
+                None => return Outcome::Failed("no link".into()),
+            }
+        } else {
+            let Some(file_ref) = MediaRef::from_raw(&audio.raw) else {
+                return Outcome::Failed("no usable file reference".into());
+            };
+            match file_ref.location(media::MEDIA_BASE) {
+                Ok(url) => (url, Some(file_ref)),
+                Err(e) => return Outcome::Failed(e.to_string()),
+            }
         };
         let response = match self.http.get(url).send().await {
             Ok(response) => response,
@@ -94,7 +112,11 @@ impl Worker {
         };
         let status = response.status();
         if status.is_client_error() {
-            return Outcome::Failed(format!("CDN answered {status}"));
+            let why = format!("CDN answered {status}");
+            return match file_ref {
+                Some(_) => Outcome::Failed(why),
+                None => Outcome::Expired(why),
+            };
         }
         if !status.is_success() {
             return Outcome::Later(format!("CDN answered {status}"));
@@ -103,9 +125,12 @@ impl Worker {
             Ok(file) => file,
             Err(e) => return Outcome::Later(format!("CDN: {}", e.without_url())),
         };
-        let audio = match media::decrypt_audio(&file, &file_ref) {
-            Ok(audio) => audio,
-            Err(e) => return Outcome::Failed(e.to_string()),
+        let audio = match &file_ref {
+            Some(file_ref) => match media::decrypt_audio(&file, file_ref) {
+                Ok(audio) => audio,
+                Err(e) => return Outcome::Failed(e.to_string()),
+            },
+            None => file.to_vec(),
         };
         match self.whisper.transcribe(audio).await {
             Ok(words) => Outcome::Done(words),
