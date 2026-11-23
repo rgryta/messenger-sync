@@ -14,7 +14,7 @@ use std::time::Duration;
 
 use chrono::{DateTime, NaiveDate, Utc};
 use messenger_core::models::Account;
-use messenger_core::store::writes;
+use messenger_core::store::{e2ee, writes};
 use serde_json::Value;
 use sqlx::postgres::PgPool;
 use tokio::sync::watch;
@@ -114,6 +114,8 @@ pub struct Tally {
     pub new_messages: u64,
     pub forward_tasks: usize,
     pub history_tasks: usize,
+    /// Pages re-read for a voice message's fresh link.
+    pub relink_tasks: usize,
     pub finished: usize,
     pub stalled: usize,
 }
@@ -235,6 +237,12 @@ pub async fn walk<G: Gateway>(
     if allowance > 0 {
         walk_forward(pool, gateway, settings, collector, allowance, tally).await?;
         budget.spend(tally.forward_tasks);
+    }
+    // Then fresh links for voice messages, ahead of history: a link lasts only days.
+    let allowance = budget.remaining_after_reserve().min(RELINK_PER_PASS);
+    if allowance > 0 {
+        relink_voice(pool, gateway, settings, collector, allowance, tally).await?;
+        budget.spend(tally.relink_tasks);
     }
     let allowance = budget.remaining_after_reserve();
     if allowance == 0 {
@@ -376,6 +384,52 @@ async fn walk_forward<G: Gateway>(
             row.last_activity_at,
         )
         .await?;
+    }
+    Ok(())
+}
+
+/// Voice messages relinked per pass at most, so a backlog spreads over passes.
+const RELINK_PER_PASS: usize = 20;
+
+/// Plain voice messages whose stored link expired before the transcriber reached them,
+/// newest first: one task each re-reads the page that holds the message (Meta answers with
+/// the messages before the reference, so one millisecond past it), which stores a fresh
+/// link and hands the message back to the transcriber.
+async fn relink_voice<G: Gateway>(
+    pool: &PgPool,
+    gateway: &mut G,
+    settings: &Settings,
+    collector: &mut Collector,
+    allowance: usize,
+    tally: &mut Tally,
+) -> Result<(), PassError> {
+    let expired = {
+        let mut conn = pool.acquire().await?;
+        e2ee::expired_voice(&mut conn, &settings.account, allowance as i64).await?
+    };
+    for voice in expired {
+        let Some((key, group)) = task_target(&voice.thread_key, voice.sync_group) else {
+            tracing::warn!("a thread key or sync group a task cannot carry, skipped");
+            continue;
+        };
+        collector.begin_page();
+        collector.expect = Some((voice.thread_key.clone(), group));
+        let payload = ls::fetch_messages(key, voice.ts.timestamp_millis() + 1, group);
+        gateway
+            .send_task(FETCH_MESSAGES, &format!("mrq.{key}"), payload)
+            .await?;
+        drain(gateway, collector, settings.task_settle).await?;
+        collector.expect = None;
+        tally.relink_tasks += 1;
+        tally.new_messages += persist(pool, collector).await?;
+        collector.clear_directory();
+        // The page moves no walk: what it saw must not reach one.
+        collector.per_thread_newest.remove(&voice.thread_key);
+        collector.per_thread_oldest.remove(&voice.thread_key);
+        let mut conn = pool.acquire().await?;
+        if !e2ee::requeue_if_relinked(&mut conn, &voice).await? {
+            tracing::warn!("a voice message's page came back without a fresh link; given up");
+        }
     }
     Ok(())
 }
@@ -705,11 +759,12 @@ impl Client {
                 Ok((tally, socket)) => {
                     live = Some(socket);
                     tracing::info!(
-                        "pass: {} thread(s), {} new message(s), {} forward + {} history task(s), {} finished, {} stalled",
+                        "pass: {} thread(s), {} new message(s), {} forward + {} history + {} voice-link task(s), {} finished, {} stalled",
                         tally.threads,
                         tally.new_messages,
                         tally.forward_tasks,
                         tally.history_tasks,
+                        tally.relink_tasks,
                         tally.finished,
                         tally.stalled
                     );

@@ -411,3 +411,72 @@ pub async fn set_transcript(
     .await?;
     Ok(())
 }
+
+/// A plain voice message whose stored link expired before the transcriber reached it.
+#[derive(Debug, Clone, sqlx::FromRow)]
+pub struct ExpiredVoice {
+    pub account_id: String,
+    pub thread_key: String,
+    pub sync_group: i32,
+    pub message_id: String,
+    pub ts: chrono::DateTime<chrono::Utc>,
+    /// The expired link, to tell whether a re-read stored a fresh one.
+    pub url: Option<String>,
+}
+
+/// Up to `limit` voice messages with an expired link, newest first.
+pub async fn expired_voice(
+    conn: &mut PgConnection,
+    account_id: &str,
+    limit: i64,
+) -> sqlx::Result<Vec<ExpiredVoice>> {
+    sqlx::query_as(
+        "
+        SELECT * FROM (
+          SELECT DISTINCT ON (m.thread_key, m.message_id)
+                 m.account_id, m.thread_key, t.sync_group, m.message_id, m.ts, a.url
+            FROM message m
+            JOIN thread t USING (account_id, thread_key)
+            JOIN message_attachment a USING (account_id, thread_key, message_id)
+           WHERE m.account_id = $1 AND m.transcript_status = 'expired'
+             AND a.kind = 'blob' AND a.mime_type LIKE 'audio/%'
+           ORDER BY m.thread_key, m.message_id
+        ) expired
+         ORDER BY ts DESC
+         LIMIT $2
+        ",
+    )
+    .bind(account_id)
+    .bind(limit)
+    .fetch_all(conn)
+    .await
+}
+
+/// After a re-read of the page that holds `voice`: a fresh link hands it back to the
+/// transcriber; the same link means the re-read did not reach it, and it is given up as
+/// `failed` rather than asked for again on every pass. True when it was handed back.
+pub async fn requeue_if_relinked(
+    conn: &mut PgConnection,
+    voice: &ExpiredVoice,
+) -> sqlx::Result<bool> {
+    let requeued: Option<bool> = sqlx::query_scalar(
+        "
+        UPDATE message m SET transcript_status = CASE WHEN EXISTS (
+                 SELECT 1 FROM message_attachment a
+                  WHERE a.account_id = m.account_id AND a.thread_key = m.thread_key
+                    AND a.message_id = m.message_id AND a.kind = 'blob'
+                    AND a.mime_type LIKE 'audio/%' AND a.url IS DISTINCT FROM $4)
+               THEN NULL ELSE 'failed' END
+         WHERE m.account_id = $1 AND m.thread_key = $2 AND m.message_id = $3
+           AND m.transcript_status = 'expired'
+        RETURNING m.transcript_status IS NULL
+        ",
+    )
+    .bind(&voice.account_id)
+    .bind(&voice.thread_key)
+    .bind(&voice.message_id)
+    .bind(&voice.url)
+    .fetch_optional(conn)
+    .await?;
+    Ok(requeued.unwrap_or(false))
+}
