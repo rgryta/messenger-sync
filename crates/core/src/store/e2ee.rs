@@ -357,21 +357,29 @@ pub struct PendingAudio {
     pub account_id: String,
     pub thread_key: String,
     pub message_id: String,
-    /// The attachment's `raw`: `media` holds the file reference.
+    /// `e2ee`: `raw.media` is a reference to an encrypted file. `blob`: `url` is the file
+    /// itself, a signed CDN link that expires after a few days.
+    pub kind: String,
+    pub url: Option<String>,
+    /// The attachment's `raw`: for `e2ee`, `media` holds the file reference.
     pub raw: serde_json::Value,
 }
 
-/// Up to `limit` pending voice messages, newest first.
+/// Up to `limit` voice messages waiting for words, newest first: encrypted ones marked
+/// `pending` when stored, and plain (`blob`) audio not tried yet, which covers older
+/// history and group chats, where Messenger does not encrypt end to end.
 pub async fn pending_transcripts(
     conn: &mut PgConnection,
     limit: i64,
 ) -> sqlx::Result<Vec<PendingAudio>> {
     sqlx::query_as(
         "
-        SELECT m.account_id, m.thread_key, m.message_id, a.raw
+        SELECT m.account_id, m.thread_key, m.message_id, a.kind, a.url, a.raw
           FROM message m
           JOIN message_attachment a USING (account_id, thread_key, message_id)
-         WHERE m.transcript_status = 'pending' AND a.kind = 'e2ee' AND a.raw ? 'media'
+         WHERE (m.transcript_status = 'pending' AND a.kind = 'e2ee' AND a.raw ? 'media')
+            OR (m.transcript_status IS NULL AND a.kind = 'blob'
+                AND a.mime_type LIKE 'audio/%' AND a.url IS NOT NULL)
          ORDER BY m.ts DESC
          LIMIT $1
         ",

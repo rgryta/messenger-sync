@@ -352,3 +352,53 @@ db_test!(
         assert_eq!(row.attachments.as_deref(), Some("audio/opus"));
     }
 );
+
+db_test!(
+    a_plain_voice_message_waits_by_its_link_and_an_expired_one_leaves_the_queue,
+    |fx| {
+        setup(&fx.pool).await;
+        let mut conn = fx.pool.acquire().await.unwrap();
+        writes::insert_messages(
+            &mut conn,
+            &[envelope("m.voice", "o1", 10), envelope("m.photo", "o2", 20)],
+        )
+        .await
+        .unwrap();
+        let blob = |mid: &str, mime: &str| messenger_core::models::Attachment {
+            account_id: ACCOUNT.into(),
+            thread_key: THREAD.into(),
+            message_id: mid.into(),
+            attachment_id: Some(format!("a-{mid}")),
+            kind: "blob".into(),
+            mime_type: Some(mime.into()),
+            url: Some(format!("https://cdn.example/{mid}?oe=0")),
+            preview_url: None,
+            raw: json!({}),
+        };
+        writes::insert_attachments(
+            &mut conn,
+            &[blob("m.voice", "audio/mpeg"), blob("m.photo", "image/jpeg")],
+        )
+        .await
+        .unwrap();
+
+        let pending = e2ee::pending_transcripts(&mut conn, 20).await.unwrap();
+        assert_eq!(pending.len(), 1, "audio only");
+        assert_eq!(pending[0].message_id, "m.voice");
+        assert_eq!(pending[0].kind, "blob");
+        assert_eq!(
+            pending[0].url.as_deref(),
+            Some("https://cdn.example/m.voice?oe=0")
+        );
+
+        e2ee::set_transcript(&mut conn, &pending[0], None, "expired")
+            .await
+            .unwrap();
+        assert!(
+            e2ee::pending_transcripts(&mut conn, 20)
+                .await
+                .unwrap()
+                .is_empty()
+        );
+    }
+);

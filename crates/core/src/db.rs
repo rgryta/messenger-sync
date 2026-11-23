@@ -103,6 +103,10 @@ pub const MIGRATIONS: &[(&str, &str)] = &[
         "0019_fuzzy_search.sql",
         include_str!("../../../db-migrations/pg/0019_fuzzy_search.sql"),
     ),
+    (
+        "0020_plain_voice_transcripts.sql",
+        include_str!("../../../db-migrations/pg/0020_plain_voice_transcripts.sql"),
+    ),
 ];
 
 const SCHEMA_MIGRATION_DDL: &str = "
