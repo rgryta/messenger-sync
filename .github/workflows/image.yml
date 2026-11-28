@@ -97,7 +97,7 @@ jobs:
     permissions:
       packages: write
     steps:
-      - uses: dataaxiom/ghcr-cleanup-action@v1.2.2
+      - uses: dataaxiom/ghcr-cleanup-action@v1.3.0
         with:
           keep-n-tagged: 1
           delete-untagged: true
