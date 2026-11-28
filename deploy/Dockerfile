@@ -6,7 +6,7 @@
 # needed a 2.7 GB Playwright image; Meta's own client is no longer in the loop.
 
 # The latest stable Rust, matching the manifest's rust-version. Bump both together.
-FROM rust:1.100-slim-trixie@sha256:6f14b2b4b278ec0d50aa1d69541c304ce0f95e0f6268487aa9924af1c2e9aebe AS rust
+FROM rust:1.100-slim-trixie@sha256:3b199fd6db7d709274df56565b8f4003f9e30d7bfcff9d53148c86053b7855e2 AS rust
 WORKDIR /build
 RUN rustup target add x86_64-unknown-linux-musl \
     && apt-get update -qq \
